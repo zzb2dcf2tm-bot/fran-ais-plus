@@ -876,7 +876,7 @@ render();
 </div>
 <div id="prat-body-r2" style="width:100%;display:flex;flex-direction:column;align-items:center;min-height:300px"></div>
 <div id="prat-success-r2" style="display:none;margin-top:8px;padding:9px 14px;border-radius:8px;background:#EAF3DE;border:1px solid #0ca30c;color:#3B6D11;font-size:13px;font-weight:500;text-align:center;width:100%"></div>
-<div style="display:flex;margin-top:12px;width:100%">
+<div style="display:flex;margin-top:auto;padding-top:12px;width:100%">
 <button class="btn-round-nav" id="prat-prev-r2" onclick="pratPrevR2()" style="display:none">&#8592;</button>
 <button class="btn-round-nav" id="prat-next-r2" onclick="pratNextR2()" style="display:none;margin-left:auto">&#8594;</button>
 </div>
@@ -1055,14 +1055,14 @@ function renderClassify2(a){
     /* Consigne */
     var inst=document.createElement('div');
     inst.style.cssText='font-size:12px;color:#1c2e5a;background:#e6ecf6;border:1px solid #b0c4de;border-radius:6px;padding:7px 12px;margin-bottom:10px;width:100%;text-align:center';
-    inst.innerHTML='Classe chaque adjectif dans la bonne colonne en cliquant sur <strong>👨 Il</strong> ou <strong>👩 Elle</strong>';
+    inst.innerHTML='Classe chaque adjectif dans la bonne colonne en cliquant sur <strong>Il</strong> ou <strong>Elle</strong>';
     b.appendChild(inst);
 
     /* Colonnes */
     var cols=document.createElement('div');
     cols.style.cssText='display:flex;gap:10px;width:100%;margin-bottom:12px';
-    [{col:'il',label:'👨 Il est ___',bg:'#dbeafe',border:'#3b82f6'},
-     {col:'elle',label:'👩 Elle est ___',bg:'#fce7f3',border:'#ec4899'}
+    [{col:'il',label:'Il est ___',bg:'#fef9e7',border:'#d97706'},
+     {col:'elle',label:'Elle est ___',bg:'#ecfdf5',border:'#059669'}
     ].forEach(function(cfg){
       var div=document.createElement('div');
       div.style.cssText='flex:1;border:2px solid '+cfg.border+';border-radius:10px;padding:8px;background:'+cfg.bg+';min-height:80px';
@@ -1102,13 +1102,13 @@ function renderClassify2(a){
         label.textContent=w;
         var btnIl=document.createElement('button');
         btnIl.className='btn-ns';
-        btnIl.style.cssText='font-size:12px;padding:4px 10px;background:#dbeafe;color:#1d4ed8;border:1.5px solid #3b82f6';
-        btnIl.textContent='👨 Il';
+        btnIl.style.cssText='font-size:12px;padding:4px 10px;background:#fef9e7;color:#92400e;border:1.5px solid #d97706';
+        btnIl.textContent='Il';
         btnIl.onclick=function(){wrongOnes=[];placement[w]='il';drawUI();};
         var btnElle=document.createElement('button');
         btnElle.className='btn-ns';
-        btnElle.style.cssText='font-size:12px;padding:4px 10px;background:#fce7f3;color:#be185d;border:1.5px solid #ec4899';
-        btnElle.textContent='👩 Elle';
+        btnElle.style.cssText='font-size:12px;padding:4px 10px;background:#ecfdf5;color:#065f46;border:1.5px solid #059669';
+        btnElle.textContent='Elle';
         btnElle.onclick=function(){wrongOnes=[];placement[w]='elle';drawUI();};
         row.appendChild(label);row.appendChild(btnIl);row.appendChild(btnElle);
         bank.appendChild(row);
