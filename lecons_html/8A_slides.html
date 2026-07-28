@@ -5,7 +5,7 @@
 <script>(function(){var ok=false;try{ok=localStorage.getItem('fle_auth')==='1';}catch(e){}if(!ok){try{ok=sessionStorage.getItem('fle_auth')==='1';}catch(e){}}if(!ok){var u=new URLSearchParams(location.search).get('auth');if(u==='FLE2026'){try{localStorage.setItem('fle_auth','1');}catch(e){}try{sessionStorage.setItem('fle_auth','1');}catch(e){}ok=true;}}if(!ok)location.replace('../index.html');})();</script>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>Leçon 8A — Bienvenue chez moi ! | FrançaisPlus A1</title>
+<title>Leçon 8A — Je ne me sens pas bien | FrançaisPlus A1</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{--green:#27ae60;--green-l:#eafaf1;--blue:#2980b9;--blue-l:#ebf5fb;--purp:#1c2e5a;--purp-l:#e6ecf6;--orange:#e67e22;--orange-l:#fef9e7;--text:#2c3e50;--muted:#7f8c8d;--card:#fff;--bg:#f8f9fa;--r:10px;--sh:0 2px 10px rgba(0,0,0,.06)}
@@ -465,7 +465,7 @@ body.lang-zh .comm-zh{display:block!important;font-size:.73rem!important;color:#
 <option value="C1">Niv. C1</option>
 <option value="C2">Niv. C2</option>
 </select>
-<div style="flex:1"><div class="ph-title">Bienvenue chez moi !</div><div class="ph-sub">Leçon 8A · A1</div></div>
+<div style="flex:1"><div class="ph-title">Je ne me sens pas bien</div><div class="ph-sub">Leçon 8A · A1</div></div>
 <div class="ph-lang">
 <button class="ph-lang-btn active" id="btn-lang-fr" onclick="setLang('fr')" title="Français"><img alt="FR" src="../icons/flag-fr.svg"/></button>
 <button class="ph-lang-btn" id="btn-lang-zh" onclick="setLang('zh')" title="中文"><img alt="中" src="../icons/flag-zh.svg"/></button>
@@ -686,10 +686,18 @@ body.lang-zh .comm-zh{display:block!important;font-size:.73rem!important;color:#
 <div class="slide" id="slide-gr1">
 <div class="slide-body">
 <div class="card">
-<div class="card-head head-gram"><i data-lucide="book-open" aria-hidden="true"></i> Faire + du/de la/de l' vs jouer à + au/à la<span class="comm-zh"> · 语法要点</span></div>
-<div class="card-body"><div class="gram-rule"><div class="gram-rule-body lang-blk-fr"><strong>Faire du / de la / de l' / des</strong> — activités sportives et artistiques</div><div class="gram-rule-body lang-blk-zh">Faire du / de la / de l' / des — 体育和艺术活动</div></div><div class="gram-ex">• <em>faire du</em> sport / tennis / yoga / vélo<br/>• <em>faire de la</em> natation / gym / danse / musique<br/>• <em>faire de l'</em>escalade / athlétisme</div>
-<div class="gram-rule"><div class="gram-rule-body lang-blk-fr"><strong>Jouer à / au / à la / aux</strong> — jeux et sports d'équipe</div><div class="gram-rule-body lang-blk-zh">Jouer à / au / à la / aux — 游戏和团队运动</div></div><div class="gram-ex">• <em>jouer au</em> foot / basket / tennis<br/>• <em>jouer à la</em> pétanque<br/>• <em>jouer aux</em> cartes / échecs</div>
-
+<div class="card-head head-gram"><i data-lucide="book-open" aria-hidden="true"></i> Avoir mal à + parties du corps<span class="comm-zh"> · 语法要点</span></div>
+<div class="card-body"><div class="gram-rule"><div class="gram-rule-body lang-blk-fr"><strong>Avoir mal à</strong> — exprimer la douleur</div><div class="gram-rule-body lang-blk-zh"><strong>Avoir mal à</strong> — 表达疼痛（身体部位）</div></div>
+<div class="gram-ex">👀 Du dialogue : <em>J'ai mal à la gorge</em> · <em>J'ai de la fièvre</em> · <em>Je ne me sens pas bien</em>.</div>
+<table class="gram-table">
+<tr><th>Genre / Nombre</th><th>Forme</th><th>Exemple</th></tr>
+<tr><td>masculin sing.</td><td class="gram-pf">mal <strong>au</strong></td><td>J'ai mal <em>au</em> dos</td></tr>
+<tr><td>féminin sing.</td><td class="gram-pf">mal <strong>à la</strong></td><td>J'ai mal <em>à la</em> gorge</td></tr>
+<tr><td>voyelle</td><td class="gram-pf">mal <strong>à l'</strong></td><td>J'ai mal <em>à l'</em>oreille</td></tr>
+<tr><td>pluriel</td><td class="gram-pf">mal <strong>aux</strong></td><td>J'ai mal <em>aux</em> yeux</td></tr>
+</table>
+<div class="gram-neg">⚠️ Autres expressions utiles : <em>J'ai de la fièvre.</em> · <em>Je suis fatigué(e).</em> · <em>Je ne me sens pas bien.</em></div>
+</div>
 </div>
 </div>
 </div>
@@ -723,9 +731,8 @@ body.lang-zh .comm-zh{display:block!important;font-size:.73rem!important;color:#
 <script>
 (function(){
 var ACTS=[
-  {id:'fm1',title:'⚡ Associer — Sport ↔ Jouer à / Faire de',type:'flash',colL:'运动 ZH',colR:'Expression FR',pairs:[{k:'ft',l:'足球',r:'jouer au football'},{k:'tn',l:'网球',r:'jouer au tennis'},{k:'ng',l:'游泳',r:'faire de la natation'},{k:'vy',l:'自行车',r:'faire du vélo'},{k:'sk',l:'滑雪',r:'faire du ski'},{k:'bs',l:'篮球',r:'jouer au basket'}]},
-  {id:'fm2',title:'⚡ Associer — Instrument ↔ Jouer de',type:'flash',colL:'乐器 ZH',colR:'Expression FR',pairs:[{k:'gu',l:'吉他',r:'jouer de la guitare'},{k:'pi',l:'钢琴',r:'jouer du piano'},{k:'vl',l:'小提琴',r:'jouer du violon'},{k:'fl',l:'长笛',r:'jouer de la flûte'},{k:'ba',l:'手风琴',r:"jouer de l'accordéon"},{k:'bt',l:'鼓',r:'jouer de la batterie'}]},
-  {id:'wo1',title:"🔀 Remettre dans l'ordre",type:'wordorder',sentences:[{words:['Il','joue','au','football','et','fait','du','vélo','.'],zh:'他踢足球，骑自行车。'},{words:['Elle','joue','de','la','guitare','tous','les','soirs','.'],zh:'她每天晚上弹吉他。'}]}
+  {id:'fm1',title:'⚡ Associer — Partie du corps ↔ 中文',type:'flash',colL:'Français',colR:'中文',pairs:[{k:'go',l:'la gorge',r:'喉咙'},{k:'te',l:'la tête',r:'头'},{k:'ve',l:'le ventre',r:'肚子'},{k:'do',l:'le dos',r:'背部'},{k:'br',l:'le bras',r:'手臂'},{k:'ja',l:'la jambe',r:'腿'},{k:'or',l:"l'oreille",r:'耳朵'},{k:'ye',l:'les yeux',r:'眼睛'}]},
+  {id:'wo1',title:"🔀 Remettre dans l'ordre",type:'wordorder',sentences:[{words:["J'","ai","mal","à","la","gorge","."],zh:'我喉咙痛。'},{words:['Il','a','mal','au','dos','depuis','hier','.'],zh:'他从昨天就背痛了。'}]}
 ];
 var cur=0;var maxCur=0;
 function shuf(a){a=[...a];for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
@@ -943,11 +950,12 @@ render2();
 <div class="blank-row">5. Tu vas chez le médecin ? →<input autocomplete="off" class="blank-input" id="bl-8A-ex1-4" onkeydown="if(event.key==='Enter')document.getElementById('chk-bl-8A-ex1-4').click()" type="text"/><button class="check-btn" data-ans="Tu y vas ?" id="chk-bl-8A-ex1-4" onclick="checkBlankData(this,'bl-8A-ex1-4','fb-bl-8A-ex1-4')"><i data-lucide="check" aria-hidden="true"></i></button><span class="fb" id="fb-bl-8A-ex1-4"></span></div>
 <div class="verify-bar"><button class="btn-verify" data-fr="Vérifier ✓" data-zh="验证 ✓" onclick="verifyCard(this)">Vérifier <i data-lucide="check" aria-hidden="true"></i></button><button class="btn-restart" data-fr="Recommencer ↺" data-zh="重新开始 ↺" onclick="resetCard(this)">Recommencer ↺</button></div></div></div>
 <div class="card" style="display:flex;flex-direction:column"><div class="card-head head-ex"><i data-lucide="pen-line" aria-hidden="true"></i> Production : vos lieux favoris<span class="comm-zh"> · 写作：您最喜欢的地方</span> <span class="ex-cat-badge badge-comm"><i data-lucide="message-circle" aria-hidden="true"></i> Communication</span></div><div class="card-body" style="flex:1;min-height:0;overflow-y:auto"><div class="prod-box">Décrivez 3 lieux que vous fréquentez souvent. Écrivez une phrase avec le lieu et une phrase avec Y.<span class="prod-zh">描述您经常去的3个地方。每个地方写一句含地点的句子和一句用Y的句子。</span></div><textarea class="prod-input" placeholder="Écrivez votre réponse ici..."></textarea><button class="lt-btn" onclick="checkLT(this)">Corriger <i data-lucide="check" aria-hidden="true"></i></button><div class="lt-result"></div></div></div>
-<div class="card"><div class="card-head head-ex"><i data-lucide="pen-line" aria-hidden="true"></i> Jouer à ou Faire du / de la ?<span class="comm-zh"> · 用 jouer à 还是 faire du / de la？</span> <span class="ex-cat-badge badge-gram"><i data-lucide="file-edit" aria-hidden="true"></i> Grammaire</span></div><div class="card-body">
-<div class="blank-row">1. Il ___ football.<input autocomplete="off" class="blank-input" id="bl-8A-ex3-0" style="width:240px" onkeydown="if(event.key==='Enter')document.getElementById('chk-bl-8A-ex3-0').click()" type="text"/><button class="check-btn" data-ans="joue au" id="chk-bl-8A-ex3-0" onclick="checkBlankData(this,'bl-8A-ex3-0','fb-bl-8A-ex3-0')"><i data-lucide="check" aria-hidden="true"></i></button><span class="fb" id="fb-bl-8A-ex3-0"></span></div>
-<div class="blank-row">2. Elle ___ natation.<input autocomplete="off" class="blank-input" id="bl-8A-ex3-1" style="width:240px" onkeydown="if(event.key==='Enter')document.getElementById('chk-bl-8A-ex3-1').click()" type="text"/><button class="check-btn" data-ans="fait de la" id="chk-bl-8A-ex3-1" onclick="checkBlankData(this,'bl-8A-ex3-1','fb-bl-8A-ex3-1')"><i data-lucide="check" aria-hidden="true"></i></button><span class="fb" id="fb-bl-8A-ex3-1"></span></div>
-<div class="blank-row">3. Nous ___ tennis.<input autocomplete="off" class="blank-input" id="bl-8A-ex3-2" style="width:240px" onkeydown="if(event.key==='Enter')document.getElementById('chk-bl-8A-ex3-2').click()" type="text"/><button class="check-btn" data-ans="jouons au" id="chk-bl-8A-ex3-2" onclick="checkBlankData(this,'bl-8A-ex3-2','fb-bl-8A-ex3-2')"><i data-lucide="check" aria-hidden="true"></i></button><span class="fb" id="fb-bl-8A-ex3-2"></span></div>
-<div class="blank-row">4. Vous ___ vélo ?<input autocomplete="off" class="blank-input" id="bl-8A-ex3-3" style="width:240px" onkeydown="if(event.key==='Enter')document.getElementById('chk-bl-8A-ex3-3').click()" type="text"/><button class="check-btn" data-ans="faites du" id="chk-bl-8A-ex3-3" onclick="checkBlankData(this,'bl-8A-ex3-3','fb-bl-8A-ex3-3')"><i data-lucide="check" aria-hidden="true"></i></button><span class="fb" id="fb-bl-8A-ex3-3"></span></div>
+<div class="card"><div class="card-head head-ex"><i data-lucide="pen-line" aria-hidden="true"></i> Complétez avec mal au, mal à la ou mal aux<span class="comm-zh"> · 填写正确的形式</span> <span class="ex-cat-badge badge-gram"><i data-lucide="file-edit" aria-hidden="true"></i> Grammaire</span></div><div class="card-body">
+<div class="blank-row">1. J'ai ___ gorge depuis ce matin.<input autocomplete="off" class="blank-input" id="bl-8A-ex2-0" onkeydown="if(event.key==='Enter')document.getElementById('chk-bl-8A-ex2-0').click()" type="text"/><button class="check-btn" data-ans="mal à la" id="chk-bl-8A-ex2-0" onclick="checkBlankData(this,'bl-8A-ex2-0','fb-bl-8A-ex2-0')"><i data-lucide="check" aria-hidden="true"></i></button><span class="fb" id="fb-bl-8A-ex2-0"></span></div>
+<div class="blank-row">2. Il a ___ dos depuis hier.<input autocomplete="off" class="blank-input" id="bl-8A-ex2-1" onkeydown="if(event.key==='Enter')document.getElementById('chk-bl-8A-ex2-1').click()" type="text"/><button class="check-btn" data-ans="mal au" id="chk-bl-8A-ex2-1" onclick="checkBlankData(this,'bl-8A-ex2-1','fb-bl-8A-ex2-1')"><i data-lucide="check" aria-hidden="true"></i></button><span class="fb" id="fb-bl-8A-ex2-1"></span></div>
+<div class="blank-row">3. Tu as ___ yeux ?<input autocomplete="off" class="blank-input" id="bl-8A-ex2-2" onkeydown="if(event.key==='Enter')document.getElementById('chk-bl-8A-ex2-2').click()" type="text"/><button class="check-btn" data-ans="mal aux" id="chk-bl-8A-ex2-2" onclick="checkBlankData(this,'bl-8A-ex2-2','fb-bl-8A-ex2-2')"><i data-lucide="check" aria-hidden="true"></i></button><span class="fb" id="fb-bl-8A-ex2-2"></span></div>
+<div class="blank-row">4. Elle a ___ bras droit.<input autocomplete="off" class="blank-input" id="bl-8A-ex2-3" onkeydown="if(event.key==='Enter')document.getElementById('chk-bl-8A-ex2-3').click()" type="text"/><button class="check-btn" data-ans="mal au" id="chk-bl-8A-ex2-3" onclick="checkBlankData(this,'bl-8A-ex2-3','fb-bl-8A-ex2-3')"><i data-lucide="check" aria-hidden="true"></i></button><span class="fb" id="fb-bl-8A-ex2-3"></span></div>
+<div class="blank-row">5. Nous avons ___ oreilles.<input autocomplete="off" class="blank-input" id="bl-8A-ex2-4" onkeydown="if(event.key==='Enter')document.getElementById('chk-bl-8A-ex2-4').click()" type="text"/><button class="check-btn" data-ans="mal aux" id="chk-bl-8A-ex2-4" onclick="checkBlankData(this,'bl-8A-ex2-4','fb-bl-8A-ex2-4')"><i data-lucide="check" aria-hidden="true"></i></button><span class="fb" id="fb-bl-8A-ex2-4"></span></div>
 <div class="verify-bar"><button class="btn-verify" data-fr="Vérifier ✓" data-zh="验证 ✓" onclick="verifyCard(this)">Vérifier <i data-lucide="check" aria-hidden="true"></i></button><button class="btn-restart" data-fr="Recommencer ↺" data-zh="重新开始 ↺" onclick="resetCard(this)">Recommencer ↺</button></div></div></div>
 <div class="card" style="display:flex;flex-direction:column"><div class="card-head head-ex"><i data-lucide="pen-line" aria-hidden="true"></i> Expression écrite : les sports de votre famille<span class="comm-zh"> · 写作：您家人的运动</span> <span class="ex-cat-badge badge-comm"><i data-lucide="message-circle" aria-hidden="true"></i> Communication</span></div><div class="card-body" style="flex:1;min-height:0;overflow-y:auto"><div class="prod-box">Décrivez les activités sportives de 3 personnes de votre famille. Utilisez jouer à et faire du / de la.<span class="prod-zh">描述您家中3个人的体育活动。使用 jouer à 和 faire du / de la。</span></div><textarea class="prod-input" placeholder="Écrivez votre réponse ici..."></textarea><button class="lt-btn" onclick="checkLT(this)">Corriger <i data-lucide="check" aria-hidden="true"></i></button><div class="lt-result"></div></div></div>
 </div>
@@ -965,26 +973,32 @@ render2();
 <div class="slide-header">Exercices <span class="slide-part">2/2</span></div>
 <div class="ex-blocks">
 <div class="ex-block">
-<div class="ex-title"><span>Ex. 5 — Jouer à ou Faire du / de la ? <span class="comm-zh">jouer à 还是 faire du / de la？</span></span><span class="ex-badge"><i data-lucide="book-open" aria-hidden="true"></i> Grammaire</span></div>
-<p class="ex-inst">Classez les éléments dans la bonne colonne.</p>
+<div class="ex-title"><span>Ex. 5 — Avoir mal au ou à la ? <span class="comm-zh">au 还是 à la？</span></span><span class="ex-badge"><i data-lucide="book-open" aria-hidden="true"></i> Grammaire</span></div>
+<p class="ex-inst">Classez chaque partie du corps dans la bonne colonne.</p>
 <div class="ex5-pool" id="ex5-pool">
-<span class="drag-chip" data-cat="jouer" onclick="ex5Click(this)">football</span>
-<span class="drag-chip" data-cat="faire" onclick="ex5Click(this)">natation</span>
-<span class="drag-chip" data-cat="jouer" onclick="ex5Click(this)">tennis</span>
-<span class="drag-chip" data-cat="faire" onclick="ex5Click(this)">yoga</span>
-<span class="drag-chip" data-cat="jouer" onclick="ex5Click(this)">échecs</span>
-<span class="drag-chip" data-cat="faire" onclick="ex5Click(this)">vélo</span>
-<span class="drag-chip" data-cat="jouer" onclick="ex5Click(this)">basket</span>
-<span class="drag-chip" data-cat="faire" onclick="ex5Click(this)">musculation</span>
+<span class="drag-chip" data-cat="au" onclick="ex5Click(this)">dos</span>
+<span class="drag-chip" data-cat="ala" onclick="ex5Click(this)">gorge</span>
+<span class="drag-chip" data-cat="au" onclick="ex5Click(this)">ventre</span>
+<span class="drag-chip" data-cat="ala" onclick="ex5Click(this)">tête</span>
+<span class="drag-chip" data-cat="au" onclick="ex5Click(this)">bras</span>
+<span class="drag-chip" data-cat="ala" onclick="ex5Click(this)">jambe</span>
+<span class="drag-chip" data-cat="au" onclick="ex5Click(this)">genou</span>
+<span class="drag-chip" data-cat="ala" onclick="ex5Click(this)">cheville</span>
 </div>
 <div class="ex5-zones">
-<div class="ex5-zone" id="zone-jouer" onclick="ex5Drop(this)">
-<div class="ex5-zone-label">Jouer à</div>
-<div class="ex5-zone-items" id="zone-jouer-items"></div>
+<div class="ex5-zone" id="zone-au" onclick="ex5Drop(this)">
+<div class="ex5-zone-label">mal au ___</div>
+<div class="ex5-zone-items" id="zone-au-items"></div>
 </div>
-<div class="ex5-zone" id="zone-faire" onclick="ex5Drop(this)">
-<div class="ex5-zone-label">Faire du / de la</div>
-<div class="ex5-zone-items" id="zone-faire-items"></div>
+<div class="ex5-zone" id="zone-ala" onclick="ex5Drop(this)">
+<div class="ex5-zone-label">mal à la ___</div>
+<div class="ex5-zone-items" id="zone-ala-items"></div>
+</div>
+</div>
+<div class="ex5-actions" style="position:sticky;bottom:0;background:#f8f9fa;padding:8px 0 4px;z-index:2;box-shadow:0 -2px 6px rgba(0,0,0,.06)">
+<button class="btn-verify" onclick="checkEx5()">Vérifier <i data-lucide="check" aria-hidden="true"></i></button>
+<button class="btn-reset" onclick="resetEx5()">↺ Recommencer</button>
+<span class="ex5-score" id="ex5-score-8A"></span>
 </div>
 </div>
 <div class="ex5-actions" style="position:sticky;bottom:0;background:#f8f9fa;padding:8px 0 4px;z-index:2;box-shadow:0 -2px 6px rgba(0,0,0,.06)">
@@ -1007,23 +1021,23 @@ render2();
 </div>
 <div class="listen-fb"></div>
 </div>
-<div class="listen-item" data-ans="au">
-<div class="listen-sentence">Elle joue <span class="listen-blank">___</span> tennis.</div>
+<div class="listen-item" data-ans="à la">
+<div class="listen-sentence">J'ai mal <span class="listen-blank">___</span> gorge depuis hier.</div>
 <button class="listen-btn" onclick="playAudio('../audio/ex6_8A_1.mp3')" title="Écouter"><i data-lucide="volume-2" aria-hidden="true"></i></button>
 <div class="listen-choices">
+<button class="choice-btn" data-val="à la" onclick="selectEx6(this)">à la</button>
 <button class="choice-btn" data-val="au" onclick="selectEx6(this)">au</button>
-<button class="choice-btn" data-val="du" onclick="selectEx6(this)">du</button>
-<button class="choice-btn" data-val="de la" onclick="selectEx6(this)">de la</button>
+<button class="choice-btn" data-val="aux" onclick="selectEx6(this)">aux</button>
 </div>
 <div class="listen-fb"></div>
 </div>
-<div class="listen-item" data-ans="de la">
-<div class="listen-sentence">Nous faisons <span class="listen-blank">___</span> natation.</div>
+<div class="listen-item" data-ans="y">
+<div class="listen-sentence">Elle habite à Paris. Elle <span class="listen-blank">___</span> habite depuis dix ans.</div>
 <button class="listen-btn" onclick="playAudio('../audio/ex6_8A_2.mp3')" title="Écouter"><i data-lucide="volume-2" aria-hidden="true"></i></button>
 <div class="listen-choices">
-<button class="choice-btn" data-val="de la" onclick="selectEx6(this)">de la</button>
-<button class="choice-btn" data-val="au" onclick="selectEx6(this)">au</button>
-<button class="choice-btn" data-val="du" onclick="selectEx6(this)">du</button>
+<button class="choice-btn" data-val="y" onclick="selectEx6(this)">y</button>
+<button class="choice-btn" data-val="le" onclick="selectEx6(this)">le</button>
+<button class="choice-btn" data-val="la" onclick="selectEx6(this)">la</button>
 </div>
 <div class="listen-fb"></div>
 </div>
@@ -1037,13 +1051,13 @@ render2();
 </div>
 <div class="listen-fb"></div>
 </div>
-<div class="listen-item" data-ans="du">
-<div class="listen-sentence">Vous faites <span class="listen-blank">___</span> vélo le week-end ?</div>
+<div class="listen-item" data-ans="au">
+<div class="listen-sentence">Tu as mal <span class="listen-blank">___</span> dos ?</div>
 <button class="listen-btn" onclick="playAudio('../audio/ex6_8A_4.mp3')" title="Écouter"><i data-lucide="volume-2" aria-hidden="true"></i></button>
 <div class="listen-choices">
-<button class="choice-btn" data-val="du" onclick="selectEx6(this)">du</button>
 <button class="choice-btn" data-val="au" onclick="selectEx6(this)">au</button>
-<button class="choice-btn" data-val="de la" onclick="selectEx6(this)">de la</button>
+<button class="choice-btn" data-val="à la" onclick="selectEx6(this)">à la</button>
+<button class="choice-btn" data-val="aux" onclick="selectEx6(this)">aux</button>
 </div>
 <div class="listen-fb"></div>
 </div>
@@ -1064,7 +1078,7 @@ render2();
 <div class="slide-body">
 <div class="card">
 <div class="card-head head-prod"><i data-lucide="edit-3" aria-hidden="true"></i> À toi !<span class="comm-zh"> · 轮到你了！</span></div>
-<div class="card-body"><div class="prod-box">Décrivez votre sport préféré, où vous le pratiquez et à quelle fréquence. Utilisez Y dans votre réponse.<span class="prod-zh">描述您最喜欢的运动、在哪里练习以及练习频率。在回答中使用Y。</span></div>
+<div class="card-body"><div class="prod-box">Vous ne vous sentez pas bien. Décrivez vos symptômes au médecin et posez-lui une question. Utilisez Y dans votre réponse.<span class="prod-zh">您感觉不舒服。向医生描述您的症状并提一个问题。在回答中使用Y。</span></div>
 <textarea class="prod-input" placeholder="Écrivez votre réponse ici..."></textarea>
 <button class="lt-btn" onclick="checkLT(this)">Corriger <i data-lucide="check" aria-hidden="true"></i></button>
 <div class="lt-result"></div></div>
@@ -1086,7 +1100,7 @@ render2();
 <button aria-label="Fermer" class="modal-close" onclick="closeModal('modal-bug')">✕</button>
 <h2 data-fr="Signaler un problème" data-zh="反馈问题" id="bug-title"><i data-lucide="bug" aria-hidden="true"></i> Signaler un problème</h2><p class="modal-sub" data-fr="Aidez-nous à améliorer cette leçon." data-zh="帮助我们改进本课内容。">Aidez-nous à améliorer cette leçon.</p>
 <form id="form-bug" onsubmit="submitForm(event,'form-bug','modal-bug')">
-<input name="lecon" type="hidden" value="8A — Bienvenue chez moi !"/><input name="_subject" type="hidden" value="[Bug] Leçon 8A"/>
+<input name="lecon" type="hidden" value="8A — Je ne me sens pas bien"/><input name="_subject" type="hidden" value="[Bug] Leçon 8A"/>
 <div class="form-group"><label data-fr="Section" data-zh="章节">Section</label><select name="exercice" required=""><option data-fr="— Choisissez —" data-zh="— 请选择 —" value="">— Choisissez —</option><option data-fr="Dialogue" data-zh="对话">Dialogue</option><option data-fr="Comprendre" data-zh="理解">Comprendre</option><option data-fr="Communiquer" data-zh="表达">Communiquer</option><option data-fr="Vocabulaire" data-zh="词汇">Vocabulaire</option><option data-fr="Phonétique" data-zh="语音">Phonétique</option><option data-fr="Grammaire" data-zh="语法">Grammaire</option><option data-fr="Exercice" data-zh="练习">Exercice</option><option data-fr="À toi !" data-zh="轮到你了">À toi !</option><option data-fr="Autre" data-zh="其他">Autre</option></select></div>
 <div class="form-group"><label data-fr="Description" data-zh="描述">Description</label><textarea data-placeholder-fr="Décrivez le problème…" data-placeholder-zh="请描述问题…" name="description" placeholder="Décrivez le problème…" required="" rows="3"></textarea></div>
 <div class="form-group"><label><span data-fr="Prénom" data-zh="姓名">Prénom</span> <span class="opt" data-fr="(facultatif)" data-zh="（选填）">(facultatif)</span></label><input name="prenom" type="text"/></div>
@@ -1099,7 +1113,7 @@ render2();
 <button aria-label="Fermer" class="modal-close" onclick="closeModal('modal-ask')">✕</button>
 <h2 data-fr="Poser une question" data-zh="提问" id="ask-title"><i data-lucide="message-circle" aria-hidden="true"></i> Poser une question</h2><p class="modal-sub" data-fr="Votre question sera transmise au professeur." data-zh="您的问题将转交给老师。">Votre question sera transmise au professeur.</p>
 <form id="form-ask" onsubmit="submitForm(event,'form-ask','modal-ask')">
-<input name="lecon" type="hidden" value="8A — Bienvenue chez moi !"/><input name="_subject" type="hidden" value="[Question] Leçon 8A"/>
+<input name="lecon" type="hidden" value="8A — Je ne me sens pas bien"/><input name="_subject" type="hidden" value="[Question] Leçon 8A"/>
 <div class="form-group"><label data-fr="Sujet" data-zh="主题">Sujet</label><select name="sujet" required=""><option data-fr="— Choisissez —" data-zh="— 请选择 —" value="">— Choisissez —</option><option data-fr="📖 Grammaire" data-zh="📖 语法" value="Grammaire"><i data-lucide="book-open" aria-hidden="true"></i> Grammaire</option><option data-fr="📝 Vocabulaire" data-zh="📝 词汇" value="Vocabulaire"><i data-lucide="file-edit" aria-hidden="true"></i> Vocabulaire</option><option data-fr="✏️ Exercice" data-zh="✏️ 练习" value="Exercice"><i data-lucide="pen-line" aria-hidden="true"></i> Exercice</option><option data-fr="🎵 Prononciation" data-zh="🎵 发音" value="Prononciation">🎵 Prononciation</option></select></div>
 <div class="form-group"><label data-fr="Votre question" data-zh="您的问题">Votre question</label><textarea data-placeholder-fr="Posez votre question…" data-placeholder-zh="请输入您的问题…" name="question" placeholder="Posez votre question…" required="" rows="3"></textarea></div>
 <div class="form-group"><label><span data-fr="Prénom" data-zh="姓名">Prénom</span> <span class="opt" data-fr="(facultatif)" data-zh="（选填）">(facultatif)</span></label><input name="prenom" type="text"/></div>
