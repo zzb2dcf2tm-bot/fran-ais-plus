@@ -13,6 +13,7 @@ body{font-family:'Segoe UI',system-ui,sans-serif;color:var(--text);font-size:14p
 a{color:var(--blue);text-decoration:none}
 /* HEADER */
 .page-header{background:linear-gradient(135deg,#0d1b32,#2a4a8a);color:#fff;padding:8px 14px;display:flex;align-items:center;gap:9px;flex-shrink:0}
+.ph-logo{padding:2px 4px;border-radius:8px;border:none;background:none;cursor:pointer;display:flex;align-items:center}.ph-logo:hover{background:rgba(255,255,255,.15)}
 .ph-back{padding:4px 10px;border-radius:14px;border:2px solid rgba(255,255,255,.5);color:#fff;background:none;font-size:.72rem;font-weight:700;cursor:pointer;text-decoration:none}
 .ph-back:hover{background:rgba(255,255,255,.2)}
 .ph-lvl{padding:4px 8px;border-radius:14px;border:2px solid rgba(255,255,255,.4);color:#fff;background:rgba(255,255,255,.1);font-size:.72rem;font-weight:700;cursor:pointer;appearance:none;-webkit-appearance:none;outline:none}
@@ -454,15 +455,15 @@ body.lang-zh .comm-zh{display:block!important;font-size:.73rem!important;color:#
 </head>
 <body>
 <header class="page-header">
-<a class="ph-back" href="../index.html?auth=FLE2026" title="Retour à l'accueil"><img src="../images/logo.png" alt="Super Français" style="height:26px;border-radius:4px;vertical-align:middle;display:block"/></a>
-<a class="ph-back" href="../index.html?auth=FLE2026&amp;level=A1" title="Leçons A1">A1</a>
+<a class="ph-logo" href="../index.html?auth=FLE2026" title="Retour à l'accueil"><img src="../images/logo.png" alt="Super Français" style="height:34px;border-radius:6px;vertical-align:middle;display:block"/></a>
+<a class="ph-back" href="../index.html?auth=FLE2026&amp;level=A1" title="Leçons A1">Niveau</a>
 <select class="ph-lvl" onchange="location.href='../index.html?level='+this.value" title="Changer de niveau">
-<option selected="" value="A1">A1</option>
-<option value="A2">A2</option>
-<option value="B1">B1</option>
-<option value="B2">B2</option>
-<option value="C1">C1</option>
-<option value="C2">C2</option>
+<option selected="" value="A1">Niv. A1</option>
+<option value="A2">Niv. A2</option>
+<option value="B1">Niv. B1</option>
+<option value="B2">Niv. B2</option>
+<option value="C1">Niv. C1</option>
+<option value="C2">Niv. C2</option>
 </select>
 <div style="flex:1"><div class="ph-title">Quel temps fait-il ?</div><div class="ph-sub">Leçon 9B · A1</div></div>
 <div class="ph-lang">
