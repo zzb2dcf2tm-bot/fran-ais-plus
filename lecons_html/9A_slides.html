@@ -723,7 +723,7 @@ body.lang-zh .comm-zh{display:block!important;font-size:.73rem!important;color:#
 </div>
 <script>
 (function(){
-var ACTS=[{id:'wo2',title:"🔀 Remettre dans l'ordre — PC avec ÊTRE",type:'wordorder',sentences:[{words:['Elle','est','allée','à','Paris','la','semaine','dernière','.'],zh:'她上周去了巴黎。'},{words:['Ils','sont','arrivés','hier','soir','.'],zh:'他们昨晚到达了。'}]}];
+var ACTS=[{id:'wo1',title:"🔀 Remettre dans l'ordre — PC avec ÊTRE",type:'wordorder',sentences:[{words:['Elle','est','allée','à','Paris','la','semaine','dernière','.'],zh:'她上周去了巴黎。'},{words:['Ils','sont','arrivés','hier','soir','.'],zh:'他们昨晚到达了。'}]}];
 var cur=0;var maxCur=0;
 function shuf(a){a=[...a];for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
 function render(){
@@ -829,8 +829,8 @@ render();
 </div>
 <script>
 (function(){
-var ACTS2=[{id:'wo2',title:"🔀 Remettre dans l'ordre — Passé composé",type:'wordorder',sentences:[{words:['Elle','a','mangé','une','pizza','hier','.'],zh:'她昨天吃了一块披萨。'},{words:['Nous','avons','visité','le','musée','.'],zh:'我们参观了博物馆。'}]}];
-var cur2=0;
+var ACTS2=[{id:'wo2',title:"🔀 Remettre dans l'ordre — PC avec AVOIR",type:'wordorder',sentences:[{words:['Elle','a','mangé','une','pizza','hier','.'],zh:'她昨天吃了一块披萨。'},{words:['Nous','avons','visité','le','musée','.'],zh:'我们参观了博物馆。'}]}];
+var cur2=0;var maxCurR2=0;
 function shuf(a){a=[...a];for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
 function render2(){
   var a=ACTS2[cur2];try{localStorage.setItem('fle_a2_'+location.pathname,cur2);}catch(e){}
@@ -841,7 +841,7 @@ function render2(){
   renderWO2(a);
 }
 function renderWO2(a){
-  var b=document.getElementById('prat-body-r2');var si=0;var placed=[];
+  var b=document.getElementById('prat-body-r2');var si=0;var maxSi=0;var placed=[];
   function renderS(){
     var s=a.sentences[si];placed=[];
     b.innerHTML='<p style="font-size:13px;color:var(--muted);margin-bottom:10px;text-align:center">'+s.zh+'</p><div id="wo-z-r2" style="min-height:50px;border:1.5px dashed var(--border-strong,#999);border-radius:8px;padding:8px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:10px;width:100%;background:var(--bg-l,#f8f9fa)"></div><div id="wo-b-r2" style="display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-bottom:10px;width:100%"></div><div id="wo-fb-r2" style="font-size:13px;text-align:center;padding:8px;border-radius:8px;width:100%"></div><div style="display:flex;gap:8px;align-items:center;justify-content:center"><button class="btn-round-nav" id="wo-prev-r2" onclick="woPrevR2()" style="display:none">&#8592;</button><button class="btn-ns" onclick="woChkR2()">✓ Vérifier</button><button class="btn-ns" onclick="woClR2()">↺ Effacer</button><button class="btn-round-nav" id="wo-suiv-r2" onclick="woSuivR2()" style="display:none">&#8594;</button></div>';
