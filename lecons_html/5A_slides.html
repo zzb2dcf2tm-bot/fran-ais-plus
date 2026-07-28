@@ -860,26 +860,26 @@ render();
 <div class="slide-header">Exercices <span class="slide-part">2/2</span></div>
 <div class="ex-blocks">
 <div class="ex-block">
-<div class="ex-title"><span>Ex. 5 — Boisson ou aliment solide ? <span class="comm-zh">将每种食物归入正确的栏目。</span></span><span class="ex-badge"><i data-lucide="book-open" aria-hidden="true"></i> Vocabulaire</span></div>
-<p class="ex-inst">Classez chaque aliment dans la bonne colonne.</p>
+<div class="ex-title"><span>Ex. 5 — Ce ou Cette ? <span class="comm-zh">按性别分类服装。</span></span><span class="ex-badge"><i data-lucide="book-open" aria-hidden="true"></i> Grammaire</span></div>
+<p class="ex-inst">Classez chaque vêtement : <strong>ce</strong> (masculin) ou <strong>cette</strong> (féminin).</p>
 <div class="ex5-pool" id="ex5-pool">
-<span class="drag-chip" data-cat="boisson" onclick="ex5Click(this)">le jus d'orange</span>
-<span class="drag-chip" data-cat="solide" onclick="ex5Click(this)">le riz</span>
-<span class="drag-chip" data-cat="boisson" onclick="ex5Click(this)">l'eau</span>
-<span class="drag-chip" data-cat="solide" onclick="ex5Click(this)">la soupe</span>
-<span class="drag-chip" data-cat="boisson" onclick="ex5Click(this)">le café</span>
-<span class="drag-chip" data-cat="solide" onclick="ex5Click(this)">le sandwich</span>
-<span class="drag-chip" data-cat="boisson" onclick="ex5Click(this)">le lait</span>
-<span class="drag-chip" data-cat="solide" onclick="ex5Click(this)">les légumes</span>
+<span class="drag-chip" data-cat="ce" onclick="ex5Click(this)">manteau</span>
+<span class="drag-chip" data-cat="cette" onclick="ex5Click(this)">veste</span>
+<span class="drag-chip" data-cat="ce" onclick="ex5Click(this)">pantalon</span>
+<span class="drag-chip" data-cat="cette" onclick="ex5Click(this)">robe</span>
+<span class="drag-chip" data-cat="ce" onclick="ex5Click(this)">pull</span>
+<span class="drag-chip" data-cat="cette" onclick="ex5Click(this)">jupe</span>
+<span class="drag-chip" data-cat="ce" onclick="ex5Click(this)">t-shirt</span>
+<span class="drag-chip" data-cat="cette" onclick="ex5Click(this)">chemise</span>
 </div>
 <div class="ex5-zones">
-<div class="ex5-zone" id="zone-boisson" onclick="ex5Drop(this)">
-<div class="ex5-zone-label">🥤 Boisson</div>
-<div class="ex5-zone-items" id="zone-boisson-items"></div>
+<div class="ex5-zone" id="zone-ce" onclick="ex5Drop(this)">
+<div class="ex5-zone-label">👔 Ce (masculin)</div>
+<div class="ex5-zone-items" id="zone-ce-items"></div>
 </div>
-<div class="ex5-zone" id="zone-solide" onclick="ex5Drop(this)">
-<div class="ex5-zone-label">🍽️ Aliment solide</div>
-<div class="ex5-zone-items" id="zone-solide-items"></div>
+<div class="ex5-zone" id="zone-cette" onclick="ex5Drop(this)">
+<div class="ex5-zone-label">👗 Cette (féminin)</div>
+<div class="ex5-zone-items" id="zone-cette-items"></div>
 </div>
 </div>
 <div class="ex5-actions" style="position:sticky;bottom:0;background:#f8f9fa;padding:8px 0 4px;z-index:2;box-shadow:0 -2px 6px rgba(0,0,0,.06)">
@@ -961,9 +961,8 @@ render();
 <div class="slide-body">
 <div class="card">
 <div class="card-head head-prod"><i data-lucide="edit-3" aria-hidden="true"></i> À toi !<span class="comm-zh"> · 轮到你了！</span></div>
-<div class="card-body"><div class="prod-box">Décrivez vos habitudes alimentaires en 8 phrases (3 repas + aliments préférés
-+ aliments que vous n'aimez pas).
-<span class="prod-zh">用8句话描述您的饮食习惯（三餐+最喜欢的食物+不喜欢的食物）。</span></div>
+<div class="card-body"><div class="prod-box">Vous êtes dans une boutique de vêtements. Décrivez 5 articles que vous voyez ou essayez. Utilisez <strong>ce / cet / cette / ces</strong> + un adjectif. Exemple : <em>Ce manteau est très chaud. Cette jupe est trop grande.</em>
+<span class="prod-zh">您在一家服装店。用ce/cet/cette/ces描述5件您看到或试穿的衣服，并加上形容词。</span></div>
 <textarea class="prod-input" placeholder="Écrivez votre réponse ici..."></textarea>
 <button class="lt-btn" onclick="checkLT(this)">Corriger <i data-lucide="check" aria-hidden="true"></i></button>
 <div class="lt-result"></div></div>

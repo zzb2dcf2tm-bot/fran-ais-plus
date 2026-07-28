@@ -875,7 +875,38 @@ function render2(){
   document.getElementById('prat-score-r2').textContent='';
   document.getElementById('prat-next-r2').style.display=maxCurR2>cur2?'':'none';
   document.getElementById('prat-prev-r2').style.display=cur2>0?'':'none';
-  renderWO2(a);
+  if(a.type==='flash')renderFlash2(a);else renderWO2(a);
+}
+function renderFlash2(a){
+  var b=document.getElementById('prat-body-r2');
+  b.innerHTML='<div style="display:grid;grid-template-columns:1fr 1fr;gap:9px;width:100%"><div><div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);text-align:center;margin-bottom:4px">'+a.colL+'</div><div id="fl-l-r2" style="display:flex;flex-direction:column;gap:7px"></div></div><div><div style="font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);text-align:center;margin-bottom:4px">'+a.colR+'</div><div id="fl-r-r2" style="display:flex;flex-direction:column;gap:7px"></div></div></div>';
+  var matched=0,selL=null,selR=null;
+  function css(c,t){c.style.borderColor=t==='ok'?'#0ca30c':t==='err'?'#e24b4a':t==='sel'?'var(--purp)':'var(--border)';c.style.background=t==='ok'?'#EAF3DE':t==='err'?'#FCEBEB':t==='sel'?'var(--purp-l)':'var(--card-bg,#fff)';c.style.color=t==='ok'?'#3B6D11':t==='err'?'#A32D2D':'var(--purp)';c.style.cursor=t==='ok'?'default':'pointer';}
+  function chk(){
+    if(a.pairs.some(function(p){return p.l===selL.textContent.trim()&&p.r===selR.textContent.trim();})){
+      css(selL,'ok');css(selR,'ok');selL.onclick=null;selR.onclick=null;matched++;
+      document.getElementById('prat-score-r2').textContent='Trouvé : '+matched+' / '+a.pairs.length;document.getElementById('prat-score-r2').style.display='';
+      if(matched===a.pairs.length){document.getElementById('prat-success-r2').textContent='Parfait ! 全对了 🎉';document.getElementById('prat-success-r2').style.display='block';if(cur2>=maxCurR2){maxCurR2=cur2+1;}var n=document.getElementById('prat-next-r2');if(n&&cur2<ACTS2.length-1)n.style.display='';}
+    } else {
+      css(selL,'err');css(selR,'err');
+      var sl=selL,sr=selR;setTimeout(function(){if(sl.style.cursor!=='default')css(sl,'');if(sr.style.cursor!=='default')css(sr,'');},600);
+    }
+    selL=null;selR=null;
+  }
+  function mkCard(p,side){
+    var c=document.createElement('div');
+    c.style.cssText='padding:10px 12px;border-radius:8px;border:1.5px solid var(--border);background:var(--card-bg,#fff);cursor:pointer;text-align:center;font-size:16px;font-weight:500;color:var(--purp);min-height:44px;display:flex;align-items:center;justify-content:center;';
+    c.dataset.k=p.k;c.textContent=side==='l'?p.l:p.r;
+    c.onclick=function(){
+      if(this.style.cursor==='default')return;
+      if(side==='l'){document.querySelectorAll('#fl-l-r2 div').forEach(function(x){if(x.style.cursor!=='default')css(x,'');});css(this,'sel');selL=this;if(selR)chk();}
+      else{document.querySelectorAll('#fl-r-r2 div').forEach(function(x){if(x.style.cursor!=='default')css(x,'');});css(this,'sel');selR=this;if(selL)chk();}
+    };
+    return c;
+  }
+  shuf(a.pairs).forEach(function(p){document.getElementById('fl-l-r2').appendChild(mkCard(p,'l'));});
+  shuf(a.pairs).forEach(function(p){document.getElementById('fl-r-r2').appendChild(mkCard(p,'r'));});
+  document.getElementById('prat-score-r2').textContent='Trouvé : 0 / '+a.pairs.length;document.getElementById('prat-score-r2').style.display='';
 }
 function renderWO2(a){
   var b=document.getElementById('prat-body-r2');var si=0;var maxSi=0;var placed=[];
