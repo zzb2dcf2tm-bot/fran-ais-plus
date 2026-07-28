@@ -441,10 +441,10 @@ body.lang-zh .comm-zh{display:block!important;font-size:.73rem!important;color:#
 
 <!-- NAV TABS -->
 <nav class="slide-nav" id="slide-nav">
-  <button class="slide-tab active" data-fr="🔤 Alphabet &amp; Chiffres" data-zh="🔤 字母 &amp; 数字" onclick="goSlide(0)">🔤 Alphabet &amp; Chiffres</button>
-  <button class="slide-tab" data-fr="📅 Jours &amp; Mois" data-zh="📅 星期 &amp; 月份" onclick="goSlide(1)"><i data-lucide="calendar" aria-hidden="true"></i> Jours &amp; Mois</button>
-  <button class="slide-tab" data-fr="✏️ Exercices" data-zh="✏️ 练习" onclick="goSlide(2)"><i data-lucide="pen-line" aria-hidden="true"></i> Exercices</button>
-  <button class="slide-tab" data-fr="✍️ À toi !" data-zh="✍️ 轮到你了" onclick="goSlide(3)"><i data-lucide="edit-3" aria-hidden="true"></i> À toi !</button>
+  <button class="slide-tab active" data-fr="Alphabet &amp; Chiffres" data-zh="字母 &amp; 数字" onclick="goSlide(0)">🔤 Alphabet &amp; Chiffres</button>
+  <button class="slide-tab" data-fr="Jours &amp; Mois" data-zh="星期 &amp; 月份" onclick="goSlide(1)"><i data-lucide="calendar" aria-hidden="true"></i> Jours &amp; Mois</button>
+  <button class="slide-tab" data-fr="Exercices" data-zh="练习" onclick="goSlide(2)"><i data-lucide="pen-line" aria-hidden="true"></i> Exercices</button>
+  <button class="slide-tab" data-fr="À toi !" data-zh="轮到你了" onclick="goSlide(3)"><i data-lucide="edit-3" aria-hidden="true"></i> À toi !</button>
 </nav>
 
 <!-- SLIDES VIEWPORT -->
@@ -474,7 +474,7 @@ body.lang-zh .comm-zh{display:block!important;font-size:.73rem!important;color:#
     </div>
   </div>
   <div class="slide-footer">
-    <button class="btn-ns" data-fr="📅 Jours &amp; Mois →" data-zh="📅 星期 &amp; 月份 →" onclick="goSlide(1)"><i data-lucide="calendar" aria-hidden="true"></i> Jours &amp; Mois →</button>
+    <button class="btn-ns" data-fr="Jours &amp; Mois →" data-zh="星期 &amp; 月份 →" onclick="goSlide(1)"><i data-lucide="calendar" aria-hidden="true"></i> Jours &amp; Mois →</button>
   </div>
 </div>
 
@@ -502,7 +502,7 @@ body.lang-zh .comm-zh{display:block!important;font-size:.73rem!important;color:#
   </div>
   <div class="slide-footer" style="justify-content:space-between">
     <button class="btn-ns" data-fr="← Alphabet &amp; Chiffres" data-zh="← 字母 &amp; 数字" onclick="goSlide(0)">← Alphabet &amp; Chiffres</button>
-    <button class="btn-ns" data-fr="✏️ Exercices →" data-zh="✏️ 练习 →" onclick="goSlide(2)"><i data-lucide="pen-line" aria-hidden="true"></i> Exercices →</button>
+    <button class="btn-ns" data-fr="Exercices →" data-zh="练习 →" onclick="goSlide(2)"><i data-lucide="pen-line" aria-hidden="true"></i> Exercices →</button>
   </div>
 </div>
 
@@ -632,7 +632,7 @@ body.lang-zh .comm-zh{display:block!important;font-size:.73rem!important;color:#
 <script>
 
 var LESSON='U0';
-function setLang(lang){document.body.classList.toggle('lang-zh',lang==='zh');localStorage.setItem('fle_lang',lang);var bf=document.getElementById('btn-lang-fr'),bz=document.getElementById('btn-lang-zh');if(bf)bf.classList.toggle('active',lang==='fr');if(bz)bz.classList.toggle('active',lang==='zh');var zh=lang==='zh';document.querySelectorAll('[data-zh]').forEach(function(el){el.textContent=zh?el.dataset.zh:(el.dataset.fr||el.textContent);});document.querySelectorAll('[data-placeholder-zh]').forEach(function(el){el.placeholder=zh?el.dataset.placeholderZh:(el.dataset.placeholderFr||el.placeholder);});document.querySelectorAll('.lt-btn').forEach(function(el){if(!el.disabled)el.textContent=zh?'批改 ✓':'Corriger ✓';});document.querySelectorAll('.btn-send').forEach(function(el){el.textContent=zh?'发送':'Envoyer';});document.querySelectorAll('.btn-reveal').forEach(function(el){if(!el.dataset.zh)el.textContent=zh?'查看':'Voir';});document.querySelectorAll('.btn-verify').forEach(function(el){el.textContent=zh?'验证 ✓':'Vérifier ✓';});document.querySelectorAll('.btn-restart').forEach(function(el){el.textContent=zh?'重新开始 ↺':'Recommencer ↺';});document.querySelectorAll('.dl-play-btn[data-state]').forEach(function(el){var st=el.dataset.state;el.innerHTML=st==='play'?(zh?'▶︎  播放':'▶︎  Écouter'):st==='pause'?(zh?'❚❚  暂停':'❚❚  Pause'):(zh?'▶︎  继续':'▶︎  Reprendre');});}
+function setLang(lang){document.body.classList.toggle('lang-zh',lang==='zh');localStorage.setItem('fle_lang',lang);var bf=document.getElementById('btn-lang-fr'),bz=document.getElementById('btn-lang-zh');if(bf)bf.classList.toggle('active',lang==='fr');if(bz)bz.classList.toggle('active',lang==='zh');var zh=lang==='zh';document.querySelectorAll('[data-zh]').forEach(function(el){var _v=zh?el.dataset.zh:(el.dataset.fr||"");if(_v){if(el.children.length){var _ns=el.childNodes,_tn=null;for(var _i=_ns.length-1;_i>=0;_i--){if(_ns[_i].nodeType===3&&_ns[_i].textContent.trim()){_tn=_ns[_i];break;}}if(_tn){_tn.textContent=" "+_v;}}else{el.textContent=_v;}}});document.querySelectorAll('[data-placeholder-zh]').forEach(function(el){el.placeholder=zh?el.dataset.placeholderZh:(el.dataset.placeholderFr||el.placeholder);});document.querySelectorAll('.lt-btn').forEach(function(el){if(!el.disabled)el.textContent=zh?'批改 ✓':'Corriger ✓';});document.querySelectorAll('.btn-send').forEach(function(el){el.textContent=zh?'发送':'Envoyer';});document.querySelectorAll('.btn-reveal').forEach(function(el){if(!el.dataset.zh)el.textContent=zh?'查看':'Voir';});document.querySelectorAll('.btn-verify').forEach(function(el){el.textContent=zh?'验证 ✓':'Vérifier ✓';});document.querySelectorAll('.btn-restart').forEach(function(el){el.textContent=zh?'重新开始 ↺':'Recommencer ↺';});document.querySelectorAll('.dl-play-btn[data-state]').forEach(function(el){var st=el.dataset.state;el.innerHTML=st==='play'?(zh?'▶︎  播放':'▶︎  Écouter'):st==='pause'?(zh?'❚❚  暂停':'❚❚  Pause'):(zh?'▶︎  继续':'▶︎  Reprendre');});}
 document.addEventListener('DOMContentLoaded',function(){var saved=localStorage.getItem('fle_lang');var detected=(navigator.language||'fr').startsWith('zh')?'zh':'fr';setLang(saved||detected);});
 function playAudio(src){if(window._pA){window._pA.pause();window._pA.currentTime=0;}var a=new Audio(src);window._pA=a;a.play().catch(function(){});}
 function showComprAnswer(btn,id){var el=document.getElementById(id);if(!el)return;el.classList.toggle('visible');btn.textContent=el.classList.contains('visible')?'Masquer ▲':'Voir la réponse ▼';}
