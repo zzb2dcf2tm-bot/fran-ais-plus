@@ -553,74 +553,79 @@ var VOCAB_DATA = {
   ],
   "3C": [
     {
+      "fr": "serveur",
+      "zh": "服务员",
+      "i": 0
+    },
+    {
+      "fr": "tripe",
+      "zh": "牛肚",
+      "i": 1
+    },
+    {
+      "fr": "quiche",
+      "zh": "乳蛋饼",
+      "i": 2
+    },
+    {
+      "fr": "salade",
+      "zh": "沙拉",
+      "i": 3
+    },
+    {
+      "fr": "steak",
+      "zh": "牛排",
+      "i": 4
+    },
+    {
+      "fr": "frites",
+      "zh": "薯条",
+      "i": 5
+    },
+    {
+      "fr": "dessert",
+      "zh": "甜点",
+      "i": 6
+    },
+    {
+      "fr": "carte",
+      "zh": "菜单",
+      "i": 7
+    },
+    {
+      "fr": "savoureux",
+      "zh": "美味的",
+      "i": 8
+    },
+    {
+      "fr": "eau",
+      "zh": "水",
+      "i": 9
+    },
+    {
       "fr": "toujours",
       "zh": "总是",
-      "i": 0
+      "i": 10
     },
     {
       "fr": "souvent",
       "zh": "经常",
-      "i": 1
+      "i": 11
     },
     {
       "fr": "parfois",
       "zh": "有时",
-      "i": 2
+      "i": 12
     },
     {
       "fr": "rarement",
       "zh": "很少",
-      "i": 3
+      "i": 13
     },
     {
       "fr": "jamais",
       "zh": "从不",
-      "i": 4
-    },
-    {
-      "fr": "lire",
-      "zh": "阅读",
-      "i": 5
-    },
-    {
-      "fr": "nager / faire de la natation",
-      "zh": "游泳",
-      "i": 6
-    },
-    {
-      "fr": "faire du sport",
-      "zh": "做运动",
-      "i": 7
-    },
-    {
-      "fr": "jouer au foot / tennis",
-      "zh": "踢足球／打网球",
-      "i": 8
-    },
-    {
-      "fr": "faire de la musique",
-      "zh": "演奏音乐",
-      "i": 9
-    },
-    {
-      "fr": "sortir avec des amis",
-      "zh": "和朋友出去",
-      "i": 10
-    },
-    {
-      "fr": "activité",
-      "zh": "活动",
-      "i": 11
-    },
-    {
-      "fr": "passe-temps",
-      "zh": "消遣；爱好",
-      "i": 12
-    },
-    {
-      "fr": "culturel(le)",
-      "zh": "文化的",
-      "i": 13
+      "i": 14
     }
   ],
   "4A": [

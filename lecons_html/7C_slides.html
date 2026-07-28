@@ -723,8 +723,8 @@ body.lang-zh .comm-zh{display:block!important;font-size:.73rem!important;color:#
 (function(){
 var ACTS=[
   {id:'fm1',title:'⚡ Associer — Pronom COD ↔ 中文',type:'flash',colL:'Pronom COD',colR:'中文',pairs:[{k:'le',l:'le',r:'他/它 (masc)'},{k:'la',l:'la',r:'她/它 (fém)'},{k:'les',l:'les',r:'他们/它们 (plur)'},{k:'me',l:'me',r:'我 (COD)'},{k:'te',l:'te',r:'你 (COD)'},{k:'ns',l:'nous',r:'我们 (COD)'}]},
-  {id:'fm2',title:'⚡ Associer — Comparatif ↔ 中文',type:'flash',colL:'Comparatif FR',colR:'中文',pairs:[{k:'ps',l:'plus … que',r:'比…更…'},{k:'ms',l:'moins … que',r:'比…少…'},{k:'as',l:'aussi … que',r:'和…一样…'},{k:'pb',l:'plus beau que',r:'比…漂亮'},{k:'mc',l:'moins cher que',r:'比…便宜'},{k:'ac',l:'aussi cher que',r:'和…一样贵'}]},
-  {id:'wo1',title:"🔀 Remettre dans l'ordre",type:'wordorder',sentences:[{words:['Je','le','connais','très','bien','.'],zh:'我很了解他。'},{words:['Elle','est','plus','grande','que','moi','.'],zh:'她比我高。'}]}
+  {id:'fm2',title:'⚡ Associer — COD en contexte',type:'flash',colL:'Phrase complète',colR:'COD',pairs:[{k:'v1',l:'Je regarde ce manteau.',r:'Je le regarde.'},{k:'v2',l:'Elle achète cette robe.',r:'Elle l\'achète.'},{k:'v3',l:'Il prend les gants.',r:'Il les prend.'},{k:'v4',l:'Vous connaissez Anna ?',r:'Vous la connaissez ?'},{k:'v5',l:'Ils regardent les prix.',r:'Ils les regardent.'},{k:'v6',l:'Tu aimes ce foulard ?',r:'Tu l\'aimes ?'}]},
+  {id:'wo1',title:"🔀 Remettre dans l'ordre — COD",type:'wordorder',sentences:[{words:['Je','le','connais','très','bien','.'],zh:'我很了解他。'},{words:['Elle','la','prend','et','elle','l\'essaie','.'],zh:'她拿起它并试穿了。'}]}
 ];
 var cur=0;var maxCur=0;
 function shuf(a){a=[...a];for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
@@ -1101,8 +1101,7 @@ render2();
 <div class="slide-body">
 <div class="card">
 <div class="card-head head-prod"><i data-lucide="edit-3" aria-hidden="true"></i> À toi !<span class="comm-zh"> · 轮到你了！</span></div>
-<div class="card-body"><div class="prod-box">Vous voulez acheter un cadeau pour un(e) ami(e). Écrivez un dialogue (8
-répliques) dans un magasin, en utilisant les pronoms COD et le comparatif.
+<div class="card-body"><div class="prod-box">Vous voulez acheter un cadeau pour un(e) ami(e). Écrivez un dialogue (8 répliques) dans un magasin. Utilisez les pronoms COD (le, la, l', les) et exprimez une obligation ou une interdiction (devoir / il faut).
 <span class="prod-zh">您想为朋友买礼物。写一段商店里的对话（8个回合），使用直接宾语代词和比较级。</span></div>
 <textarea class="prod-input" placeholder="Écrivez votre réponse ici..."></textarea>
 <button class="lt-btn" onclick="checkLT(this)">Corriger <i data-lucide="check" aria-hidden="true"></i></button>
