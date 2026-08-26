@@ -942,7 +942,53 @@ render2();
 <div class="blank-row">4. voir →<input autocomplete="off" class="blank-input" id="bl-7A-ex1-3" onkeydown="if(event.key==='Enter')document.getElementById('chk-bl-7A-ex1-3').click()" type="text"/><button class="check-btn" data-ans="vu" id="chk-bl-7A-ex1-3" onclick="checkBlankData(this,'bl-7A-ex1-3','fb-bl-7A-ex1-3')"><i data-lucide="check" aria-hidden="true"></i></button><span class="fb" id="fb-bl-7A-ex1-3"></span></div>
 <div class="blank-row">5. faire →<input autocomplete="off" class="blank-input" id="bl-7A-ex1-4" onkeydown="if(event.key==='Enter')document.getElementById('chk-bl-7A-ex1-4').click()" type="text"/><button class="check-btn" data-ans="fait" id="chk-bl-7A-ex1-4" onclick="checkBlankData(this,'bl-7A-ex1-4','fb-bl-7A-ex1-4')"><i data-lucide="check" aria-hidden="true"></i></button><span class="fb" id="fb-bl-7A-ex1-4"></span></div>
 <div class="verify-bar"><button class="btn-verify" data-fr="Vérifier ✓" data-zh="验证 ✓" onclick="verifyCard(this)">Vérifier <i data-lucide="check" aria-hidden="true"></i></button><button class="btn-restart" data-fr="Recommencer ↺" data-zh="重新开始 ↺" onclick="resetCard(this)">Recommencer ↺</button></div></div></div>
-<div class="card" style="display:flex;flex-direction:column"><div class="card-head head-ex"><i data-lucide="pen-line" aria-hidden="true"></i> Production : votre week-end<span class="comm-zh"> · 写作：您的周末</span> <span class="ex-cat-badge badge-comm"><i data-lucide="message-circle" aria-hidden="true"></i> Communication</span></div><div class="card-body" style="flex:1;min-height:0;overflow-y:auto"><div class="prod-box">Décrivez votre week-end passé. Écrivez 6 activités au passé composé avec AVOIR.<span class="prod-zh">描述您上周末的活动。用avoir的复合过去时写6个活动。</span></div><textarea class="prod-input" placeholder="Écrivez votre réponse ici..."></textarea><button class="lt-btn" onclick="checkLT(this)">Corriger <i data-lucide="check" aria-hidden="true"></i></button><div class="lt-result"></div></div></div>
+<div class="card"><div class="card-head head-ex"><i data-lucide="pen-line" aria-hidden="true"></i> Exercice 2 — C'est ou Il/Elle est ?<span class="comm-zh"> · C'est 还是 Il/Elle est？</span> <span class="ex-cat-badge badge-gram"><i data-lucide="file-edit" aria-hidden="true"></i> Grammaire</span></div><div class="card-body">
+<div class="trans-row" data-ans="C'est">
+<div class="trans-src">1. « ___ un bel appartement, non ? »</div>
+<input autocomplete="off" class="trans-input" placeholder="C'est / Il est / Elle est…" type="text"/>
+<div class="trans-btns">
+<button class="check-btn" onclick="showTransform(this)">Voir</button>
+<span class="trans-fb"></span>
+<span class="trans-ans">C'est</span>
+</div>
+</div>
+<div class="trans-row" data-ans="Il est">
+<div class="trans-src">2. « ___ grand et très lumineux. »</div>
+<input autocomplete="off" class="trans-input" placeholder="C'est / Il est / Elle est…" type="text"/>
+<div class="trans-btns">
+<button class="check-btn" onclick="showTransform(this)">Voir</button>
+<span class="trans-fb"></span>
+<span class="trans-ans">Il est</span>
+</div>
+</div>
+<div class="trans-row" data-ans="C'est">
+<div class="trans-src">3. « ___ Madame Renaud, la propriétaire. »</div>
+<input autocomplete="off" class="trans-input" placeholder="C'est / Il est / Elle est…" type="text"/>
+<div class="trans-btns">
+<button class="check-btn" onclick="showTransform(this)">Voir</button>
+<span class="trans-fb"></span>
+<span class="trans-ans">C'est</span>
+</div>
+</div>
+<div class="trans-row" data-ans="Il est">
+<div class="trans-src">4. « ___ disponible à partir du 1er janvier. »</div>
+<input autocomplete="off" class="trans-input" placeholder="C'est / Il est / Elle est…" type="text"/>
+<div class="trans-btns">
+<button class="check-btn" onclick="showTransform(this)">Voir</button>
+<span class="trans-fb"></span>
+<span class="trans-ans">Il est</span>
+</div>
+</div>
+<div class="trans-row" data-ans="C'est">
+<div class="trans-src">5. « ___ un beau quartier, très calme. »</div>
+<input autocomplete="off" class="trans-input" placeholder="C'est / Il est / Elle est…" type="text"/>
+<div class="trans-btns">
+<button class="check-btn" onclick="showTransform(this)">Voir</button>
+<span class="trans-fb"></span>
+<span class="trans-ans">C'est</span>
+</div>
+</div>
+<div class="verify-bar"><button class="btn-verify" data-fr="Vérifier ✓" data-zh="验证 ✓" onclick="verifyCard(this)">Vérifier <i data-lucide="check" aria-hidden="true"></i></button><button class="btn-restart" data-fr="Recommencer ↺" data-zh="重新开始 ↺" onclick="resetCard(this)">Recommencer ↺</button></div></div></div>
 <div class="card"><div class="card-head head-ex"><i data-lucide="pen-line" aria-hidden="true"></i> Exercice 3 — Forme négative<span class="comm-zh"> · 改写成否定句</span> <span class="ex-cat-badge badge-gram"><i data-lucide="file-edit" aria-hidden="true"></i> Grammaire</span></div><div class="card-body">
 <div class="trans-row" data-ans="Je n'ai pas visité l'appartement.">
 <div class="trans-src">1. J'ai visité l'appartement. → Forme négative :</div>
