@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script>(function(){var ok=false;try{ok=localStorage.getItem('fle_auth')==='1';}catch(e){}if(!ok){var u=new URLSearchParams(location.search).get('auth');if(u==='FLE2026'){try{localStorage.setItem('fle_auth','1');}catch(e){}ok=true;}}if(!ok)location.replace('index.html');})()</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Exercice gap-fill</title>
+<script src="gap_data.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--purp:#1c2e5a;--purp-l:#e6ecf6;--green:#27ae60;--green-l:#eafaf1;--red:#e74c3c;--red-l:#fdecea;--orange:#e67e22;--bg:#f8f9fa;--text:#2c3e50;--muted:#7f8c8d;--r:10px;--sh:0 2px 8px rgba(0,0,0,.07)}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+
+/* ── HEADER ── */
+.page-header{background:linear-gradient(135deg,#0d1b32,#2a4a8a);color:#fff;padding:10px 14px;display:flex;align-items:center;gap:10px;flex-shrink:0}
+.ph-back{padding:4px 12px;border-radius:14px;border:2px solid rgba(255,255,255,.5);color:#fff;background:none;font-size:.72rem;font-weight:700;cursor:pointer;text-decoration:none;white-space:nowrap}
+.ph-back:hover{background:rgba(255,255,255,.2)}
+.ph-info{flex:1;min-width:0}
+.ph-title{font-size:.88rem;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ph-sub{font-size:.68rem;opacity:.75;margin-top:1px}
+
+/* ── BARRE DE PROGRESSION ── */
+.prog-wrap{height:4px;background:rgba(255,255,255,.25);background:#e0e6f0;flex-shrink:0}
+.prog-fill{height:100%;width:0%;background:var(--purp);transition:width .4s ease}
+
+/* ── MAIN ── */
+.main{flex:1;padding:16px 14px 28px;max-width:540px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:14px}
+
+/* Compteur */
+.counter{font-size:.72rem;font-weight:700;color:var(--muted);text-align:right}
+
+/* Carte exercice */
+.ex-card{background:#fff;border-radius:14px;box-shadow:var(--sh);border:2px solid #dde3ee;padding:20px 18px;transition:border-color .3s}
+.ex-card.correct{border-color:var(--green);background:var(--green-l)}
+.ex-card.wrong{border-color:var(--red);background:var(--red-l);animation:shake .35s ease}
+
+/* Phrase à trous */
+.phrase{font-size:1.05rem;line-height:1.7;font-weight:500;color:var(--text);text-align:center;margin-bottom:20px}
+.blank{display:inline-block;background:var(--purp-l);border-bottom:2.5px solid var(--purp);border-radius:4px;padding:0 10px;color:transparent;min-width:80px;font-weight:700}
+.blank.filled-correct{background:var(--green-l);border-color:var(--green);color:var(--green)}
+.blank.filled-wrong{background:var(--red-l);border-color:var(--red);color:var(--red)}
+
+/* Boutons réponses */
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.choice-btn{
+  background:#f4f6fb;
+  border:2px solid #dde3ee;
+  border-radius:10px;
+  padding:12px 8px;
+  font-size:.88rem;
+  font-weight:700;
+  cursor:pointer;
+  text-align:center;
+  transition:border-color .15s,background .15s,color .15s,transform .1s;
+  line-height:1.3;
+  color:var(--text);
+}
+.choice-btn:hover:not(:disabled){border-color:var(--purp);background:var(--purp-l);transform:scale(1.02)}
+.choice-btn.correct{background:var(--green-l);border-color:var(--green);color:var(--green)}
+.choice-btn.wrong{background:var(--red-l);border-color:var(--red);color:var(--red)}
+.choice-btn:disabled{cursor:default;opacity:.6}
+
+/* Feedback */
+.feedback{text-align:center;font-size:.82rem;font-weight:700;min-height:20px;transition:opacity .2s}
+.feedback.ok{color:var(--green)}
+.feedback.ko{color:var(--red)}
+
+/* Bouton Suivant */
+.btn-next{display:none;width:100%;border:none;border-radius:20px;padding:12px;font-size:.9rem;font-weight:800;cursor:pointer;background:var(--purp);color:#fff;transition:opacity .15s;margin-top:2px}
+.btn-next:hover{opacity:.88}
+.btn-next.visible{display:block}
+
+/* ── ÉCRAN FIN ── */
+.end-screen{display:none;flex-direction:column;align-items:center;text-align:center;padding:32px 20px;gap:12px}
+.end-emoji{font-size:3.5rem}
+.end-title{font-size:1.25rem;font-weight:900;color:var(--purp)}
+.end-score{font-size:.95rem;color:var(--muted);font-weight:700}
+.end-msg{font-size:.85rem;color:var(--muted);max-width:280px}
+.end-btns{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:8px}
+.btn-end{border:none;border-radius:20px;padding:11px 26px;font-size:.85rem;font-weight:700;cursor:pointer;transition:opacity .15s}
+.btn-end:hover{opacity:.85}
+.btn-replay{background:var(--purp);color:#fff}
+.btn-home{background:var(--purp-l);color:var(--purp)}
+
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+</style>
+<style>.lucide-icon{display:inline-block;vertical-align:-3px;stroke-width:1.75;pointer-events:none}</style>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+<div class="page-header">
+  <a class="ph-back" id="btn-back" href="index.html?level=A1">← Leçons</a>
+  <div class="ph-info">
+    <div class="ph-title" id="ph-title">Gap-fill</div>
+    <div class="ph-sub">Choisissez le mot manquant</div>
+  </div>
+</div>
+<div class="prog-wrap"><div class="prog-fill" id="prog-fill"></div></div>
+
+<div class="main" id="main">
+  <div class="counter" id="counter"></div>
+
+  <div class="ex-card" id="ex-card">
+    <div class="phrase" id="phrase"></div>
+    <div class="choices" id="choices"></div>
+    <div class="feedback" id="feedback"></div>
+  </div>
+
+  <button class="btn-next" id="btn-next" onclick="nextEx()">Suivant →</button>
+
+  <div class="end-screen" id="end-screen">
+    <div class="end-emoji" id="end-emoji"><i data-lucide="party-popper" aria-hidden="true"></i></div>
+    <div class="end-title" id="end-title"></div>
+    <div class="end-score" id="end-score"></div>
+    <div class="end-msg" id="end-msg"></div>
+    <div class="end-btns">
+      <button class="btn-end btn-replay" onclick="startGame()">↺ Recommencer</button>
+      <button class="btn-end btn-home" onclick="goBack()">← Retour</button>
+    </div>
+  </div>
+</div>
+
+<script>
+var lesson   = new URLSearchParams(location.search).get('lesson') || '1A';
+var allExs   = (window.GAP_DATA && GAP_DATA[lesson]) || [];
+var exList   = [];
+var curIdx   = 0;
+var score    = 0;
+var answered = false;
+
+// Header
+document.getElementById('ph-title').textContent = 'Leçon ' + lesson + ' — Compléter';
+
+// Lien retour
+(function(){
+  var ok=false;try{ok=localStorage.getItem('fle_auth')==='1';}catch(e){}
+  var href='index.html?level=A1'+(ok?'':'&auth=FLE2026');
+  document.getElementById('btn-back').href=href;
+})();
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}
+  return a;
+}
+
+function startGame(){
+  curIdx=0; score=0; answered=false;
+  exList = shuffle(allExs.slice());
+  document.getElementById('end-screen').style.display='none';
+  document.getElementById('end-screen').style.flexDirection='';
+  document.getElementById('counter').style.display='';
+  document.getElementById('ex-card').style.display='';
+  document.getElementById('btn-next').classList.remove('visible');
+  showEx();
+}
+
+function showEx(){
+  answered=false;
+  var ex = exList[curIdx];
+  var total = exList.length;
+
+  // Compteur + barre
+  document.getElementById('counter').textContent = (curIdx+1) + ' / ' + total;
+  document.getElementById('prog-fill').style.width = Math.round(curIdx/total*100)+'%';
+
+  // Phrase : remplacer _____ par un span .blank
+  var ph = ex.phrase.replace('_____', '<span class="blank" id="blank">_____</span>');
+  document.getElementById('phrase').innerHTML = ph;
+
+  // Reset carte
+  var card = document.getElementById('ex-card');
+  card.className = 'ex-card';
+
+  // Feedback vide
+  document.getElementById('feedback').textContent = '';
+  document.getElementById('feedback').className = 'feedback';
+
+  // Choix : mélanger réponse + distracteurs
+  var opts = shuffle([ex.answer].concat(ex.choices));
+  var choicesEl = document.getElementById('choices');
+  choicesEl.innerHTML = '';
+  opts.forEach(function(opt){
+    var btn = document.createElement('button');
+    btn.className = 'choice-btn';
+    btn.textContent = opt;
+    btn.addEventListener('click', function(){ onChoice(btn, opt, ex.answer); });
+    choicesEl.appendChild(btn);
+  });
+
+  document.getElementById('btn-next').classList.remove('visible');
+}
+
+function onChoice(btn, chosen, correct){
+  if(answered) return;
+  answered = true;
+
+  // Désactiver tous les boutons
+  document.querySelectorAll('.choice-btn').forEach(function(b){ b.disabled=true; });
+
+  var blank = document.getElementById('blank');
+  var card  = document.getElementById('ex-card');
+  var fb    = document.getElementById('feedback');
+
+  if(chosen === correct){
+    btn.classList.add('correct');
+    if(blank){ blank.textContent=chosen; blank.classList.add('filled-correct'); }
+    card.classList.add('correct');
+    fb.textContent = '✓ Correct !';
+    fb.className = 'feedback ok';
+    score++;
+    // Auto-avance après 900ms si pas dernier
+    if(curIdx < exList.length-1){
+      setTimeout(function(){ nextEx(); }, 900);
+    } else {
+      document.getElementById('btn-next').textContent = 'Voir le résultat →';
+      document.getElementById('btn-next').classList.add('visible');
+    }
+  } else {
+    btn.classList.add('wrong');
+    if(blank){ blank.textContent=chosen; blank.classList.add('filled-wrong'); }
+    card.classList.add('wrong');
+    fb.textContent = '✗ La bonne réponse : ' + correct;
+    fb.className = 'feedback ko';
+    // Montrer la bonne réponse en vert
+    document.querySelectorAll('.choice-btn').forEach(function(b){
+      if(b.textContent===correct) b.classList.add('correct');
+    });
+    if(curIdx < exList.length-1){
+      document.getElementById('btn-next').textContent = 'Suivant →';
+    } else {
+      document.getElementById('btn-next').textContent = 'Voir le résultat →';
+    }
+    document.getElementById('btn-next').classList.add('visible');
+  }
+}
+
+function nextEx(){
+  curIdx++;
+  if(curIdx >= exList.length){
+    showEnd();
+  } else {
+    showEx();
+  }
+}
+
+function showEnd(){
+  var total = exList.length;
+  var pct   = total ? Math.round(score/total*100) : 0;
+
+  document.getElementById('prog-fill').style.width='100%';
+  document.getElementById('counter').style.display='none';
+  document.getElementById('ex-card').style.display='none';
+  document.getElementById('btn-next').classList.remove('visible');
+
+  document.getElementById('end-emoji').textContent = pct===100?'🎉':pct>=60?'👍':'💪';
+  document.getElementById('end-title').textContent = score+' / '+total+' — '+pct+'%';
+  document.getElementById('end-score').textContent =
+    pct===100 ? 'Excellent ! Toutes les réponses sont correctes.' :
+    pct>=60   ? 'Bien joué ! Encore un peu d\'entraînement.' :
+                'Continue à t\'entraîner, tu vas y arriver !';
+  document.getElementById('end-msg').textContent = '';
+
+  var endScreen = document.getElementById('end-screen');
+  endScreen.style.display='flex';
+  endScreen.style.flexDirection='column';
+
+  // Sauvegarder dans fle_prog
+  try{
+    var prog=JSON.parse(localStorage.getItem('fle_prog')||'{}');
+    if(!prog[lesson])prog[lesson]={};
+    if(prog[lesson].gap_best===undefined||pct>prog[lesson].gap_best) prog[lesson].gap_best=pct;
+    localStorage.setItem('fle_prog',JSON.stringify(prog));
+  }catch(e){}
+}
+
+function goBack(){
+  var ok=false;try{ok=localStorage.getItem('fle_auth')==='1';}catch(e){}
+  location.href='index.html?level=A1'+(ok?'':'&auth=FLE2026');
+}
+
+if(allExs.length===0){
+  document.getElementById('phrase').innerHTML='<p style="color:var(--muted);text-align:center">Aucun exercice disponible pour cette leçon.</p>';
+  document.getElementById('choices').innerHTML='';
+} else {
+  startGame();
+}
+</script>
+<script>document.addEventListener("DOMContentLoaded",function(){if(window.lucide){lucide.createIcons({attrs:{class:"lucide-icon",width:"16",height:"16"}});}});</script>
+</body>
+</html>

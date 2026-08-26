@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script>
+(function(){var ok=false;try{ok=localStorage.getItem('fle_auth')==='1';}catch(e){}if(!ok){try{ok=sessionStorage.getItem('fle_auth')==='1';}catch(e){}}if(!ok){var u=new URLSearchParams(location.search).get('auth');if(u==='FLE2026'){try{localStorage.setItem('fle_auth','1');}catch(e){}try{sessionStorage.setItem('fle_auth','1');}catch(e){}ok=true;}}if(!ok)location.replace('../index.html');})();
+</script>
+<meta charset="UTF-8">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🇫🇷</text></svg>">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Unité 0 — Les Bases | FrançaisPlus A1</title>
+<style>
+:root {
+  --green: #27ae60; --green-l: #eafaf1;
+  --blue: #2980b9;  --blue-l:  #ebf5fb;
+  --purp: #8e44ad;  --purp-l:  #f5eef8;
+  --orange:#e67e22; --orange-l:#fef9e7;
+  --text: #2c3e50;  --muted: #7f8c8d;
+  --card: #fff;     --bg: #f8f9fa;
+  --radius:12px;    --shadow:0 2px 12px rgba(0,0,0,.07);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);font-size:15px}
+a{color:var(--blue);text-decoration:none}
+.page-wrap{max-width:860px;margin:0 auto;padding:20px 16px 60px}
+
+/* NAV */
+.top-nav{display:flex;align-items:center;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+.btn-nav{padding:7px 16px;border-radius:20px;border:2px solid;font-weight:700;font-size:.82rem;cursor:pointer;text-decoration:none;transition:all .15s}
+.btn-back{border-color:var(--purp);color:var(--purp)}
+.btn-back:hover{background:var(--purp);color:#fff}
+.btn-next{border-color:var(--blue);color:var(--blue)}
+.btn-next:hover{background:var(--blue);color:#fff}
+.nav-title{font-size:.8rem;color:var(--muted);margin-left:auto}
+
+/* HEADER */
+.lesson-header{background:linear-gradient(135deg,#16a085,#1abc9c);color:#fff;border-radius:var(--radius);padding:24px 28px;margin-bottom:24px}
+.lesson-unit{font-size:.72rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;opacity:.8;margin-bottom:6px}
+.lesson-code{display:inline-block;background:rgba(255,255,255,.25);padding:3px 10px;border-radius:8px;font-size:.75rem;font-weight:800;margin-right:8px}
+.lesson-title{font-size:1.6rem;font-weight:900;line-height:1.2;margin:8px 0 4px}
+.lesson-sub{font-size:.9rem;opacity:.85}
+.lesson-badge{display:inline-block;background:rgba(255,255,255,.2);padding:2px 10px;border-radius:10px;font-size:.75rem;font-weight:700;margin-top:8px}
+
+/* SECTIONS */
+.section{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:20px;overflow:hidden}
+.section-head{padding:14px 20px;font-size:1rem;font-weight:800;display:flex;align-items:center;gap:8px;border-bottom:1px solid #f0f0f0}
+.section-body{padding:18px 20px}
+.sec-alpha .section-head{background:#e8f8f5;color:#16a085}
+.sec-chiffres .section-head{background:var(--blue-l);color:var(--blue)}
+.sec-jours .section-head{background:var(--purp-l);color:var(--purp)}
+.sec-mois .section-head{background:var(--orange-l);color:var(--orange)}
+.sec-exercise .section-head{background:#fef9e7;color:var(--orange)}
+
+/* TOC */
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px}
+.toc-btn{padding:7px 16px;border-radius:20px;background:var(--card);border:2px solid;font-size:.82rem;font-weight:700;cursor:pointer;text-decoration:none;transition:all .15s}
+.toc-btn:hover{color:#fff}
+.toc-alpha{border-color:#16a085;color:#16a085}.toc-alpha:hover{background:#16a085}
+.toc-chiffres{border-color:var(--blue);color:var(--blue)}.toc-chiffres:hover{background:var(--blue)}
+.toc-jours{border-color:var(--purp);color:var(--purp)}.toc-jours:hover{background:var(--purp)}
+.toc-mois{border-color:var(--orange);color:var(--orange)}.toc-mois:hover{background:var(--orange)}
+
+/* ALPHABET GRID */
+.alpha-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:8px;margin-bottom:16px}
+.alpha-card{background:#e8f8f5;border-radius:10px;padding:10px 6px;text-align:center;cursor:pointer;border:2px solid transparent;transition:all .18s;user-select:none}
+.alpha-card:hover,.alpha-card.active{border-color:#16a085;background:#d0f5ec;transform:scale(1.06)}
+.alpha-letter{font-size:1.5rem;font-weight:900;color:#16a085;line-height:1.1}
+.alpha-name{font-size:.72rem;color:var(--muted);margin-top:3px}
+.alpha-audio{font-size:.65rem;color:#16a085;margin-top:2px;opacity:.7}
+
+/* CHIFFRES */
+.chiffres-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px}
+.chiffre-card{background:var(--blue-l);border-radius:10px;padding:10px 8px;text-align:center;cursor:pointer;border:2px solid transparent;transition:all .18s;user-select:none}
+.chiffre-card:hover,.chiffre-card.active{border-color:var(--blue);transform:scale(1.05)}
+.chiffre-num{font-size:1.4rem;font-weight:900;color:var(--blue);line-height:1}
+.chiffre-word{font-size:.72rem;color:var(--text);margin-top:4px;font-weight:600;line-height:1.2}
+.chiffre-zh{font-size:.68rem;color:var(--muted);margin-top:2px}
+
+/* JOURS */
+.jours-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin-bottom:14px}
+.jour-card{border-radius:10px;padding:12px 10px;text-align:center;cursor:pointer;border:2px solid transparent;transition:all .18s;user-select:none}
+.jour-card:hover{transform:scale(1.05);filter:brightness(1.12)}
+.jour-fr{font-weight:800;font-size:.95rem}
+.jour-zh{font-size:.78rem;margin-top:4px}
+.jour-abbr{font-size:.68rem;color:var(--muted);margin-top:2px;font-style:italic}
+/* Day colors */
+.j0{background:#fef9e7;border-color:transparent;}.j0 .jour-fr{color:#e67e22}
+.j1{background:#eaf4fb;}.j1 .jour-fr{color:#2980b9}
+.j2{background:#f5eef8;}.j2 .jour-fr{color:#8e44ad}
+.j3{background:#eafaf1;}.j3 .jour-fr{color:#27ae60}
+.j4{background:#fef5e7;}.j4 .jour-fr{color:#e67e22}
+.j5{background:#ebf5fb;}.j5 .jour-fr{color:#2980b9}
+.j6{background:#fef5e7;}.j6 .jour-fr{color:#e74c3c}
+
+/* MOIS */
+.mois-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;margin-bottom:14px}
+.mois-card{border-radius:10px;padding:12px 10px;text-align:center;cursor:pointer;border:2px solid transparent;transition:all .18s;user-select:none}
+.mois-card:hover{transform:scale(1.05);filter:brightness(1.12)}
+.mois-fr{font-weight:800;font-size:.95rem}
+.mois-zh{font-size:.75rem;margin-top:3px}
+.mois-saison{font-size:.65rem;margin-top:4px;padding:2px 6px;border-radius:8px;font-weight:700;display:inline-block}
+/* Seasons */
+.saison-hiver{background:#d6eaf8;color:#2471a3}
+.saison-printemps{background:#d5f5e3;color:#1e8449}
+.saison-ete{background:#fef9e7;color:#d68910}
+.saison-automne{background:#fae5d3;color:#ca6f1e}
+/* Month bg */
+.m0,.m1,.m11{background:#eaf4fb}  /* hiver */
+.m2,.m3,.m4{background:#eafaf1}  /* printemps */
+.m5,.m6,.m7{background:#fef9e7}  /* été */
+.m8,.m9,.m10{background:#fef5e7} /* automne */
+
+/* EXERCISES */
+.ex-title{font-size:.95rem;font-weight:800;margin-bottom:10px;color:var(--text)}
+.ex-inst{font-size:.88rem;color:var(--muted);margin-bottom:14px;font-style:italic}
+.ex-group{margin-bottom:28px;padding:16px;background:#fafafa;border-radius:10px;border:1px solid #e8e8e8}
+/* QCM */
+.qcm-item{margin-bottom:14px}
+.qcm-q{font-size:.92rem;font-weight:700;margin-bottom:8px}
+.qcm-opts{display:flex;flex-wrap:wrap;gap:6px}
+.qcm-btn{padding:6px 14px;border-radius:20px;border:2px solid #ddd;background:#fff;cursor:pointer;font-size:.85rem;transition:all .15s}
+.qcm-btn:hover:not(:disabled){border-color:var(--blue);background:var(--blue-l)}
+.qcm-btn.selected{border-color:var(--blue)!important;background:var(--blue-l)!important;color:var(--blue);font-weight:700}
+.qcm-btn.correct{border-color:var(--green)!important;background:var(--green-l)!important;color:var(--green);font-weight:700}
+.qcm-btn.wrong{border-color:#e74c3c!important;background:#fdedec!important;color:#e74c3c}
+.qcm-btn:disabled{cursor:default}
+/* Blanks */
+.blank-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;flex-wrap:wrap;font-size:.93rem}
+.blank-input{border:none;border-bottom:2px solid var(--blue);width:100px;text-align:center;font-size:.93rem;padding:2px 4px;background:transparent;outline:none;color:var(--text)}
+.blank-input:focus{border-bottom-color:var(--purp)}
+.check-btn{padding:3px 10px;border-radius:16px;border:2px solid var(--blue);background:none;color:var(--blue);cursor:pointer;font-weight:700;font-size:.8rem;transition:all .15s}
+.check-btn:hover{background:var(--blue);color:#fff}
+.fb{font-size:.82rem;font-weight:700;margin-left:4px}
+.fb.ok{color:var(--green)}
+.fb.ko{color:#e74c3c}
+/* Score */
+.score-row{display:flex;gap:12px;align-items:center;margin-top:12px;flex-wrap:wrap}
+.score-btn{padding:7px 18px;border-radius:20px;border:none;font-weight:700;font-size:.85rem;cursor:pointer;transition:all .15s}
+.score-check{background:var(--blue);color:#fff}.score-check:hover{background:#1a6ea8}
+.score-reset{background:#ecf0f1;color:var(--text)}.score-reset:hover{background:#ddd}
+.score-display{font-size:.9rem;font-weight:700;color:var(--green);display:none}
+
+.speak-btn{display:none}
+.alpha-detail-speak{display:inline-block;margin-top:10px}
+
+/* FLOATING BUTTONS */
+.float-btns{position:fixed;bottom:24px;right:16px;display:flex;flex-direction:column;gap:8px;z-index:200}
+.float-btn{border:none;border-radius:50%;width:40px;height:40px;font-size:1.15rem;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.18);transition:transform .15s,box-shadow .15s,opacity .15s;display:flex;align-items:center;justify-content:center;opacity:.75;padding:0}
+.float-btn:hover{transform:translateY(-2px);box-shadow:0 4px 14px rgba(0,0,0,.22);opacity:1}
+.btn-bug{background:#fff0f0;color:#c0392b;border:2px solid #e74c3c}
+.btn-ask{background:#eaf4fb;color:#2980b9;border:2px solid #2980b9}
+
+/* MODALS */
+.fle-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:300;backdrop-filter:blur(2px)}
+.fle-modal-overlay.open{display:block}
+.fle-modal{display:none;position:fixed;inset:0;z-index:400;align-items:center;justify-content:center;padding:16px}
+.fle-modal.open{display:flex}
+.fle-modal-box{background:#fff;border-radius:16px;padding:32px 28px;max-width:500px;width:100%;position:relative;box-shadow:0 8px 40px rgba(0,0,0,.22);max-height:90vh;overflow-y:auto}
+.fle-modal-box h2{font-size:1.2rem;font-weight:800;margin-bottom:6px;color:var(--text)}
+.modal-sub{font-size:.85rem;color:var(--muted);margin-bottom:20px}
+.modal-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--muted)}
+.modal-close:hover{color:var(--text)}
+.form-group{margin-bottom:16px;display:flex;flex-direction:column;gap:6px}
+.form-group label{font-size:.85rem;font-weight:700;color:var(--text)}
+.form-group select,.form-group input,.form-group textarea{border:2px solid #dfe6e9;border-radius:8px;padding:9px 12px;font-family:inherit;font-size:.9rem;color:var(--text);transition:border-color .15s;background:#fafafa}
+.form-group select:focus,.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--blue);background:#fff}
+.btn-send{width:100%;padding:12px;border:none;border-radius:10px;background:var(--blue);color:#fff;font-size:1rem;font-weight:700;cursor:pointer;transition:background .15s;margin-top:4px}
+.btn-send:hover{background:#1a6ea8}
+.form-success{display:none;margin-top:14px;background:#eafaf1;color:#27ae60;border-radius:8px;padding:10px 14px;font-size:.9rem;font-weight:600;text-align:center}
+
+/* ── Lang buttons U0 ── */
+.lang-btn{padding:2px;border-radius:50%;border:2px solid transparent;background:none;cursor:pointer;transition:all .15s}
+.lang-btn.active{border-color:var(--purp);box-shadow:0 0 0 2px var(--purp-l)}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .page-wrap{padding:12px 12px 56px}
+  .lesson-header{padding:16px 18px}
+  .lesson-title{font-size:1.25rem}
+  .top-nav{gap:6px;flex-wrap:wrap}
+  .btn-nav{padding:5px 10px;font-size:.75rem}
+  .nav-title{font-size:.7rem}
+  .section-body{padding:14px 14px}
+  .section-head{font-size:.9rem}
+  .dl-row{grid-template-columns:80px 1fr;gap:8px}
+  .dl-speaker{font-size:.72rem}
+  .dl-line{font-size:.88rem}
+  .vocab-grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}
+  .gram-table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .match-item{grid-template-columns:1fr;gap:4px}
+  .compr-item{grid-template-columns:1fr}
+  .btn-reveal{margin-top:6px}
+  .assoc-ref{font-size:.82rem}
+  .lesson-tabs{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .lesson-tab{padding:9px 12px;font-size:.8rem;flex-shrink:0}
+  .float-btns{bottom:16px;right:12px}
+  .prod-box{padding:12px 14px}
+  textarea.prod-input{min-height:70px}
+  .gram-rule{font-size:.86rem;padding:10px 12px}
+  .blank-input{width:75px}
+  .lesson-badge{font-size:.7rem}
+  .lesson-sub{font-size:.82rem}
+}
+@media (max-width: 480px) {
+  .dl-row{grid-template-columns:58px 1fr;gap:6px}
+  .dl-speaker{font-size:.66rem;letter-spacing:0}
+  .dl-line{font-size:.84rem}
+  .lesson-title{font-size:1.1rem}
+  .vocab-grid{grid-template-columns:repeat(2,1fr)}
+  .gram-table td,.gram-table th{padding:5px 8px;font-size:.8rem}
+  .blank-row{font-size:.86rem}
+  .blank-input{width:62px;font-size:.86rem}
+  .trans-input{font-size:.86rem}
+  .check-btn{font-size:.74rem;padding:2px 8px}
+  .lesson-code{font-size:.68rem}
+  .lesson-unit{font-size:.65rem}
+  .assoc-word{min-width:100px}
+  .fle-modal-box{padding:18px 16px}
+}
+</style>
+<style>.lucide-icon{display:inline-block;vertical-align:-3px;stroke-width:1.75;pointer-events:none}</style>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+<div class="page-wrap">
+
+<nav class="top-nav">
+  <a class="btn-nav btn-back" href="../index.html?auth=FLE2026" data-i18n="back"><i data-lucide="home" aria-hidden="true"></i> Accueil</a>
+  <div style="margin-left:auto;display:flex;gap:6px">
+    <button class="lang-btn" onclick="setLangU0('fr')" title="Français"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KICA8ZGVmcz4KICAgIDwhLS0gQW5uZWF1IG3DqXRhbCBhcmdlbnTDqSAtLT4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0icmluZyIgY3g9IjM4JSIgY3k9IjMyJSIgcj0iNzAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgICBzdG9wLWNvbG9yPSIjZmZmZmZmIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMzAlIiAgc3RvcC1jb2xvcj0iI2Q4ZDhkOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjYwJSIgIHN0b3AtY29sb3I9IiM5MDkwOTAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI4NSUiICBzdG9wLWNvbG9yPSIjYjBiMGIwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzc4Nzg3OCIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDwhLS0gR2xvc3Mgc3VyIGxlIGRyYXBlYXUgLS0+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9Imdsb3NzIiBjeD0iNDUlIiBjeT0iMjIlIiByPSI1OCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiAgIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMC4zOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjY1JSIgIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMC4wNSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDwhLS0gT21icmUgaW50ZXJuZSAtLT4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iaW5uZXItc2hhZG93IiBjeD0iNTAlIiBjeT0iNTAlIiByPSI1MCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjgwJSIgIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4yOCIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDwhLS0gQ2xpcCBkcmFwZWF1IC0tPgogICAgPGNsaXBQYXRoIGlkPSJmbGFnLWNsaXAiPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjQxLjUiLz48L2NsaXBQYXRoPgogICAgCiAgPC9kZWZzPgoKICA8IS0tIEFubmVhdSBtw6l0YWwgLS0+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNTAiIGZpbGw9InVybCgjcmluZykiLz4KICA8IS0tIEJvcmQgaW50w6lyaWV1ciBzb21icmUgLS0+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNDMiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgwLDAsMCwwLjM1KSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz4KCiAgPCEtLSBEcmFwZWF1IC0tPgogIDxnIGNsaXAtcGF0aD0idXJsKCNmbGFnLWNsaXApIj4KICAgICAgICA8cmVjdCB4PSI4IiAgeT0iOCIgd2lkdGg9IjI4IiBoZWlnaHQ9Ijg0IiBmaWxsPSIjMDAyMzk1Ii8+CiAgICA8cmVjdCB4PSIzNiIgeT0iOCIgd2lkdGg9IjI4IiBoZWlnaHQ9Ijg0IiBmaWxsPSIjRUNFQ0VDIi8+CiAgICA8cmVjdCB4PSI2NCIgeT0iOCIgd2lkdGg9IjI4IiBoZWlnaHQ9Ijg0IiBmaWxsPSIjRUQyOTM5Ii8+CiAgPC9nPgoKICA8IS0tIE9tYnJlIGludGVybmUgc3VyIGxlIGRyYXBlYXUgLS0+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNDEuNSIgZmlsbD0idXJsKCNpbm5lci1zaGFkb3cpIi8+CiAgPCEtLSBHbG9zcyAtLT4KICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0MS41IiBmaWxsPSJ1cmwoI2dsb3NzKSIvPgo8L3N2Zz4=" alt="FR" style="width:26px;height:26px;display:block"></button>
+    <button class="lang-btn" onclick="setLangU0('zh')" title="中文"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KICA8ZGVmcz4KICAgIDwhLS0gQW5uZWF1IG3DqXRhbCBhcmdlbnTDqSAtLT4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0icmluZyIgY3g9IjM4JSIgY3k9IjMyJSIgcj0iNzAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgICBzdG9wLWNvbG9yPSIjZmZmZmZmIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMzAlIiAgc3RvcC1jb2xvcj0iI2Q4ZDhkOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjYwJSIgIHN0b3AtY29sb3I9IiM5MDkwOTAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI4NSUiICBzdG9wLWNvbG9yPSIjYjBiMGIwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzc4Nzg3OCIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDwhLS0gR2xvc3Mgc3VyIGxlIGRyYXBlYXUgLS0+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9Imdsb3NzIiBjeD0iNDUlIiBjeT0iMjIlIiByPSI1OCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiAgIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMC4zOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjY1JSIgIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMC4wNSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDwhLS0gT21icmUgaW50ZXJuZSAtLT4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iaW5uZXItc2hhZG93IiBjeD0iNTAlIiBjeT0iNTAlIiByPSI1MCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjgwJSIgIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4yOCIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDwhLS0gQ2xpcCBkcmFwZWF1IC0tPgogICAgPGNsaXBQYXRoIGlkPSJmbGFnLWNsaXAiPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjQxLjUiLz48L2NsaXBQYXRoPgogICAgCiAgPC9kZWZzPgoKICA8IS0tIEFubmVhdSBtw6l0YWwgLS0+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNTAiIGZpbGw9InVybCgjcmluZykiLz4KICA8IS0tIEJvcmQgaW50w6lyaWV1ciBzb21icmUgLS0+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNDMiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgwLDAsMCwwLjM1KSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz4KCiAgPCEtLSBEcmFwZWF1IC0tPgogIDxnIGNsaXAtcGF0aD0idXJsKCNmbGFnLWNsaXApIj4KICAgICAgICA8cmVjdCB4PSI4IiB5PSI4IiB3aWR0aD0iODQiIGhlaWdodD0iODQiIGZpbGw9IiNERTI5MTAiLz4KICAgIDxwYXRoIGQ9Ik0yNS4wMCwyNS41MEwyNi45MSwzMS4zN0wzMy4wOCwzMS4zN0wyOC4wOSwzNS4wMEwzMC4wMCw0MC44OEwyNS4wMCwzNy4yNUwyMC4wMCw0MC44OEwyMS45MSwzNS4wMEwxNi45MiwzMS4zN0wyMy4wOSwzMS4zN1oiIGZpbGw9IiNGRkRFMDAiLz4KICAgIDxwYXRoIGQ9Ik00Ny4zNywyNS45NUw0OC45NywyNC43MEw0OC4yOCwyMi43OUw0OS45NywyMy45M0w1MS41NywyMi42OEw1MS4wMSwyNC42NEw1Mi42OSwyNS43OEw1MC42NiwyNS44NUw1MC4wOSwyNy44MEw0OS40MCwyNS44OFoiIGZpbGw9IiNGRkRFMDAiLz4KICAgIDxwYXRoIGQ9Ik01NS4yMCwzNC4wMEw1Ny4xMywzMy4zN0w1Ny4xMywzMS4zNEw1OC4zMywzMi45OEw2MC4yNywzMi4zNUw1OS4wNywzNC4wMEw2MC4yNywzNS42NUw1OC4zMywzNS4wMkw1Ny4xMywzNi42Nkw1Ny4xMywzNC42M1oiIGZpbGw9IiNGRkRFMDAiLz4KICAgIDxwYXRoIGQ9Ik01NS40Miw0Ni45MUw1Ny40NSw0Ny4wOEw1OC4yNCw0NS4yMUw1OC43MCw0Ny4xOUw2MC43Myw0Ny4zN0w1OC45OSw0OC40Mkw1OS40NCw1MC40MEw1Ny45MSw0OS4wN0w1Ni4xNiw1MC4xMUw1Ni45Niw0OC4yNFoiIGZpbGw9IiNGRkRFMDAiLz4KICAgIDxwYXRoIGQ9Ik00Ny45NCw1NS4xMEw0OS43OSw1NS45NUw1MS4xNyw1NC40NUw1MC45Myw1Ni40N0w1Mi43OCw1Ny4zMkw1MC43OSw1Ny43Mkw1MC41NSw1OS43NEw0OS41NSw1Ny45N0w0Ny41Niw1OC4zN0w0OC45NCw1Ni44OFoiIGZpbGw9IiNGRkRFMDAiLz4KICA8L2c+CgogIDwhLS0gT21icmUgaW50ZXJuZSBzdXIgbGUgZHJhcGVhdSAtLT4KICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0MS41IiBmaWxsPSJ1cmwoI2lubmVyLXNoYWRvdykiLz4KICA8IS0tIEdsb3NzIC0tPgogIDxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjQxLjUiIGZpbGw9InVybCgjZ2xvc3MpIi8+Cjwvc3ZnPg==" alt="ZH" style="width:26px;height:26px;display:block"></button>
+  </div>
+  <a class="btn-nav btn-next" href="1A_slides.html?auth=FLE2026">1A →</a>
+  <span class="nav-title">Unité 0</span>
+</nav>
+
+<div class="lesson-header">
+  <div class="lesson-unit">Unité 0 — Pour commencer</div>
+  <div><span class="lesson-code">U0</span><span class="lesson-badge">A1</span></div>
+  <div class="lesson-title" data-i18n="lesson-title">Les Bases du Français</div>
+  <div class="lesson-sub" data-i18n="lesson-sub">L'alphabet · Les chiffres · Les jours · Les mois</div>
+</div>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+  <a class="toc-btn toc-alpha" href="#alphabet" data-i18n="toc-alpha">🔤 L'alphabet</a>
+  <a class="toc-btn toc-chiffres" href="#chiffres" data-i18n="toc-chiffres"><i data-lucide="hash" aria-hidden="true"></i> Les chiffres 1–31</a>
+  <a class="toc-btn toc-jours" href="#jours" data-i18n="toc-jours"><i data-lucide="calendar" aria-hidden="true"></i> Les jours</a>
+  <a class="toc-btn toc-mois" href="#mois" data-i18n="toc-mois">🗓️ Les mois</a>
+</div>
+
+<!-- ══ ALPHABET ══ -->
+<div class="section sec-alpha" id="alphabet">
+  <div class="section-head" data-i18n="sh-alpha">🔤 L'alphabet français</div>
+  <div class="section-body">
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:14px" data-i18n="p-alpha">Cliquez sur une lettre pour voir son nom en français.</p>
+    <div class="alpha-grid" id="alpha-grid"></div>
+    <div id="alpha-detail" style="display:none;background:#e8f8f5;border-radius:10px;padding:14px 18px;margin-top:12px;text-align:center">
+      <div id="alpha-detail-letter" style="font-size:3rem;font-weight:900;color:#16a085;line-height:1"></div>
+      <div id="alpha-detail-name" style="font-size:1.1rem;color:var(--text);margin-top:6px;font-weight:700"></div>
+      <div id="alpha-detail-ex" style="font-size:.85rem;color:var(--muted);margin-top:4px;font-style:italic"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CHIFFRES ══ -->
+<div class="section sec-chiffres" id="chiffres">
+  <div class="section-head" data-i18n="sh-chiffres"><i data-lucide="hash" aria-hidden="true"></i> Les chiffres de 1 à 31</div>
+  <div class="section-body">
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:14px" data-i18n="p-chiffres">Cliquez sur un chiffre pour voir comment l'écrire.</p>
+    <div class="chiffres-grid" id="chiffres-grid"></div>
+  </div>
+</div>
+
+<!-- ══ JOURS ══ -->
+<div class="section sec-jours" id="jours">
+  <div class="section-head" data-i18n="sh-jours"><i data-lucide="calendar" aria-hidden="true"></i> Les jours de la semaine</div>
+  <div class="section-body">
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:14px" data-i18n="p-jours">Cliquez sur un jour pour voir sa traduction en chinois.</p>
+    <div class="jours-grid" id="jours-grid"></div>
+    <table style="width:100%;border-collapse:collapse;font-size:.88rem;margin-top:10px">
+      <thead>
+        <tr style="background:#f5eef8">
+          <th style="padding:8px 10px;text-align:left;color:var(--purp);border:1px solid #e8e0f0" data-i18n="th-jour">Jour</th>
+          <th style="padding:8px 10px;text-align:left;color:var(--purp);border:1px solid #e8e0f0" data-i18n="th-abbrev">Abrév.</th>
+          <th style="padding:8px 10px;text-align:left;color:var(--purp);border:1px solid #e8e0f0">中文</th>
+          <th style="padding:8px 10px;text-align:left;color:var(--purp);border:1px solid #e8e0f0" data-i18n="th-note">Note</th>
+        </tr>
+      </thead>
+      <tbody id="jours-tbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ MOIS ══ -->
+<div class="section sec-mois" id="mois">
+  <div class="section-head" data-i18n="sh-mois">🗓️ Les mois de l'année</div>
+  <div class="section-body">
+    <p style="font-size:.88rem;color:var(--muted);margin-bottom:14px" data-i18n="p-mois">Cliquez sur un mois pour voir la saison et la traduction.</p>
+    <div class="mois-grid" id="mois-grid"></div>
+    <table style="width:100%;border-collapse:collapse;font-size:.88rem;margin-top:10px">
+      <thead>
+        <tr style="background:var(--orange-l)">
+          <th style="padding:8px 10px;text-align:left;color:var(--orange);border:1px solid #f5e6d0" data-i18n="th-mois">Mois</th>
+          <th style="padding:8px 10px;text-align:left;color:var(--orange);border:1px solid #f5e6d0" data-i18n="th-saison">Saison</th>
+          <th style="padding:8px 10px;text-align:left;color:var(--orange);border:1px solid #f5e6d0">中文</th>
+        </tr>
+      </thead>
+      <tbody id="mois-tbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ EXERCISES ══ -->
+<div class="section sec-exercise" id="exercices">
+  <div class="section-head" data-i18n="sh-ex"><i data-lucide="pen-line" aria-hidden="true"></i>️ Exercices de mémorisation</div>
+  <div class="section-body">
+
+    <!-- EX 1: Chiffres QCM -->
+    <div class="ex-group">
+      <div class="ex-title" data-i18n="ex1-title">Exercice 1 — Les chiffres : quel est ce nombre ?</div>
+      <div class="ex-inst" data-i18n="ex1-inst">Choisissez le bon chiffre.</div>
+      <div id="ex1-container"></div>
+      <div class="score-row">
+        <button class="score-btn score-check" onclick="checkEx('ex1')" data-i18n="btn-verif">Vérifier</button>
+        <button class="score-btn score-reset" onclick="resetEx('ex1')" data-i18n="btn-reset">Recommencer</button>
+        <span id="ex1-score" class="score-display"></span>
+      </div>
+    </div>
+
+    <!-- EX 2: Jours fill-in -->
+    <div class="ex-group">
+      <div class="ex-title" data-i18n="ex2-title">Exercice 2 — Les jours de la semaine</div>
+      <div class="ex-inst" data-i18n="ex2-inst">Complétez avec le jour qui manque.</div>
+      <div id="ex2-container"></div>
+      <div class="score-row">
+        <button class="score-btn score-check" onclick="checkEx('ex2')" data-i18n="btn-verif">Vérifier</button>
+        <button class="score-btn score-reset" onclick="resetEx('ex2')" data-i18n="btn-reset">Recommencer</button>
+        <span id="ex2-score" class="score-display"></span>
+      </div>
+    </div>
+
+    <!-- EX 3: Mois QCM -->
+    <div class="ex-group">
+      <div class="ex-title" data-i18n="ex3-title">Exercice 3 — Les mois : quelle saison ?</div>
+      <div class="ex-inst" data-i18n="ex3-inst">À quelle saison appartient ce mois ?</div>
+      <div id="ex3-container"></div>
+      <div class="score-row">
+        <button class="score-btn score-check" onclick="checkEx('ex3')" data-i18n="btn-verif">Vérifier</button>
+        <button class="score-btn score-reset" onclick="resetEx('ex3')" data-i18n="btn-reset">Recommencer</button>
+        <span id="ex3-score" class="score-display"></span>
+      </div>
+    </div>
+
+    <!-- EX 4: Alphabet fill-in -->
+    <div class="ex-group">
+      <div class="ex-title" data-i18n="ex4-title">Exercice 4 — L'alphabet : quel est le nom de cette lettre ?</div>
+      <div class="ex-inst" data-i18n="ex4-inst">Écrivez le nom français de la lettre.</div>
+      <div id="ex4-container"></div>
+      <div class="score-row">
+        <button class="score-btn score-check" onclick="checkEx('ex4')" data-i18n="btn-verif">Vérifier</button>
+        <button class="score-btn score-reset" onclick="resetEx('ex4')" data-i18n="btn-reset">Recommencer</button>
+        <span id="ex4-score" class="score-display"></span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- end page-wrap -->
+
+<!-- FLOATING BUTTONS -->
+<div class="float-btns">
+  <button class="float-btn btn-bug" onclick="openFleModal('fle-modal-bug')"><i data-lucide="bug" aria-hidden="true"></i></button>
+  <button class="float-btn btn-ask" onclick="openFleModal('fle-modal-ask')"><i data-lucide="message-circle" aria-hidden="true"></i></button>
+</div>
+
+<!-- OVERLAY -->
+<div class="fle-modal-overlay" id="fle-modal-overlay" onclick="closeAllFleModals()"></div>
+
+<!-- MODAL BUG -->
+<div class="fle-modal" id="fle-modal-bug">
+  <div class="fle-modal-box">
+    <button class="modal-close" onclick="closeFleModal('fle-modal-bug')">✕</button>
+    <h2><i data-lucide="bug" aria-hidden="true"></i> Signaler un bug</h2>
+    <p class="modal-sub">Décrivez le problème rencontré sur cette page.</p>
+    <form id="bug-form-u0" onsubmit="submitFleForm(event,'bug-form-u0','bug-success-u0')">
+      <input type="hidden" name="page" value="U0 — Les Bases">
+      <div class="form-group">
+        <label>Type de problème</label>
+        <select name="type_bug" required>
+          <option value="">-- Choisissez --</option>
+          <option>Erreur dans le contenu</option>
+          <option>Exercice ne fonctionne pas</option>
+          <option>Problème d'affichage</option>
+          <option>Lien cassé</option>
+          <option>Autre</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Description <span class="opt">(obligatoire)</span></label>
+        <textarea name="description" rows="3" placeholder="Décrivez le bug..." required></textarea>
+      </div>
+      <div class="form-group">
+        <label>Votre email <span class="opt">(facultatif)</span></label>
+        <input type="email" name="email" placeholder="pour recevoir une réponse">
+      </div>
+      <button type="submit" class="btn-send">📤 Envoyer</button>
+    </form>
+    <div class="form-success" id="bug-success-u0">✅ Merci ! Votre signalement a été envoyé.</div>
+  </div>
+</div>
+
+<!-- MODAL QUESTION -->
+<div class="fle-modal" id="fle-modal-ask">
+  <div class="fle-modal-box">
+    <button class="modal-close" onclick="closeFleModal('fle-modal-ask')">✕</button>
+    <h2><i data-lucide="message-circle" aria-hidden="true"></i> Poser une question</h2>
+    <p class="modal-sub">Sélectionnez le sujet de votre question.</p>
+    <form id="ask-form-u0" onsubmit="submitFleForm(event,'ask-form-u0','ask-success-u0')">
+      <input type="hidden" name="page" value="U0 — Les Bases">
+      <div class="form-group">
+        <label>Sujet de la question</label>
+        <select name="sujet" id="ask-sujet-u0" onchange="updateAskSubjectU0()" required>
+          <option value="">-- Choisissez --</option>
+          <option value="alphabet">L'alphabet</option>
+          <option value="chiffres">Les chiffres</option>
+          <option value="jours">Les jours de la semaine</option>
+          <option value="mois">Les mois / saisons</option>
+          <option value="exercice">Un exercice</option>
+          <option value="autre">Autre</option>
+        </select>
+      </div>
+      <div class="form-group" id="ask-ex-group-u0" style="display:none">
+        <label>Numéro de l'exercice</label>
+        <select name="exercice">
+          <option value="1">Exercice 1 — Chiffres QCM</option>
+          <option value="2">Exercice 2 — Jours</option>
+          <option value="3">Exercice 3 — Mois / saisons</option>
+          <option value="4">Exercice 4 — Alphabet</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Votre question</label>
+        <textarea name="question" rows="3" placeholder="Écrivez votre question..." required></textarea>
+      </div>
+      <div class="form-group">
+        <label>Votre email <span class="opt">(facultatif)</span></label>
+        <input type="email" name="email" placeholder="pour recevoir une réponse">
+      </div>
+      <button type="submit" class="btn-send">📤 Envoyer</button>
+    </form>
+    <div class="form-success" id="ask-success-u0">✅ Merci ! Votre question a été envoyée.</div>
+  </div>
+</div>
+
+<script>
+// ── TEXT-TO-SPEECH (MP3 Google TTS + fallback Web Speech) ──
+const AUDIO_BASE = '../audio/';
+
+function normalizeFilename(text){
+  return text.toLowerCase().trim()
+    .normalize('NFD').replace(/[̀-ͯ]/g,'')
+    .replace(/[\s\-]+/g,'_')
+    .replace(/[^a-z0-9_]/g,'');
+}
+
+function speak(text){
+  const clean = text.replace(/\([^)]*\)/g,'').trim();
+  const parts = clean.split(/\s*[→\/]\s*/).map(s=>s.trim()).filter(Boolean);
+  playParts(parts, 0);
+}
+
+function playParts(parts, idx){
+  if(idx >= parts.length) return;
+  const part = parts[idx];
+  const next = ()=>{ playParts(parts, idx+1); };
+  const fname = normalizeFilename(part) + '.mp3';
+  const audio = new Audio(AUDIO_BASE + fname);
+  audio.onended = next;
+  audio.onerror = ()=>{ fallbackSpeak(part, next); };
+  audio.play().catch(()=>{ fallbackSpeak(part, next); });
+}
+
+function fallbackSpeak(text, onEnd){
+  if(!window.speechSynthesis){ if(onEnd) onEnd(); return; }
+  speechSynthesis.cancel();
+  const TTS_OVERRIDES = {'iks':'ikse','double vé':'double-vé'};
+  const t = TTS_OVERRIDES[text] || text;
+  const u = new SpeechSynthesisUtterance(t);
+  u.lang = 'fr-FR'; u.rate = 0.85;
+  if(onEnd) u.onend = onEnd;
+  setTimeout(()=>speechSynthesis.speak(u), 80);
+}
+
+function speakBtn(text, e){
+  e.stopPropagation();
+  speak(text);
+  // Show Chinese translation if on a jour or mois card
+  const card = e.target.closest('.jour-card, .mois-card');
+  if(card){
+    const zh = card.querySelector('.jour-zh, .mois-zh');
+    if(zh) zh.style.display = 'block';
+  }
+}
+
+// ── DATA ──
+
+const ALPHABET = [
+  {l:'A',name:'a',ex:'amour'},
+  {l:'B',name:'bé',ex:'bonjour'},
+  {l:'C',name:'cé',ex:'café'},
+  {l:'D',name:'dé',ex:'dimanche'},
+  {l:'E',name:'e',ex:'école'},
+  {l:'F',name:'effe',ex:'famille'},
+  {l:'G',name:'gé',ex:'garçon'},
+  {l:'H',name:'ache',ex:'heure'},
+  {l:'I',name:'i',ex:'ici'},
+  {l:'J',name:'ji',ex:'jour'},
+  {l:'K',name:'ka',ex:'kiosque'},
+  {l:'L',name:'elle',ex:'lundi'},
+  {l:'M',name:'emme',ex:'merci'},
+  {l:'N',name:'enne',ex:'non'},
+  {l:'O',name:'o',ex:'orange'},
+  {l:'P',name:'pé',ex:'Paris'},
+  {l:'Q',name:'ku',ex:'question'},
+  {l:'R',name:'erre',ex:'rue'},
+  {l:'S',name:'esse',ex:'samedi'},
+  {l:'T',name:'té',ex:'table'},
+  {l:'U',name:'u',ex:'université'},
+  {l:'V',name:'vé',ex:'vendredi'},
+  {l:'W',name:'double vé',ex:'wagon'},
+  {l:'X',name:'iks',ex:'taxi'},
+  {l:'Y',name:'i grec',ex:'yaourt'},
+  {l:'Z',name:'zède',ex:'zéro'},
+];
+
+const CHIFFRES = [
+  {n:1,fr:'un / une',zh:'一'},
+  {n:2,fr:'deux',zh:'二'},
+  {n:3,fr:'trois',zh:'三'},
+  {n:4,fr:'quatre',zh:'四'},
+  {n:5,fr:'cinq',zh:'五'},
+  {n:6,fr:'six',zh:'六'},
+  {n:7,fr:'sept',zh:'七'},
+  {n:8,fr:'huit',zh:'八'},
+  {n:9,fr:'neuf',zh:'九'},
+  {n:10,fr:'dix',zh:'十'},
+  {n:11,fr:'onze',zh:'十一'},
+  {n:12,fr:'douze',zh:'十二'},
+  {n:13,fr:'treize',zh:'十三'},
+  {n:14,fr:'quatorze',zh:'十四'},
+  {n:15,fr:'quinze',zh:'十五'},
+  {n:16,fr:'seize',zh:'十六'},
+  {n:17,fr:'dix-sept',zh:'十七'},
+  {n:18,fr:'dix-huit',zh:'十八'},
+  {n:19,fr:'dix-neuf',zh:'十九'},
+  {n:20,fr:'vingt',zh:'二十'},
+  {n:21,fr:'vingt et un',zh:'二十一'},
+  {n:22,fr:'vingt-deux',zh:'二十二'},
+  {n:23,fr:'vingt-trois',zh:'二十三'},
+  {n:24,fr:'vingt-quatre',zh:'二十四'},
+  {n:25,fr:'vingt-cinq',zh:'二十五'},
+  {n:26,fr:'vingt-six',zh:'二十六'},
+  {n:27,fr:'vingt-sept',zh:'二十七'},
+  {n:28,fr:'vingt-huit',zh:'二十huit'},
+  {n:29,fr:'vingt-neuf',zh:'二十九'},
+  {n:30,fr:'trente',zh:'三十'},
+  {n:31,fr:'trente et un',zh:'三十一'},
+];
+// fix typo
+CHIFFRES[27].zh = '二十八';
+
+const JOURS = [
+  {fr:'lundi',abbr:'lun.',zh:'星期一',note:'1er jour (calendrier fr.)'},
+  {fr:'mardi',abbr:'mar.',zh:'星期二',note:''},
+  {fr:'mercredi',abbr:'mer.',zh:'星期三',note:''},
+  {fr:'jeudi',abbr:'jeu.',zh:'星期四',note:''},
+  {fr:'vendredi',abbr:'ven.',zh:'星期五',note:''},
+  {fr:'samedi',abbr:'sam.',zh:'星期六',note:'Week-end'},
+  {fr:'dimanche',abbr:'dim.',zh:'星期日',note:'Week-end'},
+];
+
+const MOIS = [
+  {fr:'janvier',zh:'一月',saison:'hiver',s:'Hiver ❄️'},
+  {fr:'février',zh:'二月',saison:'hiver',s:'Hiver ❄️'},
+  {fr:'mars',zh:'三月',saison:'printemps',s:'Printemps 🌸'},
+  {fr:'avril',zh:'四月',saison:'printemps',s:'Printemps 🌸'},
+  {fr:'mai',zh:'五月',saison:'printemps',s:'Printemps 🌸'},
+  {fr:'juin',zh:'六月',saison:'ete',s:'Été ☀️'},
+  {fr:'juillet',zh:'七月',saison:'ete',s:'Été ☀️'},
+  {fr:'août',zh:'八月',saison:'ete',s:'Été ☀️'},
+  {fr:'septembre',zh:'九月',saison:'automne',s:'Automne 🍂'},
+  {fr:'octobre',zh:'十月',saison:'automne',s:'Automne 🍂'},
+  {fr:'novembre',zh:'十一月',saison:'automne',s:'Automne 🍂'},
+  {fr:'décembre',zh:'十二月',saison:'hiver',s:'Hiver ❄️'},
+];
+
+// ── BUILD ALPHABET GRID ──
+(function(){
+  const grid = document.getElementById('alpha-grid');
+  ALPHABET.forEach((a,i)=>{
+    const card = document.createElement('div');
+    card.className = 'alpha-card';
+    card.innerHTML = `<div class="alpha-letter">${a.l}</div><div class="alpha-name">${a.name}</div>`;
+    card.onclick = ()=>{
+      document.querySelectorAll('.alpha-card').forEach(c=>c.classList.remove('active'));
+      card.classList.add('active');
+      const det = document.getElementById('alpha-detail');
+      det.style.display = 'block';
+      document.getElementById('alpha-detail-letter').textContent = a.l + ' / ' + a.l.toLowerCase();
+      document.getElementById('alpha-detail-name').textContent = 'Nom : « ' + a.name + ' »';
+      document.getElementById('alpha-detail-ex').textContent = 'Exemple : ' + a.ex;
+      speak(a.name);
+      // Retirer l'état actif après 1,5 s pour ne pas laisser la carte "figée"
+      setTimeout(()=>card.classList.remove('active'), 1500);
+    };
+    grid.appendChild(card);
+  });
+})();
+
+// ── BUILD CHIFFRES GRID ──
+(function(){
+  const grid = document.getElementById('chiffres-grid');
+  CHIFFRES.forEach((c,i)=>{
+    const card = document.createElement('div');
+    card.className = 'chiffre-card';
+    const frBase = c.fr.split(' / ')[0];
+    card.innerHTML = `<div class="chiffre-num">${c.n}</div><div class="chiffre-word">${c.fr}</div><div class="chiffre-zh">${c.zh}</div>`;
+    card.onclick = ()=>{
+      document.querySelectorAll('.chiffre-card').forEach(cc=>cc.classList.remove('active'));
+      card.classList.add('active');
+      speak(frBase);
+    };
+    grid.appendChild(card);
+  });
+})();
+
+// ── BUILD JOURS ──
+(function(){
+  const grid = document.getElementById('jours-grid');
+  const tbody = document.getElementById('jours-tbody');
+  JOURS.forEach((j,i)=>{
+    // Card
+    const card = document.createElement('div');
+    card.className = `jour-card j${i}`;
+    card.innerHTML = `<div class="jour-fr">${j.fr}</div><div class="jour-zh" style="display:none;color:var(--purp)">${j.zh}</div><div class="jour-abbr">${j.abbr}</div>`;
+    card.onclick = ()=>{
+      const zh = card.querySelector('.jour-zh');
+      zh.style.display = zh.style.display === 'none' ? 'block' : 'none';
+      speak(j.fr);
+    };
+    grid.appendChild(card);
+    // Table row
+    const tr = document.createElement('tr');
+    const bg = i % 2 === 0 ? '#fff' : '#fafafa';
+    tr.style.background = bg;
+    tr.innerHTML = `<td style="padding:7px 10px;border:1px solid #e8e0f0;font-weight:700">${j.fr}</td><td style="padding:7px 10px;border:1px solid #e8e0f0;color:var(--muted)">${j.abbr}</td><td style="padding:7px 10px;border:1px solid #e8e0f0;color:var(--purp)">${j.zh}</td><td style="padding:7px 10px;border:1px solid #e8e0f0;font-size:.82rem;color:var(--muted)">${j.note}</td>`;
+    tbody.appendChild(tr);
+  });
+})();
+
+// ── BUILD MOIS ──
+(function(){
+  const grid = document.getElementById('mois-grid');
+  const tbody = document.getElementById('mois-tbody');
+  const saisonClass = {hiver:'saison-hiver',printemps:'saison-printemps',ete:'saison-ete',automne:'saison-automne'};
+  MOIS.forEach((m,i)=>{
+    // Card
+    const card = document.createElement('div');
+    card.className = `mois-card m${i}`;
+    card.innerHTML = `<div class="mois-fr">${m.fr}</div><div class="mois-zh" style="display:none;color:var(--orange)">${m.zh}</div><div class="mois-saison ${saisonClass[m.saison]}">${m.s}</div>`;
+    card.onclick = ()=>{
+      const zh = card.querySelector('.mois-zh');
+      zh.style.display = zh.style.display === 'none' ? 'block' : 'none';
+      speak(m.fr);
+    };
+    grid.appendChild(card);
+    // Table row
+    const bg = i % 2 === 0 ? '#fff' : '#fafafa';
+    const tr = document.createElement('tr');
+    tr.style.background = bg;
+    tr.innerHTML = `<td style="padding:7px 10px;border:1px solid #f5e6d0;font-weight:700">${m.fr}</td><td style="padding:7px 10px;border:1px solid #f5e6d0"><span class="mois-saison ${saisonClass[m.saison]}">${m.s}</span></td><td style="padding:7px 10px;border:1px solid #f5e6d0;color:var(--orange)">${m.zh}</td>`;
+    tbody.appendChild(tr);
+  });
+})();
+
+// ── EXERCISE DATA ──
+const EX1_ITEMS = [
+  {q:'8',opts:['six','sept','huit','neuf'],ans:'huit'},
+  {q:'15',opts:['quinze','seize','quatorze','treize'],ans:'quinze'},
+  {q:'20',opts:['dix-neuf','vingt','vingt et un','dix-huit'],ans:'vingt'},
+  {q:'13',opts:['onze','douze','treize','quatorze'],ans:'treize'},
+  {q:'30',opts:['vingt-neuf','trente et un','trente','vingt-huit'],ans:'trente'},
+];
+
+const EX2_ITEMS = [
+  {before:'lundi', after:'mercredi', ans:'mardi'},
+  {before:'mercredi', after:'vendredi', ans:'jeudi'},
+  {before:'vendredi', after:'dimanche', ans:'samedi'},
+  {before:'jeudi', after:'samedi', ans:'vendredi'},
+  {before:'mardi', after:'jeudi', ans:'mercredi'},
+];
+
+const EX3_ITEMS = [
+  {q:'mars',opts:['Hiver','Printemps','Été','Automne'],ans:'Printemps'},
+  {q:'juillet',opts:['Hiver','Printemps','Été','Automne'],ans:'Été'},
+  {q:'novembre',opts:['Hiver','Printemps','Été','Automne'],ans:'Automne'},
+  {q:'janvier',opts:['Hiver','Printemps','Été','Automne'],ans:'Hiver'},
+  {q:'septembre',opts:['Hiver','Printemps','Été','Automne'],ans:'Automne'},
+];
+
+const EX4_ITEMS = [
+  {l:'H',ans:'ache'},
+  {l:'G',ans:'gé'},
+  {l:'W',ans:'double vé'},
+  {l:'Y',ans:'i grec'},
+  {l:'R',ans:'erre'},
+];
+
+// ── BUILD EXERCISES ──
+function buildEx1(){
+  const c = document.getElementById('ex1-container');
+  c.innerHTML = '';
+  EX1_ITEMS.forEach((item,i)=>{
+    const div = document.createElement('div');
+    div.className = 'qcm-item';
+    const opts = item.opts.map(o=>`<button class="qcm-btn" data-ans="${item.ans}" data-val="${o}" onclick="qcmClick(this)">${o}</button>`).join('');
+    const _t1 = (U0_T[U0_LANG]||U0_T.fr)['ex1-q'].replace('{n}', item.q);
+    div.innerHTML = `<div class="qcm-q">${i+1}. ${_t1}</div><div class="qcm-opts">${opts}</div>`;
+    c.appendChild(div);
+  });
+}
+function buildEx2(){
+  const c = document.getElementById('ex2-container');
+  c.innerHTML = '';
+  EX2_ITEMS.forEach((item,i)=>{
+    const div = document.createElement('div');
+    div.className = 'blank-row';
+    div.innerHTML = `<span>${i+1}.</span><span>${item.before}</span><span>→</span><input class="blank-input" data-ans="${item.ans}" placeholder="?" autocomplete="off"><span>→</span><span>${item.after}</span><span class="fb" id="ex2-fb-${i}"></span>`;
+    c.appendChild(div);
+  });
+}
+function buildEx3(){
+  const c = document.getElementById('ex3-container');
+  c.innerHTML = '';
+  EX3_ITEMS.forEach((item,i)=>{
+    const div = document.createElement('div');
+    div.className = 'qcm-item';
+    const opts = item.opts.map(o=>`<button class="qcm-btn" data-ans="${item.ans}" data-val="${o}" onclick="qcmClick(this)">${o}</button>`).join('');
+    const _t3 = (U0_T[U0_LANG]||U0_T.fr)['ex3-q'].replace('{n}', item.q);
+    div.innerHTML = `<div class="qcm-q">${i+1}. ${_t3}</div><div class="qcm-opts">${opts}</div>`;
+    c.appendChild(div);
+  });
+}
+function buildEx4(){
+  const c = document.getElementById('ex4-container');
+  c.innerHTML = '';
+  EX4_ITEMS.forEach((item,i)=>{
+    const div = document.createElement('div');
+    div.className = 'blank-row';
+    const _t4 = (U0_T[U0_LANG]||U0_T.fr)['ex4-q'].replace('{n}', item.l);
+    div.innerHTML = `<span>${i+1}. ${_t4}</span><input class="blank-input" data-ans="${item.ans}" placeholder="?" autocomplete="off" style="width:120px"><span class="fb" id="ex4-fb-${i}"></span>`;
+    c.appendChild(div);
+  });
+}
+// ── i18n U0 ──
+let U0_LANG = localStorage.getItem('fle_lang') || 'fr';
+const U0_T = {
+  fr: {
+    back:           '🏠 Accueil',
+    'toc-alpha':    '🔤 L\'alphabet',
+    'toc-chiffres': '🔢 Les chiffres 1–31',
+    'toc-jours':    '📅 Les jours',
+    'toc-mois':     '🗓️ Les mois',
+    'sh-alpha':     '🔤 L\'alphabet français',
+    'sh-chiffres':  '🔢 Les chiffres de 1 à 31',
+    'sh-jours':     '📅 Les jours de la semaine',
+    'sh-mois':      '🗓️ Les mois de l\'année',
+    'sh-ex':        '✏️ Exercices de mémorisation',
+    'p-alpha':      'Cliquez sur une lettre pour voir son nom en français.',
+    'p-chiffres':   'Cliquez sur un chiffre pour voir comment l\'écrire.',
+    'p-jours':      'Cliquez sur un jour pour voir sa traduction en chinois.',
+    'p-mois':       'Cliquez sur un mois pour voir la saison et la traduction.',
+    'th-jour':      'Jour', 'th-abbrev': 'Abrév.', 'th-note': 'Note',
+    'th-mois':      'Mois', 'th-saison': 'Saison',
+    'ex1-title':    'Exercice 1 — Les chiffres : quel est ce nombre ?',
+    'ex1-inst':     'Choisissez le bon chiffre.',
+    'ex1-q':        'Le chiffre {n} s\'écrit :',
+    'ex2-title':    'Exercice 2 — Les jours de la semaine',
+    'ex2-inst':     'Complétez avec le jour qui manque.',
+    'ex3-title':    'Exercice 3 — Les mois : quelle saison ?',
+    'ex3-inst':     'À quelle saison appartient ce mois ?',
+    'ex3-q':        '{n} est en :',
+    'ex4-title':    'Exercice 4 — L\'alphabet : quel est le nom de cette lettre ?',
+    'ex4-inst':     'Écrivez le nom français de la lettre.',
+    'ex4-q':        'La lettre {n} se prononce :',
+    'btn-verif':    'Vérifier',
+    'btn-reset':    'Recommencer',
+    'lesson-title': 'Les Bases du Français',
+    'lesson-sub':   'L\'alphabet · Les chiffres · Les jours · Les mois',
+  },
+  zh: {
+    back:           '🏠 首页',
+    'toc-alpha':    '🔤 字母表',
+    'toc-chiffres': '🔢 数字 1–31',
+    'toc-jours':    '📅 星期',
+    'toc-mois':     '🗓️ 月份',
+    'sh-alpha':     '🔤 法语字母表',
+    'sh-chiffres':  '🔢 1至31的数字',
+    'sh-jours':     '📅 一周的各天',
+    'sh-mois':      '🗓️ 一年的各月',
+    'sh-ex':        '✏️ 记忆练习',
+    'p-alpha':      '点击字母查看其法语名称。',
+    'p-chiffres':   '点击数字查看其写法。',
+    'p-jours':      '点击星期查看中文翻译。',
+    'p-mois':       '点击月份查看季节和翻译。',
+    'th-jour':      '星期', 'th-abbrev': '缩写', 'th-note': '备注',
+    'th-mois':      '月份', 'th-saison': '季节',
+    'ex1-title':    '练习1 — 数字：这个数字怎么写？',
+    'ex1-inst':     '选择正确的数字。',
+    'ex1-q':        '数字 {n} 写作：',
+    'ex2-title':    '练习2 — 一周的各天',
+    'ex2-inst':     '填写缺失的星期。',
+    'ex3-title':    '练习3 — 月份：哪个季节？',
+    'ex3-inst':     '这个月属于哪个季节？',
+    'ex3-q':        '{n} 属于：',
+    'ex4-title':    '练习4 — 字母表：这个字母的名称是什么？',
+    'ex4-inst':     '写出该字母的法语名称。',
+    'ex4-q':        '字母 {n} 的发音是：',
+    'btn-verif':    '验证',
+    'btn-reset':    '重新开始',
+    'lesson-title': '法语基础',
+    'lesson-sub':   '字母表 · 数字 · 星期 · 月份',
+  }
+};
+
+function setLangU0(lang) {
+  if (!U0_T[lang]) return;
+  U0_LANG = lang;
+  localStorage.setItem('fle_lang', lang);
+  document.body.classList.toggle('lang-zh', lang === 'zh');
+  const T = U0_T[lang];
+  // Update all data-i18n elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.dataset.i18n;
+    if (T[k] !== undefined) el.textContent = T[k];
+  });
+  // Lang buttons active state
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+  const act = document.querySelector(`.lang-btn[onclick="setLangU0('${lang}')"]`);
+  if (act) act.classList.add('active');
+  // Rebuild exercises with new language
+  buildEx1(); buildEx2(); buildEx3(); buildEx4();
+}
+
+// Auto-detect language on load
+document.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('fle_lang');
+  const browser = (navigator.language || 'fr').slice(0,2).toLowerCase();
+  const detected = ['fr','zh'].includes(browser) ? browser : 'fr';
+  setLangU0(saved || detected);
+});
+
+buildEx1(); buildEx2(); buildEx3(); buildEx4();
+
+// ── QCM CLICK : sélection seulement, révélation via Vérifier ──
+function qcmClick(btn){
+  const group = btn.closest('.qcm-opts');
+  if(group.dataset.done) return;
+  group.querySelectorAll('.qcm-btn').forEach(b=>b.classList.remove('selected'));
+  btn.classList.add('selected');
+}
+
+// ── CHECK / RESET ──
+function checkEx(id){
+  const c = document.getElementById(id+'-container');
+  let ok=0, total=0;
+  if(id==='ex1'||id==='ex3'){
+    c.querySelectorAll('.qcm-item').forEach(item=>{
+      total++;
+      const group = item.querySelector('.qcm-opts');
+      if(group.dataset.done){ if(item.querySelector('.correct')) ok++; return; }
+      const selected = group.querySelector('.qcm-btn.selected');
+      if(!selected) return;
+      group.dataset.done = '1';
+      group.querySelectorAll('.qcm-btn').forEach(b=>{ b.disabled=true; b.classList.remove('selected'); });
+      if(selected.dataset.val === selected.dataset.ans){
+        selected.classList.add('correct'); ok++;
+      } else {
+        selected.classList.add('wrong');
+        group.querySelectorAll('.qcm-btn').forEach(b=>{ if(b.dataset.val===b.dataset.ans) b.classList.add('correct'); });
+      }
+    });
+  } else {
+    c.querySelectorAll('.blank-input').forEach((inp,i)=>{
+      total++;
+      const ans = inp.dataset.ans;
+      const val = inp.value.trim().toLowerCase();
+      const fb = document.getElementById(id+'-fb-'+i);
+      if(val === ans.toLowerCase()){ ok++; inp.style.borderBottomColor='var(--green)'; if(fb){fb.textContent='✓';fb.className='fb ok';} }
+      else { inp.style.borderBottomColor='#e74c3c'; if(fb){fb.textContent='✗ '+ans;fb.className='fb ko';} }
+    });
+  }
+  const sc = document.getElementById(id+'-score');
+  sc.textContent = ok+'/'+total;
+  sc.style.display = 'inline';
+  sc.style.color = ok===total ? 'var(--green)' : ok >= total/2 ? 'var(--orange)' : '#e74c3c';
+}
+function resetEx(id){
+  document.getElementById(id+'-score').style.display='none';
+  if(id==='ex1') buildEx1();
+  else if(id==='ex2') buildEx2();
+  else if(id==='ex3') buildEx3();
+  else buildEx4();
+}
+
+// ── MODALS ──
+function openFleModal(id){
+  document.getElementById('fle-modal-overlay').classList.add('open');
+  document.getElementById(id).classList.add('open');
+}
+function closeFleModal(id){
+  document.getElementById(id).classList.remove('open');
+  document.getElementById('fle-modal-overlay').classList.remove('open');
+}
+function closeAllFleModals(){
+  document.querySelectorAll('.fle-modal.open').forEach(m=>m.classList.remove('open'));
+  document.getElementById('fle-modal-overlay').classList.remove('open');
+}
+function updateAskSubjectU0(){
+  const v = document.getElementById('ask-sujet-u0').value;
+  document.getElementById('ask-ex-group-u0').style.display = v==='exercice' ? 'flex' : 'none';
+}
+async function submitFleForm(e, formId, successId){
+  e.preventDefault();
+  const form = document.getElementById(formId);
+  const data = new FormData(form);
+  try{
+    const r = await fetch('https://formspree.io/f/mvznqaze',{method:'POST',body:data,headers:{'Accept':'application/json'}});
+    if(r.ok){
+      form.reset();
+      form.style.display = 'none';
+      document.getElementById(successId).style.display = 'block';
+    } else {
+      alert("Erreur lors de l'envoi. Veuillez réessayer.");
+    }
+  } catch(err){
+    alert("Erreur lors de l'envoi. Veuillez réessayer.");
+  }
+}
+
+
+</script>
+<!-- u0-i18n-patched -->
+
+<script>
+// ── ZH LESSON TRANSLATIONS ────────────────────────────────────────────────
+(function(){
+var ZH_SECTIONS = {
+  'Dialogue':        '💬 对话',
+  '🔍 Compréhension': '🔍 理解练习',
+  '📚 Vocabulaire clé': '📚 核心词汇',
+  '🗣️ Pour communiquer': '🗣️ 沟通表达',
+  '🎵 Phonétique':  '🎵 语音',
+  '✍️ À toi !': '✍️ 轮到你了！',
+  '✍️ À toi !':     '✍️ 轮到你了！',
+};
+
+var ZH_INST = [
+  [/^Complétez avec la bonne forme d.AVOIR/i, '用AVOIR的正确形式填空：'],
+  [/^Complétez avec la bonne forme d.ÊTRE/i, '用Être的正确形式填空：'],
+  [/^Complétez avec du\/de la\/de l.\/des/i, '用 du/de la/de l\'/des 或 de/d\' 填空：'],
+  [/^Complétez avec le bon/i, '用正确的词填空：'],
+  [/^Complétez\s*:/i, '请填空：'],
+  [/^Complétez/i, '请填空：'],
+  [/^Conjuguez .+ au présent/i, '将动词变为现在时：'],
+  [/^Conjuguez .+ au passé composé avec ÊTRE/i, '用ÊTRE助动词将动词变为复合过去时：'],
+  [/^Conjuguez .+ au passé composé/i, '将动词变为复合过去时：'],
+  [/^Conjuguez/i, '请变位：'],
+  [/^Écrivez en lettres/i, '用文字写出以下数字：'],
+  [/^Écrivez la forme féminine/i, '写出阴性形式：'],
+  [/^Écrivez/i, '请写出：'],
+  [/^Mettez au futur proche négatif/i, '改为否定近将来时：'],
+  [/^Mettez au futur proche/i, '改为近将来时：'],
+  [/^Mettez/i, '请改写：'],
+  [/^Remplacez .+ par le pronom/i, '用正确的代词替换：'],
+  [/^Remplacez/i, '请替换：'],
+  [/^Répondez/i, '请回答：'],
+  [/^Transformez/i, '请转化句子：'],
+  [/^Reliez/i, '连线：'],
+  [/^Associez/i, '匹配：'],
+  [/^Choisissez/i, '请选择：'],
+  [/^Utilisez/i, '请使用：'],
+];
+
+function zhInst(text) {
+  var t = (text||'').trim();
+  for (var i=0; i<ZH_INST.length; i++) {
+    var m = t.match(ZH_INST[i][0]);
+    if (m) { var rest = t.slice(m[0].length).trim(); return rest ? ZH_INST[i][1]+' '+rest : ZH_INST[i][1]; }
+  }
+  return t;
+}
+
+var TAB_ZH = { lecon:'📖 课程', vocab:'📚 词汇', gram:'✏️ 语法', ex:'🎯 练习' };
+
+function setLangLesson(lang) {
+  lang = lang || 'fr';
+  localStorage.setItem('fle_lang', lang);
+
+  // Toggle buttons
+  document.querySelectorAll('.lang-btn-l').forEach(function(b){
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+
+  // Section heads
+  document.querySelectorAll('.section-head').forEach(function(el){
+    if (!el.dataset.fr) el.dataset.fr = el.innerHTML;
+    var fr = el.dataset.fr;
+    if (lang === 'zh') {
+      if (ZH_SECTIONS[fr]) { el.innerHTML = ZH_SECTIONS[fr]; return; }
+      var gm = fr.match(/^📖 Point de langue — (.+)$/);
+      if (!gm) gm = fr.match(/^📖 Point de langue – (.+)$/);
+      if (!gm) gm = fr.match(/^📖 Point de langue — (.+)$/);
+      if (gm) { el.innerHTML = '📖 语言要点 — '+gm[1]; return; }
+      var em = fr.match(/^✏️ Exercice (\d+) — (.+)$/);
+      if (!em) em = fr.match(/^✏️ Exercice (\d+) — (.+)$/);
+      if (em) { el.innerHTML = '✏️ 练习'+em[1]+' — '+em[2]; return; }
+    } else { el.innerHTML = fr; }
+  });
+
+  // Ex-inst
+  document.querySelectorAll('.ex-inst').forEach(function(el){
+    if (!el.dataset.fr) el.dataset.fr = el.innerHTML;
+    el.innerHTML = lang === 'zh' ? zhInst(el.dataset.fr) : el.dataset.fr;
+  });
+
+  // Tabs
+  document.querySelectorAll('.lesson-tab').forEach(function(btn){
+    if (!btn.dataset.fr) btn.dataset.fr = btn.textContent;
+    var tid = btn.getAttribute('data-tab');
+    btn.textContent = (lang === 'zh' && TAB_ZH[tid]) ? TAB_ZH[tid] : btn.dataset.fr;
+  });
+
+  // Reveal buttons
+  document.querySelectorAll('.btn-reveal').forEach(function(b){
+    if (!b.dataset.fr) b.dataset.fr = b.textContent;
+    b.textContent = lang === 'zh' ? '查看' : b.dataset.fr;
+  });
+
+  // Back button text
+  document.querySelectorAll('.btn-back').forEach(function(b){
+    if (!b.dataset.fr) b.dataset.fr = b.innerHTML;
+    b.innerHTML = lang === 'zh' ? '🏠 首页' : b.dataset.fr;
+  });
+
+  // ── Boutons flottants + modaux ──
+  var _q = function(s){ return document.querySelector(s); };
+  var _t = function(el, zh){ if(!el) return; if(!el.dataset.fr) el.dataset.fr = el.textContent; el.textContent = lang === 'zh' ? zh : el.dataset.fr; };
+  var _bb=_q('.btn-bug'); if(_bb){ if(!_bb.dataset.frTitle) _bb.dataset.frTitle=_bb.title; _bb.title=lang==='zh'?'报告问题':_bb.dataset.frTitle; }
+  var _ba=_q('.btn-ask'); if(_ba){ if(!_ba.dataset.frTitle) _ba.dataset.frTitle=_ba.title; _ba.title=lang==='zh'?'提问':_ba.dataset.frTitle; }
+  _t(_q('#bug-title'), '🐛 报告问题');
+  _t(_q('#ask-title'), '💬 提问');
+  document.querySelectorAll('.modal-sub').forEach(function(el, i){
+    if (!el.dataset.fr) el.dataset.fr = el.textContent;
+    el.textContent = lang === 'zh'
+      ? (i === 0 ? '请告知我们课程中的问题，帮助我们改进。' : '您的问题将直接发送给老师。')
+      : el.dataset.fr;
+  });
+  var LABEL_ZH = {
+    'Exercice concerné':'相关练习','Description du problème':'问题描述',
+    'Sujet de la question':'问题主题','Votre question':'您的问题','Votre prénom':'您的姓名'
+  };
+  document.querySelectorAll('.fle-modal .form-group label').forEach(function(el){
+    if (!el.dataset.fr) el.dataset.fr = el.innerHTML;
+    if (lang === 'zh') {
+      var key = el.dataset.fr.replace(/<[^>]+>/g,'').trim();
+      var zh = LABEL_ZH[key];
+      if (zh) { var opt = el.querySelector('.opt'); el.innerHTML = zh + (opt ? ' <span class="opt">（选填）</span>' : ''); }
+    } else { el.innerHTML = el.dataset.fr; }
+  });
+  var OPT_ZH = {
+    '— Choisissez —':'— 请选择 —','Vocabulaire':'词汇','Grammaire':'语法','Autre':'其他',
+    '📖 Grammaire — règle ou structure':'📖 语法 — 规则或结构',
+    '📝 Vocabulaire — sens ou usage d’un mot':'📝 词汇 — 词义或用法',
+    '✏️ Exercice — correction ou consigne':'✏️ 练习 — 批改或题目说明',
+    '🎵 Prononciation — son ou accent':'🎵 发音 — 音节或重音'
+  };
+  document.querySelectorAll('.fle-modal select option').forEach(function(o){
+    if (!o.dataset.fr) o.dataset.fr = o.textContent;
+    o.textContent = lang === 'zh' ? (OPT_ZH[o.dataset.fr] || o.dataset.fr) : o.dataset.fr;
+  });
+  var TA_ZH = {
+    'Décrivez le bug : ce qui s’affiche, ce qui devrait s’afficher…':'请描述问题：实际显示内容，以及应显示的内容……',
+    'Posez votre question ici de façon précise…':'请在此处详细提问……'
+  };
+  document.querySelectorAll('.fle-modal textarea').forEach(function(ta){
+    if (!ta.dataset.fr) ta.dataset.fr = ta.placeholder;
+    ta.placeholder = lang === 'zh' ? (TA_ZH[ta.dataset.fr] || ta.dataset.fr) : ta.dataset.fr;
+  });
+  var SENDBTN_ZH = {'Envoyer le signalement':'提交报告','Envoyer la question':'发送问题'};
+  document.querySelectorAll('.fle-modal .btn-send').forEach(function(b){
+    if (!b.dataset.fr) b.dataset.fr = b.textContent;
+    b.textContent = lang === 'zh' ? (SENDBTN_ZH[b.dataset.fr] || b.dataset.fr) : b.dataset.fr;
+  });
+  var SUCCESS_ZH = {
+    '✅ Merci ! Votre signalement a bien été envoyé.':'✅ 感谢！报告已成功发送。',
+    '✅ Merci ! Votre question a bien été envoyée.':'✅ 感谢！您的问题已成功发送。'
+  };
+  document.querySelectorAll('.form-success').forEach(function(el){
+    if (!el.dataset.fr) el.dataset.fr = el.textContent;
+    el.textContent = lang === 'zh' ? (SUCCESS_ZH[el.dataset.fr] || el.dataset.fr) : el.dataset.fr;
+  });
+}
+
+// Ajouter le toggle dans chaque nav
+document.addEventListener('DOMContentLoaded', function(){
+  var picker = document.createElement('div');
+  picker.style.cssText = 'display:flex;gap:4px;align-items:center;margin-left:8px';
+  ['fr','zh'].forEach(function(l){
+    var b = document.createElement('button');
+    b.className = 'btn-nav lang-btn-l';
+    b.dataset.lang = l;
+    b.innerHTML = l === 'fr' ? '<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KICA8ZGVmcz4KICAgIDwhLS0gQW5uZWF1IG3DqXRhbCBhcmdlbnTDqSAtLT4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0icmluZyIgY3g9IjM4JSIgY3k9IjMyJSIgcj0iNzAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgICBzdG9wLWNvbG9yPSIjZmZmZmZmIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMzAlIiAgc3RvcC1jb2xvcj0iI2Q4ZDhkOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjYwJSIgIHN0b3AtY29sb3I9IiM5MDkwOTAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI4NSUiICBzdG9wLWNvbG9yPSIjYjBiMGIwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzc4Nzg3OCIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDwhLS0gR2xvc3Mgc3VyIGxlIGRyYXBlYXUgLS0+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9Imdsb3NzIiBjeD0iNDUlIiBjeT0iMjIlIiByPSI1OCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiAgIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMC4zOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjY1JSIgIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMC4wNSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDwhLS0gT21icmUgaW50ZXJuZSAtLT4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iaW5uZXItc2hhZG93IiBjeD0iNTAlIiBjeT0iNTAlIiByPSI1MCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjgwJSIgIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4yOCIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDwhLS0gQ2xpcCBkcmFwZWF1IC0tPgogICAgPGNsaXBQYXRoIGlkPSJmbGFnLWNsaXAiPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjQxLjUiLz48L2NsaXBQYXRoPgogICAgCiAgPC9kZWZzPgoKICA8IS0tIEFubmVhdSBtw6l0YWwgLS0+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNTAiIGZpbGw9InVybCgjcmluZykiLz4KICA8IS0tIEJvcmQgaW50w6lyaWV1ciBzb21icmUgLS0+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNDMiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgwLDAsMCwwLjM1KSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz4KCiAgPCEtLSBEcmFwZWF1IC0tPgogIDxnIGNsaXAtcGF0aD0idXJsKCNmbGFnLWNsaXApIj4KICAgICAgICA8cmVjdCB4PSI4IiAgeT0iOCIgd2lkdGg9IjI4IiBoZWlnaHQ9Ijg0IiBmaWxsPSIjMDAyMzk1Ii8+CiAgICA8cmVjdCB4PSIzNiIgeT0iOCIgd2lkdGg9IjI4IiBoZWlnaHQ9Ijg0IiBmaWxsPSIjRUNFQ0VDIi8+CiAgICA8cmVjdCB4PSI2NCIgeT0iOCIgd2lkdGg9IjI4IiBoZWlnaHQ9Ijg0IiBmaWxsPSIjRUQyOTM5Ii8+CiAgPC9nPgoKICA8IS0tIE9tYnJlIGludGVybmUgc3VyIGxlIGRyYXBlYXUgLS0+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNDEuNSIgZmlsbD0idXJsKCNpbm5lci1zaGFkb3cpIi8+CiAgPCEtLSBHbG9zcyAtLT4KICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0MS41IiBmaWxsPSJ1cmwoI2dsb3NzKSIvPgo8L3N2Zz4=" alt="FR" style="width:24px;height:24px;display:block">' : '<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KICA8ZGVmcz4KICAgIDwhLS0gQW5uZWF1IG3DqXRhbCBhcmdlbnTDqSAtLT4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0icmluZyIgY3g9IjM4JSIgY3k9IjMyJSIgcj0iNzAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgICBzdG9wLWNvbG9yPSIjZmZmZmZmIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMzAlIiAgc3RvcC1jb2xvcj0iI2Q4ZDhkOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjYwJSIgIHN0b3AtY29sb3I9IiM5MDkwOTAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI4NSUiICBzdG9wLWNvbG9yPSIjYjBiMGIwIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzc4Nzg3OCIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDwhLS0gR2xvc3Mgc3VyIGxlIGRyYXBlYXUgLS0+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9Imdsb3NzIiBjeD0iNDUlIiBjeT0iMjIlIiByPSI1OCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiAgIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMC4zOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjY1JSIgIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMC4wNSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDwhLS0gT21icmUgaW50ZXJuZSAtLT4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iaW5uZXItc2hhZG93IiBjeD0iNTAlIiBjeT0iNTAlIiByPSI1MCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjgwJSIgIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMwMDAwMDAiIHN0b3Atb3BhY2l0eT0iMC4yOCIvPgogICAgPC9yYWRpYWxHcmFkaWVudD4KICAgIDwhLS0gQ2xpcCBkcmFwZWF1IC0tPgogICAgPGNsaXBQYXRoIGlkPSJmbGFnLWNsaXAiPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjQxLjUiLz48L2NsaXBQYXRoPgogICAgCiAgPC9kZWZzPgoKICA8IS0tIEFubmVhdSBtw6l0YWwgLS0+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNTAiIGZpbGw9InVybCgjcmluZykiLz4KICA8IS0tIEJvcmQgaW50w6lyaWV1ciBzb21icmUgLS0+CiAgPGNpcmNsZSBjeD0iNTAiIGN5PSI1MCIgcj0iNDMiIGZpbGw9Im5vbmUiIHN0cm9rZT0icmdiYSgwLDAsMCwwLjM1KSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz4KCiAgPCEtLSBEcmFwZWF1IC0tPgogIDxnIGNsaXAtcGF0aD0idXJsKCNmbGFnLWNsaXApIj4KICAgICAgICA8cmVjdCB4PSI4IiB5PSI4IiB3aWR0aD0iODQiIGhlaWdodD0iODQiIGZpbGw9IiNERTI5MTAiLz4KICAgIDxwYXRoIGQ9Ik0yNS4wMCwyNS41MEwyNi45MSwzMS4zN0wzMy4wOCwzMS4zN0wyOC4wOSwzNS4wMEwzMC4wMCw0MC44OEwyNS4wMCwzNy4yNUwyMC4wMCw0MC44OEwyMS45MSwzNS4wMEwxNi45MiwzMS4zN0wyMy4wOSwzMS4zN1oiIGZpbGw9IiNGRkRFMDAiLz4KICAgIDxwYXRoIGQ9Ik00Ny4zNywyNS45NUw0OC45NywyNC43MEw0OC4yOCwyMi43OUw0OS45NywyMy45M0w1MS41NywyMi42OEw1MS4wMSwyNC42NEw1Mi42OSwyNS43OEw1MC42NiwyNS44NUw1MC4wOSwyNy44MEw0OS40MCwyNS44OFoiIGZpbGw9IiNGRkRFMDAiLz4KICAgIDxwYXRoIGQ9Ik01NS4yMCwzNC4wMEw1Ny4xMywzMy4zN0w1Ny4xMywzMS4zNEw1OC4zMywzMi45OEw2MC4yNywzMi4zNUw1OS4wNywzNC4wMEw2MC4yNywzNS42NUw1OC4zMywzNS4wMkw1Ny4xMywzNi42Nkw1Ny4xMywzNC42M1oiIGZpbGw9IiNGRkRFMDAiLz4KICAgIDxwYXRoIGQ9Ik01NS40Miw0Ni45MUw1Ny40NSw0Ny4wOEw1OC4yNCw0NS4yMUw1OC43MCw0Ny4xOUw2MC43Myw0Ny4zN0w1OC45OSw0OC40Mkw1OS40NCw1MC40MEw1Ny45MSw0OS4wN0w1Ni4xNiw1MC4xMUw1Ni45Niw0OC4yNFoiIGZpbGw9IiNGRkRFMDAiLz4KICAgIDxwYXRoIGQ9Ik00Ny45NCw1NS4xMEw0OS43OSw1NS45NUw1MS4xNyw1NC40NUw1MC45Myw1Ni40N0w1Mi43OCw1Ny4zMkw1MC43OSw1Ny43Mkw1MC41NSw1OS43NEw0OS41NSw1Ny45N0w0Ny41Niw1OC4zN0w0OC45NCw1Ni44OFoiIGZpbGw9IiNGRkRFMDAiLz4KICA8L2c+CgogIDwhLS0gT21icmUgaW50ZXJuZSBzdXIgbGUgZHJhcGVhdSAtLT4KICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI0MS41IiBmaWxsPSJ1cmwoI2lubmVyLXNoYWRvdykiLz4KICA8IS0tIEdsb3NzIC0tPgogIDxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjQxLjUiIGZpbGw9InVybCgjZ2xvc3MpIi8+Cjwvc3ZnPg==" alt="ZH" style="width:24px;height:24px;display:block">';
+    b.style.cssText = 'padding:2px;border-radius:50%;border:2px solid transparent;background:none;opacity:.5;cursor:pointer;transition:all .15s';
+    b.addEventListener('click', function(){ setLangLesson(l); });
+    picker.appendChild(b);
+  });
+  document.querySelectorAll('.top-nav').forEach(function(nav){
+    nav.appendChild(picker.cloneNode(true));
+    nav.querySelectorAll('.lang-btn-l').forEach(function(b){
+      b.addEventListener('click', function(){ setLangLesson(b.dataset.lang); });
+    });
+  });
+
+  var saved = localStorage.getItem('fle_lang') || 'fr';
+  setLangLesson(saved);
+
+  // Sync active state after setLang
+  document.querySelectorAll('.lang-btn-l').forEach(function(b){
+    b.style.opacity = b.dataset.lang === saved ? '1' : '.5';
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.lang-btn-l').forEach(function(x){ x.style.opacity='.5'; });
+      document.querySelectorAll('.lang-btn-l[data-lang="'+b.dataset.lang+'"]').forEach(function(x){ x.style.opacity='1'; });
+    });
+  });
+});
+})();
+</script>
+
+<script>document.addEventListener("DOMContentLoaded",function(){if(window.lucide){lucide.createIcons({attrs:{class:"lucide-icon",width:"16",height:"16"}});}});</script>
+</body>
+</html>

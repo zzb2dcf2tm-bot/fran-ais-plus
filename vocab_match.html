@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script>(function(){var ok=false;try{ok=localStorage.getItem('fle_auth')==='1';}catch(e){}if(!ok){var u=new URLSearchParams(location.search).get('auth');if(u==='FLE2026'){try{localStorage.setItem('fle_auth','1');}catch(e){}ok=true;}}if(!ok)location.replace('index.html');})()</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Matching vocabulaire</title>
+<script src="vocab_data.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--purp:#1c2e5a;--purp-l:#e6ecf6;--green:#27ae60;--green-l:#eafaf1;--red:#e74c3c;--red-l:#fdecea;--orange:#e67e22;--bg:#f8f9fa;--text:#2c3e50;--muted:#7f8c8d;--r:10px;--sh:0 2px 8px rgba(0,0,0,.07)}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+
+/* ── HEADER ── */
+.page-header{background:linear-gradient(135deg,#0d1b32,#2a4a8a);color:#fff;padding:10px 14px;display:flex;align-items:center;gap:10px;flex-shrink:0}
+.ph-back{padding:4px 12px;border-radius:14px;border:2px solid rgba(255,255,255,.5);color:#fff;background:none;font-size:.72rem;font-weight:700;cursor:pointer;text-decoration:none;white-space:nowrap}
+.ph-back:hover{background:rgba(255,255,255,.2)}
+.ph-info{flex:1;min-width:0}
+.ph-title{font-size:.88rem;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ph-sub{font-size:.68rem;opacity:.75;margin-top:1px}
+
+/* ── PROGRESS ── */
+.prog-wrap{height:4px;background:rgba(255,255,255,.25);flex-shrink:0}
+.prog-fill{height:100%;width:0%;background:var(--green);transition:width .4s ease}
+
+/* ── MAIN ── */
+.main{flex:1;padding:14px 14px 24px;max-width:560px;margin:0 auto;width:100%}
+
+/* Score */
+.score-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.score-txt{font-size:.8rem;font-weight:700;color:var(--muted)}
+.score-num{font-size:1rem;font-weight:900;color:var(--purp)}
+
+/* Labels colonnes */
+.col-labels{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:6px}
+.col-label{text-align:center;font-size:.68rem;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+
+/* Grille */
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+
+.mc{
+  background:#fff;
+  border:2px solid #dde3ee;
+  border-radius:var(--r);
+  padding:9px 10px;
+  font-size:.8rem;
+  font-weight:700;
+  cursor:pointer;
+  transition:border-color .15s,background .15s,color .15s,transform .1s;
+  text-align:center;
+  min-height:46px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  line-height:1.3;
+  user-select:none;
+}
+.mc:hover:not(.mc-matched):not(.mc-wrong):not(.mc-none){border-color:var(--purp);background:var(--purp-l)}
+.mc.mc-selected{background:var(--purp);color:#fff;border-color:var(--purp);transform:scale(1.03)}
+.mc.mc-matched{background:var(--green-l);border-color:var(--green);color:var(--green);cursor:default}
+.mc.mc-wrong{background:var(--red-l);border-color:var(--red);color:var(--red);animation:shake .35s ease}
+.mc.mc-none{opacity:0;pointer-events:none}
+
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+/* ── ÉCRAN FIN ── */
+.end-screen{display:none;text-align:center;padding:28px 16px}
+.end-emoji{font-size:3.5rem;margin-bottom:10px}
+.end-score{font-size:1.4rem;font-weight:900;color:var(--purp);margin-bottom:6px}
+.end-msg{font-size:.9rem;color:var(--muted);margin-bottom:24px}
+.btn-end{display:inline-block;border:none;border-radius:20px;padding:11px 26px;font-size:.85rem;font-weight:700;cursor:pointer;margin:5px;transition:opacity .15s}
+.btn-end:hover{opacity:.85}
+.btn-replay{background:var(--purp);color:#fff}
+.btn-home{background:var(--purp-l);color:var(--purp)}
+</style>
+<style>.lucide-icon{display:inline-block;vertical-align:-3px;stroke-width:1.75;pointer-events:none}</style>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+<div class="page-header">
+  <a class="ph-back" id="btn-back" href="index.html?level=A1">← Leçons</a>
+  <div class="ph-info">
+    <div class="ph-title" id="ph-title">Vocabulaire</div>
+    <div class="ph-sub">Associez chaque mot à sa traduction</div>
+  </div>
+</div>
+<div class="prog-wrap"><div class="prog-fill" id="prog-fill"></div></div>
+
+<div class="main">
+  <div class="score-row">
+    <span class="score-txt">Appariés</span>
+    <span class="score-num" id="score-num">0 / 0</span>
+  </div>
+  <div class="col-labels">
+    <div class="col-label">🇫🇷 Français</div>
+    <div class="col-label">🇨🇳 中文</div>
+  </div>
+  <div class="match-grid" id="match-grid"></div>
+  <div class="end-screen" id="end-screen">
+    <div class="end-emoji" id="end-emoji"><i data-lucide="party-popper" aria-hidden="true"></i></div>
+    <div class="end-score" id="end-score"></div>
+    <div class="end-msg" id="end-msg"></div>
+    <button class="btn-end btn-replay" onclick="startGame()">↺ Rejouer</button>
+    <button class="btn-end btn-home" onclick="goBack()">← Retour aux leçons</button>
+  </div>
+</div>
+
+<script>
+var lesson  = new URLSearchParams(location.search).get('lesson') || '1A';
+var allPairs = (window.VOCAB_DATA && VOCAB_DATA[lesson]) || [];
+var total    = allPairs.length;
+var matched  = 0;
+var selCard  = null;  // carte FR actuellement sélectionnée
+
+// Header
+document.getElementById('ph-title').textContent = 'Leçon ' + lesson + ' — Matching';
+
+// Lien retour (avec auth si besoin)
+(function(){
+  var ok=false;try{ok=localStorage.getItem('fle_auth')==='1';}catch(e){}
+  var href='index.html?level=A1'+(ok?'':'&auth=FLE2026');
+  document.getElementById('btn-back').href=href;
+})();
+
+function shuffle(arr){
+  var a=arr.slice();
+  for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}
+  return a;
+}
+
+function startGame(){
+  matched=0; selCard=null;
+  document.getElementById('end-screen').style.display='none';
+  document.getElementById('match-grid').style.display='grid';
+  document.querySelector('.col-labels').style.display='grid';
+  document.querySelector('.score-row').style.display='flex';
+
+  var frList = shuffle(allPairs.slice());  // ordre aléatoire FR
+  var zhList = shuffle(allPairs.slice());  // ordre aléatoire ZH (différent)
+
+  var grid = document.getElementById('match-grid');
+  grid.innerHTML = '';
+
+  for(var i=0; i<frList.length; i++){
+    grid.appendChild(makeCard(frList[i].fr, 'fr', frList[i].fr, i));
+    grid.appendChild(makeCard(zhList[i].zh, 'zh', zhList[i].fr, i));
+  }
+  updateUI();
+}
+
+function makeCard(text, side, matchKey, row){
+  var el=document.createElement('div');
+  el.className='mc';
+  el.dataset.side=side;
+  el.dataset.match=matchKey;  // FR card: sa propre clé FR ; ZH card: la clé FR correcte
+  el.dataset.row=row;
+  el.textContent=text;
+  el.addEventListener('click',function(){onCard(el);});
+  return el;
+}
+
+function onCard(card){
+  if(card.classList.contains('mc-matched')||card.classList.contains('mc-wrong')) return;
+
+  if(card.dataset.side==='fr'){
+    // Clic sur une carte FR
+    if(selCard) selCard.classList.remove('mc-selected');
+    if(selCard===card){selCard=null;return;}
+    selCard=card;
+    card.classList.add('mc-selected');
+  } else {
+    // Clic sur une carte ZH
+    if(!selCard) return;
+    if(selCard.dataset.match===card.dataset.match){
+      // ✅ Correct
+      selCard.classList.remove('mc-selected');
+      selCard.classList.add('mc-matched');
+      card.classList.add('mc-matched');
+      selCard=null;
+      matched++;
+      updateUI();
+      if(matched===total) setTimeout(showEnd, 400);
+    } else {
+      // ❌ Incorrect
+      var sc=selCard, c=card;
+      sc.classList.add('mc-wrong');
+      c.classList.add('mc-wrong');
+      selCard=null;
+      setTimeout(function(){
+        sc.classList.remove('mc-selected','mc-wrong');
+        c.classList.remove('mc-wrong');
+      }, 600);
+    }
+  }
+}
+
+function updateUI(){
+  var pct = total ? Math.round(matched/total*100) : 0;
+  document.getElementById('prog-fill').style.width = pct+'%';
+  document.getElementById('score-num').textContent = matched+' / '+total;
+}
+
+function showEnd(){
+  document.getElementById('match-grid').style.display='none';
+  document.querySelector('.col-labels').style.display='none';
+  document.querySelector('.score-row').style.display='none';
+
+  var pct=total?Math.round(matched/total*100):0;
+  document.getElementById('end-emoji').textContent = pct===100?'🎉':pct>=60?'👍':'💪';
+  document.getElementById('end-score').textContent = matched+' / '+total+' — '+pct+'%';
+  document.getElementById('end-msg').textContent =
+    pct===100 ? 'Parfait ! Tous les mots sont appariés.' :
+    pct>=60   ? 'Bien joué ! Réessaie pour atteindre 100 %.' :
+                'Continue à t\'entraîner !';
+
+  document.getElementById('end-screen').style.display='block';
+
+  // Sauvegarder dans fle_prog
+  try{
+    var prog=JSON.parse(localStorage.getItem('fle_prog')||'{}');
+    if(!prog[lesson])prog[lesson]={};
+    if(!prog[lesson].match_best||pct>prog[lesson].match_best) prog[lesson].match_best=pct;
+    localStorage.setItem('fle_prog',JSON.stringify(prog));
+  }catch(e){}
+}
+
+function goBack(){
+  var ok=false;try{ok=localStorage.getItem('fle_auth')==='1';}catch(e){}
+  location.href='index.html?level=A1'+(ok?'':'&auth=FLE2026');
+}
+
+if(total===0){
+  document.getElementById('match-grid').innerHTML='<p style="color:var(--muted);padding:20px;grid-column:1/-1;text-align:center">Aucun vocabulaire trouvé pour cette leçon.</p>';
+} else {
+  startGame();
+}
+</script>
+<script>document.addEventListener("DOMContentLoaded",function(){if(window.lucide){lucide.createIcons({attrs:{class:"lucide-icon",width:"16",height:"16"}});}});</script>
+</body>
+</html>

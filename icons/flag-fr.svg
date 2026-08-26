@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <!-- Anneau métal argenté -->
+    <radialGradient id="ring" cx="38%" cy="32%" r="70%">
+      <stop offset="0%"   stop-color="#ffffff"/>
+      <stop offset="30%"  stop-color="#d8d8d8"/>
+      <stop offset="60%"  stop-color="#909090"/>
+      <stop offset="85%"  stop-color="#b0b0b0"/>
+      <stop offset="100%" stop-color="#787878"/>
+    </radialGradient>
+    <!-- Gloss sur le drapeau -->
+    <radialGradient id="gloss" cx="45%" cy="22%" r="58%">
+      <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.38"/>
+      <stop offset="65%"  stop-color="#ffffff" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Ombre interne -->
+    <radialGradient id="inner-shadow" cx="50%" cy="50%" r="50%">
+      <stop offset="80%"  stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.28"/>
+    </radialGradient>
+    <!-- Clip drapeau -->
+    <clipPath id="flag-clip"><circle cx="50" cy="50" r="41.5"/></clipPath>
+    
+  </defs>
+
+  <!-- Anneau métal -->
+  <circle cx="50" cy="50" r="50" fill="url(#ring)"/>
+  <!-- Bord intérieur sombre -->
+  <circle cx="50" cy="50" r="43" fill="none" stroke="rgba(0,0,0,0.35)" stroke-width="1.5"/>
+
+  <!-- Drapeau -->
+  <g clip-path="url(#flag-clip)">
+        <rect x="8"  y="8" width="28" height="84" fill="#002395"/>
+    <rect x="36" y="8" width="28" height="84" fill="#ECECEC"/>
+    <rect x="64" y="8" width="28" height="84" fill="#ED2939"/>
+  </g>
+
+  <!-- Ombre interne sur le drapeau -->
+  <circle cx="50" cy="50" r="41.5" fill="url(#inner-shadow)"/>
+  <!-- Gloss -->
+  <circle cx="50" cy="50" r="41.5" fill="url(#gloss)"/>
+</svg>

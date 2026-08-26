@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <!-- Anneau métal argenté -->
+    <radialGradient id="ring" cx="38%" cy="32%" r="70%">
+      <stop offset="0%"   stop-color="#ffffff"/>
+      <stop offset="30%"  stop-color="#d8d8d8"/>
+      <stop offset="60%"  stop-color="#909090"/>
+      <stop offset="85%"  stop-color="#b0b0b0"/>
+      <stop offset="100%" stop-color="#787878"/>
+    </radialGradient>
+    <!-- Gloss sur le drapeau -->
+    <radialGradient id="gloss" cx="45%" cy="22%" r="58%">
+      <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.38"/>
+      <stop offset="65%"  stop-color="#ffffff" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Ombre interne -->
+    <radialGradient id="inner-shadow" cx="50%" cy="50%" r="50%">
+      <stop offset="80%"  stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.28"/>
+    </radialGradient>
+    <!-- Clip drapeau -->
+    <clipPath id="flag-clip"><circle cx="50" cy="50" r="41.5"/></clipPath>
+    
+  </defs>
+
+  <!-- Anneau métal -->
+  <circle cx="50" cy="50" r="50" fill="url(#ring)"/>
+  <!-- Bord intérieur sombre -->
+  <circle cx="50" cy="50" r="43" fill="none" stroke="rgba(0,0,0,0.35)" stroke-width="1.5"/>
+
+  <!-- Drapeau -->
+  <g clip-path="url(#flag-clip)">
+        <rect x="8" y="8" width="84" height="84" fill="#DE2910"/>
+    <path d="M25.00,25.50L26.91,31.37L33.08,31.37L28.09,35.00L30.00,40.88L25.00,37.25L20.00,40.88L21.91,35.00L16.92,31.37L23.09,31.37Z" fill="#FFDE00"/>
+    <path d="M47.37,25.95L48.97,24.70L48.28,22.79L49.97,23.93L51.57,22.68L51.01,24.64L52.69,25.78L50.66,25.85L50.09,27.80L49.40,25.88Z" fill="#FFDE00"/>
+    <path d="M55.20,34.00L57.13,33.37L57.13,31.34L58.33,32.98L60.27,32.35L59.07,34.00L60.27,35.65L58.33,35.02L57.13,36.66L57.13,34.63Z" fill="#FFDE00"/>
+    <path d="M55.42,46.91L57.45,47.08L58.24,45.21L58.70,47.19L60.73,47.37L58.99,48.42L59.44,50.40L57.91,49.07L56.16,50.11L56.96,48.24Z" fill="#FFDE00"/>
+    <path d="M47.94,55.10L49.79,55.95L51.17,54.45L50.93,56.47L52.78,57.32L50.79,57.72L50.55,59.74L49.55,57.97L47.56,58.37L48.94,56.88Z" fill="#FFDE00"/>
+  </g>
+
+  <!-- Ombre interne sur le drapeau -->
+  <circle cx="50" cy="50" r="41.5" fill="url(#inner-shadow)"/>
+  <!-- Gloss -->
+  <circle cx="50" cy="50" r="41.5" fill="url(#gloss)"/>
+</svg>

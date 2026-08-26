@@ -1,0 +1,24 @@
+{
+  "name": "Super Fǎyǔ — 超级法语",
+  "short_name": "超级法语",
+  "description": "Apprenez le français pas à pas, du niveau A1 au C2.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0d1b32",
+  "theme_color": "#0d1b32",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

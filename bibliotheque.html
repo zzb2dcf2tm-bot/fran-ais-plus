@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🇫🇷</text></svg>">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>français+ · Bibliothèque de fiches</title>
+<style>
+  :root {
+    --a:#27ae60;--al:#eafaf1;--b:#2980b9;--bl:#eaf4fb;--c:#8e44ad;--cl:#f5eef8;
+    --l:#16a085;--ll:#e8f8f5;
+    --gold:#f39c12;--text:#2c3e50;--muted:#7f8c8d;--bg:#f8f9fa;--card:#fff;
+    --radius:12px;--shadow:0 2px 14px rgba(0,0,0,.08);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  nav{background:#fff;box-shadow:var(--shadow);position:sticky;top:0;z-index:100}
+  .nav-inner{max-width:1100px;margin:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  .logo{font-size:1.4rem;font-weight:800;color:var(--b);text-decoration:none}
+  .logo span{color:var(--a)}
+  .nav-links{display:flex;gap:8px;flex-wrap:wrap}
+  .nav-link{background:var(--bg);border:none;border-radius:20px;padding:6px 16px;cursor:pointer;font-size:.85rem;font-weight:600;color:var(--muted);text-decoration:none;transition:all .2s}
+  .nav-link:hover{background:var(--b);color:#fff}
+  .nav-link.gold{background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff}
+
+  .hero{background:linear-gradient(135deg,#2980b9,#8e44ad);color:#fff;text-align:center;padding:55px 20px 65px}
+  .hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;margin-bottom:10px}
+  .hero p{opacity:.9;max-width:600px;margin:0 auto;font-size:1.05rem}
+
+  .container{max-width:1100px;margin:0 auto;padding:50px 20px}
+  .filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px;align-items:center}
+  .filter-btn{border:2px solid #e0e0e0;background:#fff;border-radius:20px;padding:7px 18px;cursor:pointer;font-size:.85rem;font-weight:600;color:var(--muted);transition:all .2s}
+  .filter-btn:hover{border-color:var(--b);color:var(--b)}
+  .filter-btn.active{background:var(--b);border-color:var(--b);color:#fff}
+  .filter-btn.fA.active{background:var(--a);border-color:var(--a)}
+  .filter-btn.fC.active{background:var(--c);border-color:var(--c)}
+
+  .fiches-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
+  .fiche-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;transition:transform .15s,box-shadow .15s;display:flex;flex-direction:column}
+  .fiche-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.13)}
+  .fiche-header{padding:18px 20px 14px;position:relative}
+  .fiche-header.A{background:var(--al);border-bottom:3px solid var(--a)}
+  .fiche-header.B{background:var(--bl);border-bottom:3px solid var(--b)}
+  .fiche-header.C{background:var(--cl);border-bottom:3px solid var(--c)}
+  .fiche-header.L{background:var(--ll);border-bottom:3px solid var(--l)}
+  .fiche-level-badge{display:inline-block;font-size:.7rem;font-weight:800;padding:3px 10px;border-radius:10px;margin-bottom:8px}
+  .A .fiche-level-badge{background:var(--a);color:#fff}
+  .B .fiche-level-badge{background:var(--b);color:#fff}
+  .C .fiche-level-badge{background:var(--c);color:#fff}
+  .L .fiche-level-badge{background:var(--l);color:#fff}
+  .fiche-title{font-size:1rem;font-weight:800;line-height:1.3;margin-bottom:4px}
+  .fiche-sub{font-size:.8rem;color:var(--muted)}
+  .fiche-body{padding:14px 20px;flex:1}
+  .fiche-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+  .tag{font-size:.72rem;padding:3px 9px;border-radius:8px;font-weight:600}
+  .tag.vocab{background:#e8f5e9;color:#2e7d32}
+  .tag.gram{background:#e3f2fd;color:#1565c0}
+  .tag.exo{background:#fff3e0;color:#e65100}
+  .tag.style{background:#f3e5f5;color:#6a1b9a}
+  .fiche-desc{font-size:.85rem;color:var(--muted);line-height:1.5}
+  .fiche-footer{padding:14px 20px;border-top:1px solid #f0f0f0;display:flex;gap:10px}
+  .btn-dl{flex:1;padding:9px;border-radius:20px;border:none;cursor:pointer;font-weight:700;font-size:.85rem;text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .2s}
+  .btn-dl.A{background:var(--al);color:var(--a)}
+  .btn-dl.A:hover{background:var(--a);color:#fff}
+  .btn-dl.B{background:var(--bl);color:var(--b)}
+  .btn-dl.B:hover{background:var(--b);color:#fff}
+  .btn-dl.C{background:var(--cl);color:var(--c)}
+  .btn-dl.C:hover{background:var(--c);color:#fff}
+  .btn-dl.L{background:var(--ll);color:var(--l)}
+  .btn-dl.L:hover{background:var(--l);color:#fff}
+  .btn-lock{flex:1;padding:9px;border-radius:20px;border:2px solid #e0e0e0;cursor:pointer;font-weight:600;font-size:.85rem;text-align:center;color:var(--muted);background:#fff;transition:all .2s}
+  .btn-lock:hover{border-color:var(--gold);color:var(--gold)}
+
+  .progress-section{background:#fff;border-radius:var(--radius);padding:24px;box-shadow:var(--shadow);margin-bottom:36px}
+  .progress-section h3{font-size:1rem;font-weight:700;margin-bottom:14px}
+  .level-bars{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px}
+  .level-bar-item{text-align:center}
+  .level-bar-item .lbl{font-size:.75rem;font-weight:700;color:var(--muted);margin-bottom:4px}
+  .bar-track{height:8px;background:#e0e0e0;border-radius:4px;overflow:hidden}
+  .bar-fill{height:100%;border-radius:4px;transition:width .5s}
+  .bar-fill.A{background:var(--a)}
+  .bar-fill.B{background:var(--b)}
+  .bar-fill.C{background:var(--c)}
+  .bar-fill.L{background:var(--l)}
+  .filter-btn.fL.active{background:var(--l);border-color:var(--l)}
+  .lecon-unit-badge{display:inline-block;font-size:.65rem;font-weight:700;padding:2px 8px;border-radius:8px;background:rgba(22,160,133,.15);color:var(--l);margin-bottom:6px}
+  .bar-count{font-size:.75rem;color:var(--muted);margin-top:3px}
+
+  .cta-banner{background:linear-gradient(135deg,#f39c12,#e67e22,#8e44ad);color:#fff;border-radius:var(--radius);padding:30px;text-align:center;margin-top:40px}
+  .cta-banner h3{font-size:1.3rem;font-weight:900;margin-bottom:8px}
+  .cta-banner p{opacity:.9;font-size:.95rem;margin-bottom:20px}
+  .cta-banner a{background:#fff;color:#e67e22;font-weight:800;padding:11px 28px;border-radius:25px;text-decoration:none;font-size:.95rem;transition:transform .15s;display:inline-block}
+  .cta-banner a:hover{transform:translateY(-2px)}
+
+  footer{text-align:center;padding:36px 20px;color:var(--muted);font-size:.85rem;border-top:1px solid #e8e8e8;margin-top:40px}
+
+  /* MODAL */
+  .modal-ov{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:999;align-items:center;justify-content:center;padding:20px}
+  .modal-ov.open{display:flex}
+  .modal{background:#fff;border-radius:var(--radius);padding:36px;max-width:440px;width:100%;text-align:center;position:relative}
+  .modal-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--muted)}
+  .modal h3{font-size:1.2rem;font-weight:800;margin-bottom:8px}
+  .modal p{color:var(--muted);font-size:.9rem;margin-bottom:22px}
+  .modal .btn-gold{display:block;background:linear-gradient(135deg,#f39c12,#e67e22);color:#fff;padding:13px;border-radius:25px;font-weight:700;font-size:.95rem;text-decoration:none;margin-bottom:10px;transition:opacity .2s}
+  .modal .btn-gold:hover{opacity:.88}
+  .modal .btn-back{background:none;border:none;color:var(--muted);font-size:.85rem;cursor:pointer;text-decoration:underline}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="index.html">français<span>+</span></a>
+    <div class="nav-links">
+      <a class="nav-link" href="index.html">← Site principal</a>
+
+
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>📚 Bibliothèque pédagogique</h1>
+  <p>Cette section sera disponible prochainement.</p>
+</div>
+
+<div class="container" style="text-align:center;padding:80px 20px;color:#7f8c8d">
+  <div style="font-size:3.5rem;margin-bottom:20px">🚧</div>
+  <h2 style="font-size:1.6rem;font-weight:800;margin-bottom:12px;color:#2c3e50">Bibliothèque en préparation</h2>
+  <p style="font-size:1rem;max-width:500px;margin:0 auto 28px">Les fiches pédagogiques et ressources complémentaires seront disponibles prochainement.</p>
+  <a href="index.html" style="display:inline-block;background:#2980b9;color:#fff;padding:12px 28px;border-radius:24px;font-weight:700;text-decoration:none;font-size:.95rem">← Retour à l'accueil</a>
+</div>
+
+</body>
+</html>

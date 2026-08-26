@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<script>(function(){var ok=false;try{ok=localStorage.getItem('fle_auth')==='1';}catch(e){}if(!ok){var u=new URLSearchParams(location.search).get('auth');if(u==='FLE2026'){try{localStorage.setItem('fle_auth','1');}catch(e){}ok=true;}}if(!ok)location.replace('index.html');})()</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Vocabulaire</title>
+<script src="memo_data.js"></script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--purp:#1c2e5a;--purp-l:#e6ecf6;--bg:#f8f9fa;--text:#2c3e50;--muted:#7f8c8d;--r:10px;--sh:0 2px 8px rgba(0,0,0,.07)}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;flex-direction:column}
+.page-header{background:linear-gradient(135deg,#0d1b32,#2a4a8a);color:#fff;padding:10px 14px;display:flex;align-items:center;gap:10px;flex-shrink:0}
+.ph-back{padding:4px 12px;border-radius:14px;border:2px solid rgba(255,255,255,.5);color:#fff;background:none;font-size:.72rem;font-weight:700;cursor:pointer;text-decoration:none;white-space:nowrap}
+.ph-back:hover{background:rgba(255,255,255,.2)}
+.ph-info{flex:1;min-width:0}
+.ph-title{font-size:.88rem;font-weight:800}
+.ph-sub{font-size:.68rem;opacity:.75;margin-top:1px}
+/* Sélecteur d'unité */
+.unit-selector{display:flex;gap:5px;padding:12px 14px;background:var(--purp-l);border-bottom:1px solid #c8d8f0;flex-wrap:wrap}
+.unit-pill{padding:5px 13px;border-radius:16px;font-size:.78rem;font-weight:700;border:1.5px solid var(--purp);background:#fff;color:var(--purp);cursor:pointer;transition:all .15s}
+.unit-pill.active{background:var(--purp);color:#fff}
+/* Contenu */
+.main{flex:1;padding:16px 14px 28px;max-width:760px;margin:0 auto;width:100%}
+/* Styles vocab repris d'index.html */
+.section-title{font-size:.9rem;font-weight:800;color:var(--purp);margin:18px 0 8px;padding-bottom:5px;border-bottom:2px solid var(--purp-l)}
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-bottom:12px}
+.vocab-card{background:#fff;border:1px solid #dde3ee;border-radius:var(--r);padding:10px 12px;display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center;cursor:pointer;transition:border-color .15s,background .15s;user-select:none}
+.vocab-card:hover{border-color:var(--purp);background:var(--purp-l)}
+.vocab-card.playing{border-color:var(--purp);background:var(--purp-l)}
+.vocab-sound{font-size:.9rem;opacity:.5;margin-top:2px;transition:opacity .15s}
+.vocab-card:hover .vocab-sound,.vocab-card.playing .vocab-sound{opacity:1}
+.vocab-emoji{font-size:1.4rem}
+.vocab-word{font-size:.8rem;font-weight:700;color:var(--text)}
+.vocab-trans{font-size:.75rem;color:var(--muted)}
+/* Rule box dans vocab */
+.rule-box{background:#fff;border:1px solid #dde3ee;border-radius:var(--r);padding:14px 16px;margin:10px 0;border-left:4px solid var(--purp)}
+.rule-subtitle{font-size:.85rem;font-weight:700;color:var(--purp);margin-bottom:8px}
+.rule-table{width:100%;border-collapse:collapse;font-size:.82rem}
+.rule-table th{background:var(--purp-l);color:var(--purp);font-weight:700;padding:6px 10px;text-align:left}
+.rule-table td{padding:6px 10px;border-bottom:1px solid #eef0f5}
+.rule-table tr:last-child td{border-bottom:none}
+p{font-size:.85rem;line-height:1.6;margin-bottom:8px;color:var(--text)}
+</style>
+<style>.lucide-icon{display:inline-block;vertical-align:-3px;stroke-width:1.75;pointer-events:none}</style>
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+
+<div class="page-header">
+  <a class="ph-back" id="btn-back" href="index.html?level=A1">← Leçons</a>
+  <div class="ph-info">
+    <div class="ph-title" id="ph-title">Vocabulaire</div>
+    <div class="ph-sub" id="ph-sub">Mots et expressions clés</div>
+  </div>
+</div>
+
+<div class="unit-selector" id="unit-selector"></div>
+
+<div class="main" id="main-content">
+  <p style="color:var(--muted);text-align:center;padding:40px">Chargement…</p>
+</div>
+
+<script>
+var params  = new URLSearchParams(location.search);
+var unitNum = parseInt(params.get('unit') || '1');
+
+(function(){
+  var ok=false;try{ok=localStorage.getItem('fle_auth')==='1';}catch(e){}
+  document.getElementById('btn-back').href='index.html?level=A1'+(ok?'':'&auth=FLE2026');
+})();
+
+var UNIT_NAMES = {
+  1:'Bonjour !', 2:'Famille et amis', 3:'Ma journée',
+  4:'Dans la ville', 5:'Manger et boire', 6:'Loisirs et goûts',
+  7:'Les achats', 8:'À la maison', 9:'Voyages et découvertes'
+};
+
+var _aud = null;
+
+function playMemoAudio(u, i, card) {
+  if (_aud) { _aud.pause(); _aud = null; }
+  document.querySelectorAll('.vocab-card.playing').forEach(function(c){ c.classList.remove('playing'); });
+  var src = 'audio/memo_u' + u + '_' + i + '.mp3';
+  _aud = new Audio(src);
+  _aud.onerror = function(){ _aud = null; card.classList.remove('playing'); };
+  _aud.onended = function(){ card.classList.remove('playing'); _aud = null; };
+  card.classList.add('playing');
+  _aud.play();
+}
+
+function showUnit(u) {
+  unitNum = u;
+  document.getElementById('ph-title').textContent = 'Vocabulaire — Unité ' + u;
+  document.getElementById('ph-sub').textContent = UNIT_NAMES[u] || '';
+  document.querySelectorAll('.unit-pill').forEach(function(p){
+    p.classList.toggle('active', parseInt(p.dataset.u) === u);
+  });
+  var content = (window.MEMO_DATA && MEMO_DATA.vocab && MEMO_DATA.vocab[String(u)]) || '';
+  var main = document.getElementById('main-content');
+  if (!content) { main.innerHTML='<p style="color:var(--muted);text-align:center;padding:40px">Contenu indisponible.</p>'; return; }
+  main.innerHTML = content;
+  // Ajouter handler audio sur chaque carte (sans icône visible)
+  var cards = main.querySelectorAll('.vocab-card');
+  cards.forEach(function(card, i){
+    (function(idx){ card.addEventListener('click', function(){ playMemoAudio(u, idx, card); }); })(i);
+  });
+}
+
+var sel = document.getElementById('unit-selector');
+for (var u = 1; u <= 9; u++) {
+  var pill = document.createElement('button');
+  pill.className = 'unit-pill' + (u === unitNum ? ' active' : '');
+  pill.dataset.u = u;
+  pill.textContent = 'U' + u;
+  (function(n){ pill.addEventListener('click', function(){ showUnit(n); }); })(u);
+  sel.appendChild(pill);
+}
+
+showUnit(unitNum);
+</script>
+<script>document.addEventListener("DOMContentLoaded",function(){if(window.lucide){lucide.createIcons({attrs:{class:"lucide-icon",width:"16",height:"16"}});}});</script>
+</body>
+</html>

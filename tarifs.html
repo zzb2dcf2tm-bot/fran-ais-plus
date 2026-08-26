@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🇫🇷</text></svg>">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>français+ · Tarifs & Abonnements</title>
+<style>
+  :root {
+    --a: #27ae60; --a-l: #eafaf1;
+    --b: #2980b9; --b-l: #eaf4fb;
+    --c: #8e44ad; --c-l: #f5eef8;
+    --gold: #f39c12; --gold-l: #fef9ec;
+    --bg: #f8f9fa; --card: #fff;
+    --text: #2c3e50; --muted: #7f8c8d;
+    --radius: 14px; --shadow: 0 2px 16px rgba(0,0,0,.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+  /* NAV */
+  nav { background: #fff; box-shadow: var(--shadow); position: sticky; top: 0; z-index: 100; }
+  .nav-inner { max-width: 1100px; margin: auto; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .logo { font-size: 1.4rem; font-weight: 800; color: var(--b); text-decoration: none; }
+  .logo span { color: var(--a); }
+  .nav-back { background: var(--bg); border: none; border-radius: 20px; padding: 7px 18px; cursor: pointer; font-size: .85rem; font-weight: 600; color: var(--muted); text-decoration: none; transition: all .2s; }
+  .nav-back:hover { background: var(--b); color: #fff; }
+
+  /* HERO */
+  .hero { background: linear-gradient(135deg, #f39c12 0%, #e67e22 50%, #8e44ad 100%); color: #fff; text-align: center; padding: 70px 20px 90px; }
+  .hero-tag { display: inline-block; background: rgba(255,255,255,.2); border-radius: 20px; padding: 5px 16px; font-size: .85rem; font-weight: 600; margin-bottom: 18px; }
+  .hero h1 { font-size: clamp(1.8rem,4vw,3rem); font-weight: 900; margin-bottom: 14px; }
+  .hero p { font-size: 1.1rem; opacity: .9; max-width: 580px; margin: 0 auto; }
+
+  /* TOGGLE */
+  .billing-toggle { text-align: center; padding: 32px 20px 10px; }
+  .toggle-wrap { display: inline-flex; background: #fff; border-radius: 30px; padding: 5px; box-shadow: var(--shadow); gap: 4px; }
+  .toggle-btn { border: none; background: transparent; padding: 9px 24px; border-radius: 25px; cursor: pointer; font-weight: 600; font-size: .9rem; color: var(--muted); transition: all .2s; }
+  .toggle-btn.active { background: var(--b); color: #fff; }
+  .save-badge { display: inline-block; background: var(--a); color: #fff; font-size: .7rem; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-left: 6px; }
+
+  /* PRICING GRID */
+  .pricing-section { max-width: 1100px; margin: auto; padding: 30px 20px 60px; }
+  .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; align-items: start; }
+  .plan { background: var(--card); border-radius: var(--radius); padding: 32px 26px; box-shadow: var(--shadow); position: relative; border: 2px solid transparent; transition: transform .2s; }
+  .plan:hover { transform: translateY(-4px); }
+  .plan.featured { border-color: var(--gold); transform: scale(1.03); }
+  .plan.featured:hover { transform: scale(1.03) translateY(-4px); }
+  .popular-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--gold); color: #fff; font-size: .75rem; font-weight: 800; padding: 4px 16px; border-radius: 20px; white-space: nowrap; }
+  .plan-icon { font-size: 2.4rem; margin-bottom: 10px; }
+  .plan-name { font-size: 1.1rem; font-weight: 800; margin-bottom: 4px; }
+  .plan-tagline { font-size: .85rem; color: var(--muted); margin-bottom: 18px; }
+  .plan-price { margin-bottom: 6px; }
+  .plan-price .amount { font-size: 2.6rem; font-weight: 900; }
+  .plan-price .period { font-size: .9rem; color: var(--muted); }
+  .plan-price .old-price { font-size: .9rem; text-decoration: line-through; color: var(--muted); margin-right: 6px; }
+  .plan-price-note { font-size: .78rem; color: var(--muted); margin-bottom: 22px; min-height: 18px; }
+  .plan-features { list-style: none; margin-bottom: 28px; display: flex; flex-direction: column; gap: 10px; }
+  .plan-features li { font-size: .9rem; display: flex; align-items: flex-start; gap: 10px; }
+  .plan-features li::before { content: '✓'; color: var(--a); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+  .plan-features li.no::before { content: '✕'; color: #ddd; }
+  .plan-features li.no { color: #bbb; }
+  .plan-cta { width: 100%; padding: 13px; border-radius: 30px; border: none; cursor: pointer; font-weight: 700; font-size: .95rem; transition: all .2s; }
+  .cta-free { background: var(--bg); color: var(--text); }
+  .cta-free:hover { background: #e8e8e8; }
+  .cta-fiches { background: var(--b-l); color: var(--b); }
+  .cta-fiches:hover { background: var(--b); color: #fff; }
+  .cta-coaching { background: var(--a-l); color: var(--a); }
+  .cta-coaching:hover { background: var(--a); color: #fff; }
+  .cta-premium { background: linear-gradient(135deg, var(--gold), #e67e22); color: #fff; }
+  .cta-premium:hover { opacity: .9; }
+
+  /* FEATURES COMPARISON */
+  .compare-section { max-width: 900px; margin: 0 auto 60px; padding: 0 20px; }
+  .compare-section h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 24px; text-align: center; }
+  .compare-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); font-size: .9rem; }
+  .compare-table th { background: var(--text); color: #fff; padding: 14px 16px; font-weight: 700; }
+  .compare-table th:first-child { text-align: left; }
+  .compare-table td { padding: 13px 16px; border-bottom: 1px solid #f0f0f0; text-align: center; }
+  .compare-table td:first-child { text-align: left; font-weight: 600; }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .compare-table tr:nth-child(even) td { background: #fafafa; }
+  .check { color: var(--a); font-weight: 700; font-size: 1.1rem; }
+  .cross { color: #ddd; font-weight: 700; }
+  .partial { color: var(--gold); font-weight: 700; }
+
+  /* FICHES APERÇU */
+  .fiches-section { background: var(--b-l); padding: 60px 20px; }
+  .fiches-inner { max-width: 1100px; margin: auto; }
+  .fiches-inner h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 8px; }
+  .fiches-inner p { color: var(--muted); margin-bottom: 30px; }
+  .fiches-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 14px; }
+  .fiche-card { background: #fff; border-radius: var(--radius); padding: 20px 16px; box-shadow: var(--shadow); text-align: center; position: relative; }
+  .fiche-level { font-size: .7rem; font-weight: 700; padding: 3px 10px; border-radius: 10px; display: inline-block; margin-bottom: 8px; }
+  .fiche-level.A { background: var(--a-l); color: var(--a); }
+  .fiche-level.B { background: var(--b-l); color: var(--b); }
+  .fiche-level.C { background: var(--c-l); color: var(--c); }
+  .fiche-emoji { font-size: 1.8rem; margin-bottom: 6px; display: block; }
+  .fiche-title { font-size: .85rem; font-weight: 700; }
+  .fiche-lock { position: absolute; top: 10px; right: 10px; font-size: 1rem; }
+
+  /* COACHING */
+  .coaching-section { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+  .coaching-section h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 8px; }
+  .coaching-section > p { color: var(--muted); margin-bottom: 30px; }
+  .coaching-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+  .step { background: #fff; border-radius: var(--radius); padding: 26px 22px; box-shadow: var(--shadow); }
+  .step-num { width: 36px; height: 36px; border-radius: 50%; background: var(--a-l); color: var(--a); font-weight: 800; font-size: 1rem; display: flex; align-items: center; justify-content: center; margin-bottom: 14px; }
+  .step h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+  .step p { font-size: .85rem; color: var(--muted); }
+
+  /* FAQ */
+  .faq-section { background: var(--bg); padding: 60px 20px; }
+  .faq-inner { max-width: 700px; margin: auto; }
+  .faq-inner h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 30px; text-align: center; }
+  .faq-item { background: #fff; border-radius: var(--radius); margin-bottom: 12px; overflow: hidden; box-shadow: var(--shadow); }
+  .faq-q { padding: 18px 22px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+  .faq-q::after { content: '+'; font-size: 1.4rem; color: var(--muted); transition: transform .2s; }
+  .faq-item.open .faq-q::after { transform: rotate(45deg); }
+  .faq-a { padding: 0 22px; max-height: 0; overflow: hidden; transition: all .3s; font-size: .9rem; color: var(--muted); }
+  .faq-item.open .faq-a { max-height: 200px; padding: 0 22px 18px; }
+
+  /* CONTACT */
+  .contact-section { background: linear-gradient(135deg, #2980b9, #8e44ad); color: #fff; padding: 70px 20px; text-align: center; }
+  .contact-section h2 { font-size: 1.8rem; font-weight: 900; margin-bottom: 12px; }
+  .contact-section p { opacity: .9; margin-bottom: 36px; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .contact-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .btn-whatsapp { background: #25d366; color: #fff; border: none; border-radius: 30px; padding: 14px 30px; font-weight: 700; font-size: 1rem; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: opacity .2s; text-decoration: none; }
+  .btn-whatsapp:hover { opacity: .9; }
+  .btn-email { background: rgba(255,255,255,.15); color: #fff; border: 2px solid rgba(255,255,255,.6); border-radius: 30px; padding: 14px 30px; font-weight: 700; font-size: 1rem; cursor: pointer; display: flex; align-items: center; gap: 8px; text-decoration: none; transition: all .2s; }
+  .btn-email:hover { background: rgba(255,255,255,.25); }
+
+  /* CONTACT FORM MODAL */
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 999; align-items: center; justify-content: center; padding: 20px; }
+  .modal-overlay.open { display: flex; }
+  .modal { background: #fff; border-radius: var(--radius); padding: 36px; max-width: 520px; width: 100%; position: relative; }
+  .modal h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 6px; }
+  .modal p { color: var(--muted); font-size: .9rem; margin-bottom: 24px; }
+  .modal-close { position: absolute; top: 16px; right: 18px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--muted); }
+  .form-group { margin-bottom: 16px; }
+  .form-group label { display: block; font-weight: 600; font-size: .85rem; margin-bottom: 6px; }
+  .form-group input, .form-group select, .form-group textarea { width: 100%; border: 2px solid #e0e0e0; border-radius: 8px; padding: 10px 14px; font-size: .95rem; outline: none; font-family: inherit; transition: border .2s; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--b); }
+  .form-group textarea { resize: vertical; min-height: 90px; }
+  .form-submit { width: 100%; padding: 13px; background: var(--b); color: #fff; border: none; border-radius: 30px; font-weight: 700; font-size: 1rem; cursor: pointer; transition: opacity .2s; margin-top: 6px; }
+  .form-submit:hover { opacity: .88; }
+  .form-success { display: none; text-align: center; padding: 20px 0; }
+  .form-success .big-emoji { font-size: 3rem; display: block; margin-bottom: 12px; }
+
+  footer { text-align: center; padding: 36px 20px; color: var(--muted); font-size: .85rem; border-top: 1px solid #e8e8e8; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="index.html">français<span>+</span></a>
+    <div style="display:flex;gap:8px">
+      <a class="nav-back" href="bibliotheque.html">📚 Bibliothèque</a>
+      <a class="nav-back" href="index.html">← Retour au site</a>
+    </div>
+  </div>
+</nav>
+
+<div style="text-align:center;padding:80px 20px;color:#7f8c8d;font-family:'Segoe UI',system-ui,sans-serif">
+  <div style="font-size:3.5rem;margin-bottom:20px">🚧</div>
+  <h2 style="font-size:1.6rem;font-weight:800;margin-bottom:12px;color:#2c3e50">Tarifs en préparation</h2>
+  <p style="font-size:1rem;max-width:500px;margin:0 auto 28px">Les offres et abonnements seront disponibles prochainement.</p>
+  <a href="index.html" style="display:inline-block;background:#2980b9;color:#fff;padding:12px 28px;border-radius:24px;font-weight:700;text-decoration:none;font-size:.95rem">← Retour à l'accueil</a>
+</div>
+
+</body>
+</html>
